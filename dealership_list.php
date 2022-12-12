@@ -90,20 +90,7 @@ $role = $_SESSION['role_id_sess'];
     table.draw();
   }
     
-    function deleteMenu(id)
-    {
-        let cnf = confirm("Are you sure you want to delete menu?");
-        if(cnf == true)
-            {
-                $.blockUI();
-                $.post("utilities.php",{op:"Sidenumber.deleteList",menu_id:id},function(re){
-                    $.unblockUI();
-                    alert(re.response_message);
-                    getpage('menu_list.php',"page");
-                },'json')
-            }
-        
-    }
+
     function getModal(url,div)
     {
         $('#'+div).html("<h2>Loading....</h2>");
