@@ -300,20 +300,6 @@ public function myTax($data){
 		echo $datatableEngine->generic_table($data,$table_name,$columner,$filter,$primary_key);
 }
 
-public function register($data)
-{
-    
-  
-    $insertSN = $this->doInsert('tax',$data,array('op','tax','plate_number','comments','vehicle_make','chasis_number','vehicle_color','vehicle_model'));
-    if($insertSN > 0 ){
-        return json_encode(array("response_code"=>0,"response_message"=>'Record saved successfully'));
-
-    }else{
-            return json_encode(array("response_code"=>409,"response_message"=>'AN ERROR OCCURED, SOME FEATURES MIGHT NOT FUNCTION WELL!!'));
-    }
-    
-    
-}
 
 public function saveData($data)
 {
