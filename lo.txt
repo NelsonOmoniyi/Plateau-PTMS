@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-SELECT COUNT(portal_id) AS counter FROM driving_sch_form WHERE  1 = 1  order by portal_id asc
-=======
-UPDATE transport_companies SET status = '1', expiry_date = '2023-12-12', processed_date = '2022-12-12 14:48:43' WHERE portal_id = 'TCP1670852865' AND status = '0'
->>>>>>> d5257ee66367a9b4cb4d8c898718826651d64804
+UPDATE tb_offences_payment SET status = '1', expiry_date = '2023-12-12', processed_date = '2022-12-12 15:12:32' WHERE offence_id = 'RTO1670854334' AND status = '0'

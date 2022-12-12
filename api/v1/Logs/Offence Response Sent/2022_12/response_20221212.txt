@@ -1,0 +1,6 @@
+Data Sent @ 2022-12-12 15:12:14	@ 15:12:14
+{"response_code":0,"response_message":"Success","reference_code":"RTO1670854334"}
+Header sent : 
+{"token":"49bd19362c675422ced8ef220bda3a7709ef68c19fac61ada6dea16ea99c754c3dd938928af4c68b655993e0c4365c21651831cd10ab63eb35ff361b37e13fa8","Content-Type":"application\/json","User-Agent":"PostmanRuntime\/7.29.2","Accept":"*\/*","Postman-Token":"23b3c52f-0a06-44e5-b052-ee1a849fb71d","Host":"localhost","Accept-Encoding":"gzip, deflate, br","Connection":"keep-alive","Content-Length":"898"}
+=====================================
+

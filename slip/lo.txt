@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-SELECT trans_desc, trans_amount FROM tb_payment_confirmation WHERE offence_id = 'RTO1670833915'
-=======
-SELECT * FROM tb_payment_confirmation WHERE payment_code = 'TCP1670852865'
->>>>>>> d5257ee66367a9b4cb4d8c898718826651d64804
+SELECT trans_desc, trans_amount FROM tb_payment_confirmation WHERE offence_id = 'RTO1670854334'

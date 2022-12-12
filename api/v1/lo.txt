@@ -1,1 +1,1 @@
-SELECT * FROM plate WHERE plate = 'Array'
+INSERT INTO tb_payment_confirmation (payment_code, trans_desc, trans_desc_code, trans_amount, trans_status, officer, station, offence_id, tin, item_code, plate) VALUES ('RTO1670854334','Driving without emergency reflective warning signs/display of danger label', 'FEV', '1200.00', '0', 'Segun Alehiro','Karu Division', 'RTO1670854334', '64754736373', '11295', 'NH7890')
