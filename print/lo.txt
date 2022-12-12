@@ -1,5 +1,1 @@
-
-SELECT * FROM dealership WHERE portal_id = 'DS1670855859'
-
-SELECT * FROM driving_sch_form WHERE portal_id = 'DSL1670851427'
-
+SELECT * FROM mech_garrage WHERE portal_id = 'MCG1670860389'

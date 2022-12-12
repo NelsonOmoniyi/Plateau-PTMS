@@ -113,7 +113,8 @@ $role = $_SESSION['role_id_sess'];
     }
     function PrintPage(d) {
             // window.alert(d)
-            window.open('print/spare_reciept.php?id='+d, '_blank');
+           
+            window.open('receipt/special_trade_receipt.php?table=spare_parts&pid='+d, '_blank');
             // getpage('setup/print.php?id='+d,'page');
             getpage('spare_list.php','page');
 		

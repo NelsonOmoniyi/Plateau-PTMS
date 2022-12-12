@@ -98,7 +98,8 @@ $role = $_SESSION['role_id_sess'];
     }
     function PrintPage(d) {
             // window.alert(d)
-            window.open('./print/transport_companies.php?id='+d, '_blank');
+            // window.open('./print/transport_companies.php?id='+d, '_blank');
+            window.open('receipt/special_trade_receipt.php?table=transport_companies&pid='+d, '_blank');
             // getpage('setup/print.php?id='+d,'page');
             getpage('tcp_list.php','page');
 		

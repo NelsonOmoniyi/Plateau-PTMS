@@ -1,1 +1,1 @@
-SELECT * FROM tb_payment_confirmation WHERE payment_code = 'DS1670857436'
+SELECT * FROM tb_payment_confirmation WHERE payment_code = 'MCG1670860533'

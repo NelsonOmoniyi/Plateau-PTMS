@@ -253,7 +253,7 @@ $portal_id = $form_id_pre.$current_timestamp;
     
     function PrintPage(d) {
             // window.alert(d)
-            window.open('./print/mech_reciept.php?id='+d, '_blank');
+            window.open('receipt/special_trade_receipt.php?table=mech_garrage&pid='+d, '_blank');
             // getpage('./print/mech_reciept.php?id='+d,'page');
 		
 	}

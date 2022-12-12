@@ -115,7 +115,7 @@ $role = $_SESSION['role_id_sess'];
     }
     function PrintPage(d) {
             // window.alert(d)
-            window.open('print/mech_reciept.php?id='+d, '_blank');
+            window.open('receipt/special_trade_receipt.php?table=mech_garrage&pid='+d, '_blank');
             // getpage('setup/print.php?id='+d,'page');
             getpage('mech_list.php','page');
 		

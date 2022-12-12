@@ -1,4 +1,1 @@
-
-SELECT * FROM payment_category WHERE code = 'DS'
-
-UPDATE driving_sch_form SET approved = '1' WHERE portal_id = 'DSL1670851427'
+SELECT * FROM payment_category WHERE code = 'MCG'

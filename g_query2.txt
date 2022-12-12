@@ -1,1 +1,1 @@
-SELECT COUNT(id) AS counter FROM dealership WHERE  1 = 1  order by id asc
+SELECT COUNT(portal_id) AS counter FROM mech_garrage WHERE  1 = 1  order by portal_id asc

@@ -13,7 +13,7 @@ class TCP extends dbobject
             array( 'db' => 'business_name', 'dt' => 2, 'formatter'=>function($d, $row){
                 if ($row['status'] > 0) {
                     if ($row['approved'] > 0) {
-                        return  "$d | <button onclick=\"PrintC('".$row[portal_id]."')\" class='btn btn-success btn-sm' href='javascript:void(0)'>Print Certificate</button>";
+                        return  "$d | <button onclick=\"PrintC('".$row['portal_id']."')\" class='btn btn-success btn-sm' href='javascript:void(0)'>Print Certificate</button>";
                     } else {
                         return  ''.$d.' | <a class="btn btn-primary btn-sm" onclick="getModal(\'setup/preview_spare_part.php?id='.$row['portal_id'].'&table=transport_companies\',\'modal_div\')"  href="javascript:void(0)" data-toggle="modal" data-target="#defaultModalPrimary">Approve</a>';
                     } 
@@ -30,16 +30,16 @@ class TCP extends dbobject
             array( 'db' => 'created', 'dt' => 9 ),
             array( 'db' => 'status', 'dt' => 10, 'formatter'=> function($d, $row){
                 if ($_SESSION['role_id_sess'] != '001') {
-                    if (!$d > 0) {
-                        return  "Not Paid";
-                    } else {
-                        return  "Paid";
+                    if($d>0){
+                        return "Paid | <a href='receipt/special_trade_receipt.php?pid=".$row['portal_id']."&table=transport_companies' target='_blank' class='btn btn-primary btn-sm'><i class='fa fa-print'></i> Print Receipt</a>";
+                    }else{
+                        return "Not Paid | <a href='receipt/special_trade_receipt.php?pid=".$row['portal_id']."&table=transport_companies' target='_blank' class='btn btn-primary btn-sm'><i class='fa fa-print'></i> Print Receipt</a>";
                     }
                 } else {
-                    if (!$d > 0) {
-                    return  "Pending Payment | <button onclick=\"PrintPage('".$row[portal_id]."')\" class='btn btn-success btn-sm' href='javascript:void(0)'>Print Reciept</button>";
-                    } else {
-                        return  "PAID ";
+                    if($d>0){
+                        return "Paid | <a href='receipt/special_trade_receipt.php?pid=".$row['portal_id']."&table=transport_companies' target='_blank' class='btn btn-primary btn-sm'><i class='fa fa-print'></i> Print Receipt</a>";
+                    }else{
+                        return "Not Paid | <a href='receipt/special_trade_receipt.php?pid=".$row['portal_id']."&table=transport_companies' target='_blank' class='btn btn-primary btn-sm'><i class='fa fa-print'></i> Print Receipt</a>";
                     }
                 }
             }),
@@ -50,7 +50,7 @@ class TCP extends dbobject
                 if (date('Y-m-d') > $d) {
                     return  "Expired";
                 } else {
-                    return  "Not Expired";
+                    return  "Expiring [$d]";
                 }
             }),
             array('db' => 'approved')

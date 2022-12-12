@@ -30,16 +30,16 @@ class MechanicGarrage extends dbobject
                 array( 'db' => 'created', 'dt' => 9 ),
                 array( 'db' => 'status', 'dt' => 10, 'formatter'=> function($d, $row){
                     if ($_SESSION['role_id_sess'] != '001') {
-                        if (!$d > 0) {
-                            return  "Not Paid";
-                        } else {
-                            return  "Paid";
+                        if($d>0){
+                            return "Paid | <a href='receipt/special_trade_receipt.php?pid=".$row['portal_id']."&table=mech_garrage' target='_blank' class='btn btn-primary btn-sm'><i class='fa fa-print'></i> Print Receipt</a>";
+                        }else{
+                            return "Not Paid | <a href='receipt/special_trade_receipt.php?pid=".$row['portal_id']."&table=mech_garrage' target='_blank' class='btn btn-primary btn-sm'><i class='fa fa-print'></i> Print Receipt</a>";
                         }
                     } else {
-                       if (!$d > 0) {
-                        return  "Pending Payment";
-                        } else {
-                            return  "PAID | <button onclick=\"PrintC('".$row[portal_id]."')\" class='btn btn-success btn-sm' href='javascript:void(0)'>Print Certificate</button>";
+                        if($d>0){
+                            return "Paid | <a href='receipt/special_trade_receipt.php?pid=".$row['portal_id']."&table=mech_garrage' target='_blank' class='btn btn-primary btn-sm'><i class='fa fa-print'></i> Print Receipt</a>";
+                        }else{
+                            return "Not Paid | <a href='receipt/special_trade_receipt.php?pid=".$row['portal_id']."&table=mech_garrage' target='_blank' class='btn btn-primary btn-sm'><i class='fa fa-print'></i> Print Receipt</a>";
                         }
                     }
                 }),
@@ -50,7 +50,7 @@ class MechanicGarrage extends dbobject
                     if (date('Y-m-d') > $d) {
                         return  "Expired ";
                     } else {
-                        return  "Not Expired";
+                        return  "Expiring [$d]";
                     }
                 }),
                 array('db' => 'approved')

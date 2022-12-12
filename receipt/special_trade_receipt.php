@@ -30,6 +30,15 @@ if($table=='driving_sch_form'){
 }else if($table=='dealership'){
     $owner_name = $check[0]['owner_name'];
     $cur_date = $check[0]['created'];
+}else if($table=='transport_companies'){
+    $owner_name = $check[0]['owner_name'];
+    $cur_date = $check[0]['created'];
+}else if($table=='spare_parts'){
+    $owner_name = $check[0]['owner_name'];
+    $cur_date = $check[0]['created'];
+}else if($table=='mech_garrage'){
+    $owner_name = $check[0]['owner_name'];
+    $cur_date = $check[0]['created'];
 }
 
 $new = explode(" ",$cur_date);
