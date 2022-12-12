@@ -100,7 +100,7 @@ $payment = new Payment();
                             </p>
 
                             <form id="form3" onsubmit="return false">
-                                <input type="hidden" value="Payment.InitPay" name="op">
+                                <input type="hidden"  value="Payment.InitPay" name="op">
                                 <input type="hidden"  name="tinforP" id="tinforP">
                                 <input type="hidden"  name="table" value="dealership">
                                 <div class="row">
@@ -111,10 +111,7 @@ $payment = new Payment();
                                 &nbsp; &nbsp;
                                 <button class="btn btn-success" id="Pay" type="button">Make Payment</button>
                             </form>
-                            
                         </section>
-
-
                     </div>
                 </div>
             </div>
