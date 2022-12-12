@@ -258,8 +258,8 @@ $portal_id = $form_id_pre.$current_timestamp;
 
     function PrintPage(d) {
             // window.alert(d)
-
-            window.open('./print/dealership.php?id='+d, '_blank');
+            window.open('receipt/special_trade_receipt.php?table=dealership&pid='+d, '_blank');
+            // window.open('./print/dealership.php?id='+d, '_blank');
             // getpage('print/transport_companies.php?id='+d,'page');
 		
 	}

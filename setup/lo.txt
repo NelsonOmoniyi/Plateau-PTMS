@@ -1,1 +1,1 @@
-SELECT * FROM payment_category WHERE code = 'TCP'
+SELECT * FROM payment_category WHERE code = 'DS'

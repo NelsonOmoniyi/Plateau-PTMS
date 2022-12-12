@@ -23,20 +23,24 @@ $payt_type ="$payt_type $suffix";
 $amount = $dbobject->getitemlabel('payment_category', 'id', $check[0]['item_code'], 'amount');
 $amount = number_format($amount,2);
 
+$status = (($check[0]['processed_date']==0)?"Payment Pending":"$amount $status_suffix");
+if($table=='driving_sch_form'){
+    $owner_name = $check[0]['school_name'];
+    $cur_date = $check[0]['record_date'];
+}else if($table=='dealership'){
+    $owner_name = $check[0]['owner_name'];
+    $cur_date = $check[0]['created'];
+}
 
-// $item_code = $check[0]['processed_date'];
-
-// $itemcode = $dbobject->getitemlabel('payment_category', 'id', $item_code, 'code');
-// $created = $check[0]['created'];
-
-$new = explode(" ",$check[0]['record_date']);
+$new = explode(" ",$cur_date);
 $ddd = date("M jS, Y", strtotime($new[0]));
 $new = explode(" ",$ddd);
 $month =  $new[0];
 $date =  $new[1];
 $year = $new[2];
 $created = "$date $month $year";
-$status = (($check[0]['processed_date']==0)?"Payment Pending":"$amount");
+$status_suffix = "Naira";
+
 // $month_year = "$month $year";
 
 // $day = date('d');
@@ -58,7 +62,7 @@ $pdf->SetTextColor(5,120,180);
 $pdf->SetFont('Arial', '', 10);
 $pdf->Ln(56);
 $pdf->SetTextColor(10,70,100);
-$pdf->Cell(112,0,$check[0]['school_name'],0,1,'C');
+$pdf->Cell(112,0,$owner_name,0,1,'C');
 
 //address
 $pdf->SetFont('Arial', '', 10);
@@ -87,8 +91,8 @@ $pdf->Cell(102,0,$payt_type,0,1,'C');
 //Amount
 $pdf->SetFont('Arial', '', 10);
 $pdf->Ln(10);
-$pdf->SetTextColor(10,70,100);
-$pdf->Cell(99,0,$status,0,1,'C');
+$pdf->SetTextColor(255,10,10);
+$pdf->Cell(96,0,$status,0,1,'C');
 
 //TIN
 $pdf->SetFont('Arial', '', 10);
@@ -112,7 +116,7 @@ $pdf->Cell(90,0,$created,0,1,'C');
 $pdf->SetFont('Arial', '', 10);
 $pdf->Ln(-70);
 $pdf->SetTextColor(10,70,100);
-$pdf->Cell(305,0,$check[0]['school_name'],0,1,'C');
+$pdf->Cell(305,0,$owner_name,0,1,'C');
 
 // Address right
 $pdf->SetFont('Arial', '', 10);
@@ -141,8 +145,8 @@ $pdf->Cell(303,0,$payt_type,0,1,'C');
 // Amount right
 $pdf->SetFont('Arial', '', 10);
 $pdf->Ln(10);
-$pdf->SetTextColor(10,70,100);
-$pdf->Cell(300,0,$status,0,1,'C');
+$pdf->SetTextColor(255,10,10);
+$pdf->Cell(297,0,$status,0,1,'C');
 
 // TIN right
 $pdf->SetFont('Arial', '', 10);

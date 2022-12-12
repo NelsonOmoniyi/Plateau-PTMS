@@ -96,11 +96,11 @@ $role = $_SESSION['role_id_sess'];
         $('#'+div).html("<h2>Loading....</h2>");
         $.post(url,{},function(re){
             $('#'+div).html(re);
-        })
+        }) 
     }
     function PrintPage(d) {
             // window.alert(d)
-            window.open('print/dealership.php?id='+d, '_blank');
+            window.open('receipt/special_trade_receipt.php?table=dealership&pid='+d, '_blank');
             // getpage('setup/print.php?id='+d,'page');
             getpage('dealership_list.php','page');
 		

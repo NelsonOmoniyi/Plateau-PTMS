@@ -15,7 +15,7 @@ class Dealers extends dbobject
             array( 'db' => 'business_name', 'dt' => 1, 'formatter'=>function($d, $row){
                 if ($row['status'] > 0) {
                     if ($row['approved'] > 0) {
-                        return  "$d | <button class='btn btn-success btn-sm'>Print Certificate</button>";
+                        return  "$d | <button onclick=\"PrintC('".$row['portal_id']."')\" class='btn btn-success btn-sm' href='javascript:void(0)'>Print Certificate</button>";
                     } else {
                         // added setup/preview_spare_part.php
 
@@ -39,16 +39,16 @@ class Dealers extends dbobject
             array( 'db' => 'created', 'dt' => 9 ),
             array( 'db' => 'status', 'dt' => 10, 'formatter'=> function($d, $row){
                 if ($_SESSION['role_id_sess'] != '001') {
-                    if (!$d > 0) {
-                        return  "Not Paid";
-                    } else {
-                        return  "Paid";
+                    if($d>0){
+                        return "Paid | <a href='receipt/special_trade_receipt.php?pid=".$row['portal_id']."&table=dealership' target='_blank' class='btn btn-primary btn-sm'><i class='fa fa-print'></i> Print Receipt</a>";
+                    }else{
+                        return "Not Paid | <a href='receipt/special_trade_receipt.php?pid=".$row['portal_id']."&table=dealership' target='_blank' class='btn btn-primary btn-sm'><i class='fa fa-print'></i> Print Receipt</a>";
                     }
                 } else {
-                    if (!$d > 0) {
-                    return  "Pending Payment";
-                    } else {
-                        return  "PAID | <button onclick=\"PrintC('".$row['portal_id']."')\" class='btn btn-success btn-sm' href='javascript:void(0)'>Print Certificate</button>";
+                    if($d>0){
+                        return "Paid | <a href='receipt/special_trade_receipt.php?pid=".$row['portal_id']."&table=dealership' target='_blank' class='btn btn-primary btn-sm'><i class='fa fa-print'></i> Print Receipt</a>";
+                    }else{
+                        return "Not Paid | <a href='receipt/special_trade_receipt.php?pid=".$row['portal_id']."&table=dealership' target='_blank' class='btn btn-primary btn-sm'><i class='fa fa-print'></i> Print Receipt</a>";
                     }
                 }
             }),
@@ -57,9 +57,9 @@ class Dealers extends dbobject
                 $exp = $row['expiry_date'];
                 // return  $d;
                 if (date('Y-m-d') > $d) {
-                    return  "Expired  | <button class='btn btn-success btn-sm'>Renew</button>";
+                    return  "Expired ";
                 } else {
-                    return  "Not Expired";
+                    return  "Expiring [$d]";
                 }
             })
         );

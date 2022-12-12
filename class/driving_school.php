@@ -30,10 +30,10 @@ class DrivingSchool extends dbobject
                     }
                    
                 } else {
-                    if (!$d > 0) {
-                    return  "Not Paid | <a href='receipt/special_trade_receipt.php?pid=".$row['portal_id']."&table=driving_sch_form' target='_blank' class='btn btn-primary btn-sm'><i class='fa fa-print'></i> Print Receipt</a>";
-                    } else {
-                        return  "Paid | <a href='receipt/special_trade_receipt.php?pid=".$row['portal_id']."&table=driving_sch_form' target='_blank' class='btn btn-primary btn-sm'><i class='fa fa-print'></i> Print Receipt</a>";
+                   if($d>0){
+                        return "Paid | <a href='receipt/special_trade_receipt.php?pid=".$row['portal_id']."&table=driving_sch_form' target='_blank' class='btn btn-primary btn-sm'><i class='fa fa-print'></i> Print Receipt</a>";
+                    }else{
+                        return "Not Paid | <a href='receipt/special_trade_receipt.php?pid=".$row['portal_id']."&table=driving_sch_form' target='_blank' class='btn btn-primary btn-sm'><i class='fa fa-print'></i> Print Receipt</a>";
                     }
                 }
             }),

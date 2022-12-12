@@ -1,1 +1,1 @@
-SELECT trans_desc, trans_amount FROM tb_payment_confirmation WHERE offence_id = 'RTO1670854334'
+SELECT * FROM tb_payment_confirmation WHERE payment_code = 'DS1670857436'
