@@ -1,0 +1,19 @@
+@font-face {
+    font-family: "quicksand";
+    src: url("../icon/quicksand/Quicksand-Regular.woff");
+}
+
+body,
+li,
+a,
+h1,
+h3,
+h4,
+h5,
+h6,
+div,
+span,
+option,
+p {
+    font-family: "quicksand" !important;
+}

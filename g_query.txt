@@ -1,0 +1,1 @@
+SELECT portal_id,tin,business_name,address,owner_name,cac_reg_no,email_add,phone,cap,created,status,expiry_date,approved FROM transport_companies WHERE  1 = 1  order by portal_id asc  LIMIT 0, 10

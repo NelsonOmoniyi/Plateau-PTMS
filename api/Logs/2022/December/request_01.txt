@@ -1,0 +1,606 @@
+@2022_12_01 12:11:43
+
+Received	: {
+    "msg": "Error - Transction ID not found", 
+    "requestValid": 0
+}
+
+
+
+@2022_12_01 12:24:23
+
+Received	: {
+    "chasisNumber": "JTMRFREV4ED090607", 
+    "datePay": "2022-07-08 11:32:48", 
+    "msg": "NULL", 
+    "ownerAddress": "LAGOS CRESCENT ARMY BARRACKS ROAD YOLA, Jimeta", 
+    "ownerPhone": "08036161022", 
+    "payItems": [
+        {
+            "itemAmount": "250.00", 
+            "itemName": "Pre Registration/ AutoVIN", 
+            "itemValue": "av_cycle_transfer", 
+            "itemValue_describe": "Pre Registration/ AutoVIN"
+        }
+    ], 
+    "paymentType": "road_worthy", 
+    "processor": "remita", 
+    "registrationCenter": "Jimeta", 
+    "requestValid": 1, 
+    "status": "paid", 
+    "totalAmount": "250.00", 
+    "transID": "160679760269", 
+    "vehicleDetails": {
+        "engineNumber": "", 
+        "vehicleCategory": "Motor Vehicle", 
+        "vehicleColor": "", 
+        "vehicleMake": "Toyota", 
+        "vehicleModel": "RAV4", 
+        "vehicleType": "Private"
+    }, 
+    "vehicleNumber": "YLA05TT", 
+    "vehicleOwner": "DANLADI PATRICK KWABE"
+}
+
+
+
+@2022_12_01 12:28:11
+
+Received	: {
+    "chasisNumber": "JTMRFREV4ED090607", 
+    "datePay": "2022-07-08 11:32:48", 
+    "msg": "NULL", 
+    "ownerAddress": "LAGOS CRESCENT ARMY BARRACKS ROAD YOLA, Jimeta", 
+    "ownerPhone": "08036161022", 
+    "payItems": [
+        {
+            "itemAmount": "250.00", 
+            "itemName": "Pre Registration/ AutoVIN", 
+            "itemValue": "av_cycle_transfer", 
+            "itemValue_describe": "Pre Registration/ AutoVIN"
+        }
+    ], 
+    "paymentType": "road_worthy", 
+    "processor": "remita", 
+    "registrationCenter": "Jimeta", 
+    "requestValid": 1, 
+    "status": "paid", 
+    "totalAmount": "250.00", 
+    "transID": "160679760269", 
+    "vehicleDetails": {
+        "engineNumber": "", 
+        "vehicleCategory": "Motor Vehicle", 
+        "vehicleColor": "", 
+        "vehicleMake": "Toyota", 
+        "vehicleModel": "RAV4", 
+        "vehicleType": "Private"
+    }, 
+    "vehicleNumber": "YLA05TT", 
+    "vehicleOwner": "DANLADI PATRICK KWABE"
+}
+
+
+
+@2022_12_01 12:29:01
+
+Received	: {
+    "chasisNumber": "JTMRFREV4ED090607", 
+    "datePay": "2022-07-08 11:32:48", 
+    "msg": "NULL", 
+    "ownerAddress": "LAGOS CRESCENT ARMY BARRACKS ROAD YOLA, Jimeta", 
+    "ownerPhone": "08036161022", 
+    "payItems": [
+        {
+            "itemAmount": "250.00", 
+            "itemName": "Pre Registration/ AutoVIN", 
+            "itemValue": "av_cycle_transfer", 
+            "itemValue_describe": "Pre Registration/ AutoVIN"
+        }
+    ], 
+    "paymentType": "road_worthy", 
+    "processor": "remita", 
+    "registrationCenter": "Jimeta", 
+    "requestValid": 1, 
+    "status": "paid", 
+    "totalAmount": "250.00", 
+    "transID": "160679760269", 
+    "vehicleDetails": {
+        "engineNumber": "", 
+        "vehicleCategory": "Motor Vehicle", 
+        "vehicleColor": "", 
+        "vehicleMake": "Toyota", 
+        "vehicleModel": "RAV4", 
+        "vehicleType": "Private"
+    }, 
+    "vehicleNumber": "YLA05TT", 
+    "vehicleOwner": "DANLADI PATRICK KWABE"
+}
+
+
+
+@2022_12_01 12:35:00
+
+Received	: {
+    "chasisNumber": "JTMRFREV4ED090607", 
+    "datePay": "2022-07-08 11:32:48", 
+    "msg": "NULL", 
+    "ownerAddress": "LAGOS CRESCENT ARMY BARRACKS ROAD YOLA, Jimeta", 
+    "ownerPhone": "08036161022", 
+    "payItems": [
+        {
+            "itemAmount": "250.00", 
+            "itemName": "Pre Registration/ AutoVIN", 
+            "itemValue": "av_cycle_transfer", 
+            "itemValue_describe": "Pre Registration/ AutoVIN"
+        }
+    ], 
+    "paymentType": "road_worthy", 
+    "processor": "remita", 
+    "registrationCenter": "Jimeta", 
+    "requestValid": 1, 
+    "status": "paid", 
+    "totalAmount": "250.00", 
+    "transID": "160679760269", 
+    "vehicleDetails": {
+        "engineNumber": "", 
+        "vehicleCategory": "Motor Vehicle", 
+        "vehicleColor": "", 
+        "vehicleMake": "Toyota", 
+        "vehicleModel": "RAV4", 
+        "vehicleType": "Private"
+    }, 
+    "vehicleNumber": "YLA05TT", 
+    "vehicleOwner": "DANLADI PATRICK KWABE"
+}
+
+
+
+@2022_12_01 12:41:23
+
+Received	: {
+    "chasisNumber": "JTMRFREV4ED090607", 
+    "datePay": "2022-07-08 11:32:48", 
+    "msg": "NULL", 
+    "ownerAddress": "LAGOS CRESCENT ARMY BARRACKS ROAD YOLA, Jimeta", 
+    "ownerPhone": "08036161022", 
+    "payItems": [
+        {
+            "itemAmount": "250.00", 
+            "itemName": "Pre Registration/ AutoVIN", 
+            "itemValue": "av_cycle_transfer", 
+            "itemValue_describe": "Pre Registration/ AutoVIN"
+        }
+    ], 
+    "paymentType": "road_worthy", 
+    "processor": "remita", 
+    "registrationCenter": "Jimeta", 
+    "requestValid": 1, 
+    "status": "paid", 
+    "totalAmount": "250.00", 
+    "transID": "160679760269", 
+    "vehicleDetails": {
+        "engineNumber": "", 
+        "vehicleCategory": "Motor Vehicle", 
+        "vehicleColor": "", 
+        "vehicleMake": "Toyota", 
+        "vehicleModel": "RAV4", 
+        "vehicleType": "Private"
+    }, 
+    "vehicleNumber": "YLA05TT", 
+    "vehicleOwner": "DANLADI PATRICK KWABE"
+}
+
+
+
+@2022_12_01 12:43:13
+
+Received	: {
+    "chasisNumber": "JTMRFREV4ED090607", 
+    "datePay": "2022-07-08 11:32:48", 
+    "msg": "NULL", 
+    "ownerAddress": "LAGOS CRESCENT ARMY BARRACKS ROAD YOLA, Jimeta", 
+    "ownerPhone": "08036161022", 
+    "payItems": [
+        {
+            "itemAmount": "250.00", 
+            "itemName": "Pre Registration/ AutoVIN", 
+            "itemValue": "av_cycle_transfer", 
+            "itemValue_describe": "Pre Registration/ AutoVIN"
+        }
+    ], 
+    "paymentType": "road_worthy", 
+    "processor": "remita", 
+    "registrationCenter": "Jimeta", 
+    "requestValid": 1, 
+    "status": "paid", 
+    "totalAmount": "250.00", 
+    "transID": "160679760269", 
+    "vehicleDetails": {
+        "engineNumber": "", 
+        "vehicleCategory": "Motor Vehicle", 
+        "vehicleColor": "", 
+        "vehicleMake": "Toyota", 
+        "vehicleModel": "RAV4", 
+        "vehicleType": "Private"
+    }, 
+    "vehicleNumber": "YLA05TT", 
+    "vehicleOwner": "DANLADI PATRICK KWABE"
+}
+
+
+
+@2022_12_01 12:46:17
+
+Received	: 
+
+
+@2022_12_01 12:47:02
+
+Received	: {
+    "chasisNumber": "JTMRFREV4ED090607", 
+    "datePay": "2022-07-08 11:32:48", 
+    "msg": "NULL", 
+    "ownerAddress": "LAGOS CRESCENT ARMY BARRACKS ROAD YOLA, Jimeta", 
+    "ownerPhone": "08036161022", 
+    "payItems": [
+        {
+            "itemAmount": "250.00", 
+            "itemName": "Pre Registration/ AutoVIN", 
+            "itemValue": "av_cycle_transfer", 
+            "itemValue_describe": "Pre Registration/ AutoVIN"
+        }
+    ], 
+    "paymentType": "road_worthy", 
+    "processor": "remita", 
+    "registrationCenter": "Jimeta", 
+    "requestValid": 1, 
+    "status": "paid", 
+    "totalAmount": "250.00", 
+    "transID": "160679760269", 
+    "vehicleDetails": {
+        "engineNumber": "", 
+        "vehicleCategory": "Motor Vehicle", 
+        "vehicleColor": "", 
+        "vehicleMake": "Toyota", 
+        "vehicleModel": "RAV4", 
+        "vehicleType": "Private"
+    }, 
+    "vehicleNumber": "YLA05TT", 
+    "vehicleOwner": "DANLADI PATRICK KWABE"
+}
+
+
+
+@2022_12_01 12:47:49
+
+Received	: {
+    "chasisNumber": "JTMRFREV4ED090607", 
+    "datePay": "2022-07-08 11:32:48", 
+    "msg": "NULL", 
+    "ownerAddress": "LAGOS CRESCENT ARMY BARRACKS ROAD YOLA, Jimeta", 
+    "ownerPhone": "08036161022", 
+    "payItems": [
+        {
+            "itemAmount": "250.00", 
+            "itemName": "Pre Registration/ AutoVIN", 
+            "itemValue": "av_cycle_transfer", 
+            "itemValue_describe": "Pre Registration/ AutoVIN"
+        }
+    ], 
+    "paymentType": "road_worthy", 
+    "processor": "remita", 
+    "registrationCenter": "Jimeta", 
+    "requestValid": 1, 
+    "status": "paid", 
+    "totalAmount": "250.00", 
+    "transID": "160679760269", 
+    "vehicleDetails": {
+        "engineNumber": "", 
+        "vehicleCategory": "Motor Vehicle", 
+        "vehicleColor": "", 
+        "vehicleMake": "Toyota", 
+        "vehicleModel": "RAV4", 
+        "vehicleType": "Private"
+    }, 
+    "vehicleNumber": "YLA05TT", 
+    "vehicleOwner": "DANLADI PATRICK KWABE"
+}
+
+
+
+@2022_12_01 12:49:02
+
+Received	: {
+    "chasisNumber": "JTMRFREV4ED090607", 
+    "datePay": "2022-07-08 11:32:48", 
+    "msg": "NULL", 
+    "ownerAddress": "LAGOS CRESCENT ARMY BARRACKS ROAD YOLA, Jimeta", 
+    "ownerPhone": "08036161022", 
+    "payItems": [
+        {
+            "itemAmount": "250.00", 
+            "itemName": "Pre Registration/ AutoVIN", 
+            "itemValue": "av_cycle_transfer", 
+            "itemValue_describe": "Pre Registration/ AutoVIN"
+        }
+    ], 
+    "paymentType": "road_worthy", 
+    "processor": "remita", 
+    "registrationCenter": "Jimeta", 
+    "requestValid": 1, 
+    "status": "paid", 
+    "totalAmount": "250.00", 
+    "transID": "160679760269", 
+    "vehicleDetails": {
+        "engineNumber": "", 
+        "vehicleCategory": "Motor Vehicle", 
+        "vehicleColor": "", 
+        "vehicleMake": "Toyota", 
+        "vehicleModel": "RAV4", 
+        "vehicleType": "Private"
+    }, 
+    "vehicleNumber": "YLA05TT", 
+    "vehicleOwner": "DANLADI PATRICK KWABE"
+}
+
+
+
+@2022_12_01 12:49:32
+
+Received	: {
+    "chasisNumber": "JTMRFREV4ED090607", 
+    "datePay": "2022-07-08 11:32:48", 
+    "msg": "NULL", 
+    "ownerAddress": "LAGOS CRESCENT ARMY BARRACKS ROAD YOLA, Jimeta", 
+    "ownerPhone": "08036161022", 
+    "payItems": [
+        {
+            "itemAmount": "250.00", 
+            "itemName": "Pre Registration/ AutoVIN", 
+            "itemValue": "av_cycle_transfer", 
+            "itemValue_describe": "Pre Registration/ AutoVIN"
+        }
+    ], 
+    "paymentType": "road_worthy", 
+    "processor": "remita", 
+    "registrationCenter": "Jimeta", 
+    "requestValid": 1, 
+    "status": "paid", 
+    "totalAmount": "250.00", 
+    "transID": "160679760269", 
+    "vehicleDetails": {
+        "engineNumber": "", 
+        "vehicleCategory": "Motor Vehicle", 
+        "vehicleColor": "", 
+        "vehicleMake": "Toyota", 
+        "vehicleModel": "RAV4", 
+        "vehicleType": "Private"
+    }, 
+    "vehicleNumber": "YLA05TT", 
+    "vehicleOwner": "DANLADI PATRICK KWABE"
+}
+
+
+
+@2022_12_01 12:50:01
+
+Received	: {
+    "chasisNumber": "JTMRFREV4ED090607", 
+    "datePay": "2022-07-08 11:32:48", 
+    "msg": "NULL", 
+    "ownerAddress": "LAGOS CRESCENT ARMY BARRACKS ROAD YOLA, Jimeta", 
+    "ownerPhone": "08036161022", 
+    "payItems": [
+        {
+            "itemAmount": "250.00", 
+            "itemName": "Pre Registration/ AutoVIN", 
+            "itemValue": "av_cycle_transfer", 
+            "itemValue_describe": "Pre Registration/ AutoVIN"
+        }
+    ], 
+    "paymentType": "road_worthy", 
+    "processor": "remita", 
+    "registrationCenter": "Jimeta", 
+    "requestValid": 1, 
+    "status": "paid", 
+    "totalAmount": "250.00", 
+    "transID": "160679760269", 
+    "vehicleDetails": {
+        "engineNumber": "", 
+        "vehicleCategory": "Motor Vehicle", 
+        "vehicleColor": "", 
+        "vehicleMake": "Toyota", 
+        "vehicleModel": "RAV4", 
+        "vehicleType": "Private"
+    }, 
+    "vehicleNumber": "YLA05TT", 
+    "vehicleOwner": "DANLADI PATRICK KWABE"
+}
+
+
+
+@2022_12_01 12:50:37
+
+Received	: {
+    "chasisNumber": "JTMRFREV4ED090607", 
+    "datePay": "2022-07-08 11:32:48", 
+    "msg": "NULL", 
+    "ownerAddress": "LAGOS CRESCENT ARMY BARRACKS ROAD YOLA, Jimeta", 
+    "ownerPhone": "08036161022", 
+    "payItems": [
+        {
+            "itemAmount": "250.00", 
+            "itemName": "Pre Registration/ AutoVIN", 
+            "itemValue": "av_cycle_transfer", 
+            "itemValue_describe": "Pre Registration/ AutoVIN"
+        }
+    ], 
+    "paymentType": "road_worthy", 
+    "processor": "remita", 
+    "registrationCenter": "Jimeta", 
+    "requestValid": 1, 
+    "status": "paid", 
+    "totalAmount": "250.00", 
+    "transID": "160679760269", 
+    "vehicleDetails": {
+        "engineNumber": "", 
+        "vehicleCategory": "Motor Vehicle", 
+        "vehicleColor": "", 
+        "vehicleMake": "Toyota", 
+        "vehicleModel": "RAV4", 
+        "vehicleType": "Private"
+    }, 
+    "vehicleNumber": "YLA05TT", 
+    "vehicleOwner": "DANLADI PATRICK KWABE"
+}
+
+
+
+@2022_12_01 12:52:11
+
+Received	: {
+    "chasisNumber": "JTMRFREV4ED090607", 
+    "datePay": "2022-07-08 11:32:48", 
+    "msg": "NULL", 
+    "ownerAddress": "LAGOS CRESCENT ARMY BARRACKS ROAD YOLA, Jimeta", 
+    "ownerPhone": "08036161022", 
+    "payItems": [
+        {
+            "itemAmount": "250.00", 
+            "itemName": "Pre Registration/ AutoVIN", 
+            "itemValue": "av_cycle_transfer", 
+            "itemValue_describe": "Pre Registration/ AutoVIN"
+        }
+    ], 
+    "paymentType": "road_worthy", 
+    "processor": "remita", 
+    "registrationCenter": "Jimeta", 
+    "requestValid": 1, 
+    "status": "paid", 
+    "totalAmount": "250.00", 
+    "transID": "160679760269", 
+    "vehicleDetails": {
+        "engineNumber": "", 
+        "vehicleCategory": "Motor Vehicle", 
+        "vehicleColor": "", 
+        "vehicleMake": "Toyota", 
+        "vehicleModel": "RAV4", 
+        "vehicleType": "Private"
+    }, 
+    "vehicleNumber": "YLA05TT", 
+    "vehicleOwner": "DANLADI PATRICK KWABE"
+}
+
+
+
+@2022_12_01 12:53:24
+
+Received	: {
+    "chasisNumber": "JTMRFREV4ED090607", 
+    "datePay": "2022-07-08 11:32:48", 
+    "msg": "NULL", 
+    "ownerAddress": "LAGOS CRESCENT ARMY BARRACKS ROAD YOLA, Jimeta", 
+    "ownerPhone": "08036161022", 
+    "payItems": [
+        {
+            "itemAmount": "250.00", 
+            "itemName": "Pre Registration/ AutoVIN", 
+            "itemValue": "av_cycle_transfer", 
+            "itemValue_describe": "Pre Registration/ AutoVIN"
+        }
+    ], 
+    "paymentType": "road_worthy", 
+    "processor": "remita", 
+    "registrationCenter": "Jimeta", 
+    "requestValid": 1, 
+    "status": "paid", 
+    "totalAmount": "250.00", 
+    "transID": "160679760269", 
+    "vehicleDetails": {
+        "engineNumber": "", 
+        "vehicleCategory": "Motor Vehicle", 
+        "vehicleColor": "", 
+        "vehicleMake": "Toyota", 
+        "vehicleModel": "RAV4", 
+        "vehicleType": "Private"
+    }, 
+    "vehicleNumber": "YLA05TT", 
+    "vehicleOwner": "DANLADI PATRICK KWABE"
+}
+
+
+
+@2022_12_01 13:03:47
+
+Received	: {
+    "chasisNumber": "JTMRFREV4ED090607", 
+    "datePay": "2022-07-08 11:32:48", 
+    "msg": "NULL", 
+    "ownerAddress": "LAGOS CRESCENT ARMY BARRACKS ROAD YOLA, Jimeta", 
+    "ownerPhone": "08036161022", 
+    "payItems": [
+        {
+            "itemAmount": "250.00", 
+            "itemName": "Pre Registration/ AutoVIN", 
+            "itemValue": "av_cycle_transfer", 
+            "itemValue_describe": "Pre Registration/ AutoVIN"
+        }
+    ], 
+    "paymentType": "road_worthy", 
+    "processor": "remita", 
+    "registrationCenter": "Jimeta", 
+    "requestValid": 1, 
+    "status": "paid", 
+    "totalAmount": "250.00", 
+    "transID": "160679760269", 
+    "vehicleDetails": {
+        "engineNumber": "", 
+        "vehicleCategory": "Motor Vehicle", 
+        "vehicleColor": "", 
+        "vehicleMake": "Toyota", 
+        "vehicleModel": "RAV4", 
+        "vehicleType": "Private"
+    }, 
+    "vehicleNumber": "YLA05TT", 
+    "vehicleOwner": "DANLADI PATRICK KWABE"
+}
+
+
+
+@2022_12_01 13:24:43
+
+Received	: {
+    "chasisNumber": "5Y2SL65806Z429340", 
+    "datePay": "2022-11-07 11:23:39", 
+    "msg": "NULL", 
+    "ownerAddress": "NNPC HOUSING ESTATE CLEM PWER, Jimeta", 
+    "ownerPhone": "08140480509", 
+    "payItems": [
+        {
+            "itemAmount": "1500.00", 
+            "itemName": "Pre Registration/ AutoVIN", 
+            "itemValue": "av_vehicle_new", 
+            "itemValue_describe": "Pre Registration/ AutoVIN"
+        }
+    ], 
+    "paymentType": "road_worthy", 
+    "processor": "remita", 
+    "registrationCenter": "Jimeta", 
+    "requestValid": 1, 
+    "status": "paid", 
+    "totalAmount": "1500.00", 
+    "transID": "110740200550", 
+    "vehicleDetails": {
+        "engineNumber": "", 
+        "vehicleCategory": "Motor Vehicle", 
+        "vehicleColor": "CUSTOM", 
+        "vehicleMake": "Pontiac", 
+        "vehicleModel": "VIBE", 
+        "vehicleType": "Private"
+    }, 
+    "vehicleNumber": "", 
+    "vehicleOwner": "PAPA'A CHAFI JOHN"
+}
+
+
+

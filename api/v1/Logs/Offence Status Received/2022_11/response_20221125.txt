@@ -1,0 +1,12 @@
+Data Received @ 2022-11-25 12:54:09	@ 12:54:09
+{"name":"Abdulahi","email":"msbv@maril.coom","phone_number":"08094648464","address":"Zone 6. Abuja FC","veh_make":"CTHE","veh_type":"CAMRY","veh_cat":"PRIVATE","plate_number":"NH7890","chasis_number":"856484846474","officer_name":"Segun Alehiro","station":"Karu Division","date":"10\/25\/2022","tin":"64754736373","payment_category":"Offences","number_of_offences":"3","total_price":"4200.00","offence":[{"id":"11293","offences":"Driving without a jack\/wheel spanner"},{"id":"11294","offences":"Driving without a spare tyre"},{"id":"11295","offences":"Driving without emergency reflective warning signs\/display of danger label"}]}
+Header sent : 
+{"token":"49bd19362c675422ced8ef220bda3a7709ef68c19fac61ada6dea16ea99c754c3dd938928af4c68b655993e0c4365c21651831cd10ab63eb35ff361b37e13fa8","Content-Type":"application\/json","User-Agent":"PostmanRuntime\/7.29.2","Accept":"*\/*","Postman-Token":"4f072654-5116-467c-9069-2ee16665285a","Host":"localhost","Accept-Encoding":"gzip, deflate, br","Connection":"keep-alive","Content-Length":"898","Cookie":"PHPSESSID=9u7r99bt6srhvj5it5pjafk5fb"}
+=====================================
+
+Data Received @ 2022-11-25 16:04:43	@ 16:04:43
+{"name":"Abdulahi","email":"msbv@maril.coom","phone_number":"08094648464","address":"Zone 6. Abuja FC","veh_make":"CTHE","veh_type":"CAMRY","veh_cat":"PRIVATE","plate_number":"NH7890","chasis_number":"856484846474","officer_name":"Segun Alehiro","station":"Karu Division","date":"10\/25\/2022","tin":"64754736373","payment_category":"Offences","number_of_offences":"3","total_price":"4200.00","offence":[{"id":"11293","offences":"Driving without a jack\/wheel spanner"},{"id":"11294","offences":"Driving without a spare tyre"},{"id":"11295","offences":"Driving without emergency reflective warning signs\/display of danger label"}]}
+Header sent : 
+{"token":"49bd19362c675422ced8ef220bda3a7709ef68c19fac61ada6dea16ea99c754c3dd938928af4c68b655993e0c4365c21651831cd10ab63eb35ff361b37e13fa8","Content-Type":"application\/json","User-Agent":"PostmanRuntime\/7.29.2","Accept":"*\/*","Postman-Token":"ef040da4-71fe-471b-bd3d-e11c8166697b","Host":"localhost","Accept-Encoding":"gzip, deflate, br","Connection":"keep-alive","Content-Length":"898","Cookie":"PHPSESSID=rb2k25rd56ffsjf0ss415mk2pj"}
+=====================================
+

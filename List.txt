@@ -1,0 +1,1 @@
+SELECT vehicle_name FROM vehicle_type WHERE id = '4278' LIMIT 1;

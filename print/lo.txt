@@ -1,0 +1,1 @@
+SELECT * FROM transport_companies WHERE portal_id = 'TCP1670502527'

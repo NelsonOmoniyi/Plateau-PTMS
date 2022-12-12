@@ -1,0 +1,6 @@
+Data Received @ 2022-12-09 15:44:27	@ 15:44:27
+{"plateNumber":"Nelson"}
+Header sent : 
+{"token":"49bd19362c675422ced8ef220bda3a7709ef68c19fac61ada6dea16ea99c754c3dd938928af4c68b655993e0c4365c21651831cd10ab63eb35ff361b37e13fa8","Content-Type":"application\/json","User-Agent":"PostmanRuntime\/7.29.2","Accept":"*\/*","Postman-Token":"4d0f2bbf-11aa-486b-83b4-ec3274062c88","Host":"localhost","Accept-Encoding":"gzip, deflate, br","Connection":"keep-alive","Content-Length":"33","Cookie":"PHPSESSID=3tlfaj2900fv10gh97nt97g721"}
+=====================================
+

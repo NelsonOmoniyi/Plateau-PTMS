@@ -1,0 +1,1 @@
+UPDATE menu SET menu_name='Dealership',menu_url='dealership_list.php',parent_id='165',icon='' WHERE  menu_id='176' 

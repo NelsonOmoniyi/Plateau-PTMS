@@ -1,0 +1,6 @@
+Data Sent @ 2022-11-25 13:34:45	@ 13:34:45
+
+Header sent : 
+{"token":"49bd19362c675422ced8ef220bda3a7709ef68c19fac61ada6dea16ea99c754c3dd938928af4c68b655993e0c4365c21651831cd10ab63eb35ff361b37e13fa8","User-Agent":"PostmanRuntime\/7.29.2","Accept":"*\/*","Postman-Token":"b73a6cb0-2f90-4d3b-8e64-e9971c11ab57","Host":"localhost","Accept-Encoding":"gzip, deflate, br","Connection":"keep-alive"}
+=====================================
+

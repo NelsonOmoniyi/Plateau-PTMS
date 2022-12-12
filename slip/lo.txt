@@ -1,0 +1,1 @@
+SELECT * FROM tb_payment_confirmation WHERE payment_code = ''

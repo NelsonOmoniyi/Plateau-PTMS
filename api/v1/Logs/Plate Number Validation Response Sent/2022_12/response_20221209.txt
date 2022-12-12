@@ -1,0 +1,77 @@
+Data Sent @ 2022-12-09 15:44:27	@ 15:44:27
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="">
+    <style type="text/css">
+      #user_form fieldset:not(:first-of-type) {
+        display: none;
+      }
+    </style>
+
+    <title>PLATEAU MLA |   404 </title>
+    <!--<script type="text/javascript" src="http://mla.plsg.io/jquery.min.js"></script>-->
+    <!--<script type="text/javascript" src="http://mla.plsg.io/qrcode.js"></script> -->
+
+    
+</head>
+<body class="" >
+
+    <div class="">
+              
+
+                  <!-- Content Wrapper. Contains page content -->
+       <div class="">
+                        
+ <link rel="stylesheet" href="http://mla.plsg.io/bootstrap/css/bootstrap.min.css">
+
+<style>
+
+.img{
+    margin-top: 10%;
+	padding-left: 37%;
+}
+
+h1 {
+	font-size: 80px;
+	text-align: center;
+	color: #e7505a!important;
+}
+
+p {
+	font-size: 30px;
+	text-align: center;
+	padding-bottom: 1%;
+}
+
+.button{
+	padding-left: 45%;
+}
+
+</style>
+
+
+<h1>ERROR 404</h1>
+<p>PAGE NOT FOUND</p>
+
+ <div class="button">
+	<a href="http://mla.plsg.io/home" class="btn btn-default"> <i class="fa fa-dashboard"></i> Dashboard</a>
+</div> 
+
+        </div><!-- /.content-wrapper -->
+    
+
+                  </div><!-- ./wrapper -->         
+      
+</body>
+</html>
+
+Header sent : 
+{"token":"49bd19362c675422ced8ef220bda3a7709ef68c19fac61ada6dea16ea99c754c3dd938928af4c68b655993e0c4365c21651831cd10ab63eb35ff361b37e13fa8","Content-Type":"application\/json","User-Agent":"PostmanRuntime\/7.29.2","Accept":"*\/*","Postman-Token":"4d0f2bbf-11aa-486b-83b4-ec3274062c88","Host":"localhost","Accept-Encoding":"gzip, deflate, br","Connection":"keep-alive","Content-Length":"33","Cookie":"PHPSESSID=3tlfaj2900fv10gh97nt97g721"}
+=====================================
+
