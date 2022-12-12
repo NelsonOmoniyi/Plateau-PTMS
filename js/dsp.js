@@ -133,7 +133,7 @@ $("#Pay").click(function(){
     $.post("utilities.php",dd,function(re)
     {
         console.log(re);
-        var portal = JSON.stringify(re.pid).replace(/"/g, "");
+        var portal = JSON.stringify(re.pid);
         // console.log(portal);
         if(re.response_code == 200)
             {
@@ -142,7 +142,7 @@ $("#Pay").click(function(){
                 $("#err3").html(re.response_message)
                 window.open('./slip/dsl_slip.php?id='+portal, '_blank');
                 setTimeout(() => {
-                    window.location("../driving_school.php")
+                    window.location("./driving_school_payment.php")
                 }, 1000);
             }
         else
@@ -286,16 +286,16 @@ $("#Payr").click(function(){
     $.post("utilities.php",dd,function(re)
     {
         console.log(re);
-        var portal = JSON.stringify(re.pid).replace(/"/g, "");
+        var portal = JSON.stringify(re.pid);
         // console.log(portal);
         if(re.response_code == 200)
             {
                 $("#Payr").prop('disabled',true);
                 $("#err3").css('color','green')
                 $("#err3").html(re.response_message)
-                window.open('./slip/dsl_slip.php?id='+portal, '_blank');
+                window.open('./slip/dsl_slip.php?id='+portal+'&state=renewal', '_blank');
                 setTimeout(() => {
-                    window.location("../driving_school.php")
+                    window.location("./driving_school_payment.php")
                 }, 1000);
             }
         else

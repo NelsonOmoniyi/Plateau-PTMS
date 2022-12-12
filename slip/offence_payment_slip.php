@@ -245,7 +245,6 @@ $pdf->Output();
                        
                     </div>
 
-                       
                 <div class="table-responsive">
                     <table class="table table-striped table-borderless border-0 border-b-2 brc-default-l1">
                         <thead class="bg-none bg-success">

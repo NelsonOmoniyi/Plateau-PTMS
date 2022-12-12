@@ -6,6 +6,7 @@ $dbobject = new dbobject();
 
 $id  = isset($_REQUEST['id'])? $_REQUEST['id'] :'';
 $table  = isset($_REQUEST['table'])? $_REQUEST['table'] :'';
+$status = isset($_REQUEST['state'])? $_REQUEST['state']: '';
 
 $immm = '../img/self_service_printout/self_service.jpg';
 
@@ -88,6 +89,18 @@ $pdf->SetTextColor(10,70,100);
 $pdf->Cell(100,-260,$portal_id,0,1,'C');
 
 // Payment Type
+if ($status == "renewal") {
+$pdf->SetFont('Arial', 'B', $font_size);
+$pdf->Ln(87);
+$pdf->SetTextColor(10,70,100);
+$pdf->Cell(335,115,"Transport Companies Renewal",0,1,'C');
+
+$pdf->SetFont('Arial', 'B', $font_size);
+$pdf->Ln(87);
+$pdf->SetTextColor(10,70,100);
+$pdf->Cell(110,-298.5,"Transport Companies",0,1,'C');
+} else {
+
 $pdf->SetFont('Arial', 'B', $font_size);
 $pdf->Ln(87);
 $pdf->SetTextColor(10,70,100);
@@ -97,6 +110,8 @@ $pdf->SetFont('Arial', 'B', $font_size);
 $pdf->Ln(87);
 $pdf->SetTextColor(10,70,100);
 $pdf->Cell(110,-298.5,"Transport Companies",0,1,'C');
+  
+}
 
 // Amount Paid
 $pdf->SetFont('Arial', 'B', $font_size);

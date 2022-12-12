@@ -1,1 +1,1 @@
-SELECT * FROM payment_category WHERE code = 'TCP'
+UPDATE driving_sch_form SET approved = '1' WHERE portal_id = 'DSL1670851427'

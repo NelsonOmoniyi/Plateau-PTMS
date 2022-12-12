@@ -10,7 +10,7 @@ $obpayments = new Payment();
 <section class="banner v7" style="height: 550px;">
       <div class="container">
         <div class="row">
-
+          
         <div class="col-sm-12">
             <div class="card text-center tile">
                 <div class="card-body">
@@ -48,7 +48,5 @@ $obpayments = new Payment();
         </div>
       </div>
 </section>
-
-
 
 <?php require('footer.php'); ?>
