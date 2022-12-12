@@ -1,1 +1,1 @@
-SELECT portal_id,tin,business_name,address,owner_name,cac_reg_no,email_add,phone,cap,created,status,expiry_date,approved FROM transport_companies WHERE  1 = 1  order by portal_id asc  LIMIT 0, 10
+SELECT portal_id,school_name,address,email_add,status,expiry_date,approved FROM driving_sch_form WHERE  1 = 1  order by portal_id asc  LIMIT 0, 10

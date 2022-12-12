@@ -17,11 +17,11 @@ class Offences extends dbobject
 			array( 'db' => 'offences',  'dt' => 8 ),
 			array( 'db' => 'total_amount', 'dt' => 9 ),
 			array( 'db' => 'created', 'dt' => 10 ),
-            array('db' => 'status', 'dt'=> 11, function($d, $row){
+            array('db' => 'status', 'dt'=> 11, 'formatter'=>function($d, $row){
                 if ($d == 0) {
-                    return "Unpaid";
-                } else {
-                   return "Paid";
+                    return "Unpaid ";
+                } else { 
+                   return "Paid | <a href='#' class='btn btn-primary btn-sm'>Print Receipt</a>";
                 }
                 
             })

@@ -94,7 +94,7 @@ $role = $_SESSION['role_id_sess'];
 
   function PrintPage(d) {
             // window.alert(d)
-            window.open('./print/printDSL.php?id='+d, '_blank');
+            window.open('receipt/special_trade_receipt.php?table=driving_sch_form&pid='+d, '_blank');
             // getpage('setup/print.php?id='+d,'page');
             getpage('driving_school_list.php','page');
 		

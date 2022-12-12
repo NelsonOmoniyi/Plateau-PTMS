@@ -1,1 +1,1 @@
-SELECT COUNT(portal_id) AS counter FROM transport_companies WHERE  1 = 1  order by portal_id asc
+SELECT COUNT(portal_id) AS counter FROM driving_sch_form WHERE  1 = 1  order by portal_id asc

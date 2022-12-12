@@ -1,1 +1,1 @@
-SELECT * FROM `tb_offences_payment` WHERE offence_id = 'RTO1670833915' AND status = '0'
+SELECT COUNT(portal_id) AS counter FROM driving_sch_form WHERE  1 = 1  order by portal_id asc

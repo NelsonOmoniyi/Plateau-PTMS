@@ -11,7 +11,7 @@ class DrivingSchool extends dbobject
             array( 'db' => 'school_name',  'dt' => 1, 'formatter' => function($d,$row){
                 if ($row['status'] > 0) {
                     if ($row['approved'] > 0) {
-                        return  "$d | <button class='btn btn-success btn-sm' onclick=\"PrintC('".$row['portal_id']."')\"  href='javascript:void(0)'>Print Certificate</button>";
+                        return  "$d | <button class='btn btn-primary btn-sm' onclick=\"PrintC('".$row['portal_id']."')\"  href='javascript:void(0)'><i class='fa fa-print'></i> Print Certificate</button>";
                     } else {
                         return  ''.$d.' | <a class="btn btn-primary btn-sm" onclick="getModal(\'setup/preview_driving_school.php?id='.$row['portal_id'].'&table=driving_sch_form\',\'modal_div\')"  href="javascript:void(0)" data-toggle="modal" data-target="#defaultModalPrimary">Approve</a>';
                     } 
@@ -23,16 +23,17 @@ class DrivingSchool extends dbobject
             array( 'db' => 'email_add',  'dt' => 3),
             array( 'db' => 'status',  'dt' => 4, 'formatter'=>function($d,$row){
                 if ($_SESSION['role_id_sess'] != '001') {
-                    if (!$d > 0) {
-                        return  "Not Paid | <button onclick=\"PrintC('".$row['portal_id']."')\" class='btn btn-success btn-sm'>Print Receipt</button>";
-                    } else {
-                        return  "Paid ";
+                    if($d>0){
+                        return "Paid | <a href='receipt/special_trade_receipt.php?pid=".$row['portal_id']."&table=driving_sch_form' target='_blank' class='btn btn-primary btn-sm'><i class='fa fa-print'></i> Print Receipt</a>";
+                    }else{
+                        return "Not Paid | <a href='receipt/special_trade_receipt.php?pid=".$row['portal_id']."&table=driving_sch_form' target='_blank' class='btn btn-primary btn-sm'><i class='fa fa-print'></i> Print Receipt</a>";
                     }
+                   
                 } else {
                     if (!$d > 0) {
-                    return  "Pending Payment";
+                    return  "Not Paid | <a href='receipt/special_trade_receipt.php?pid=".$row['portal_id']."&table=driving_sch_form' target='_blank' class='btn btn-primary btn-sm'><i class='fa fa-print'></i> Print Receipt</a>";
                     } else {
-                        return  "PAID";
+                        return  "Paid | <a href='receipt/special_trade_receipt.php?pid=".$row['portal_id']."&table=driving_sch_form' target='_blank' class='btn btn-primary btn-sm'><i class='fa fa-print'></i> Print Receipt</a>";
                     }
                 }
             }),
@@ -40,9 +41,9 @@ class DrivingSchool extends dbobject
 
                 $created = $row['created'];
                 if (date('Y-m-d') > $d) {
-                    return  "Expired";
+                    return  "Expired ($d)";
                 } else {
-                    return  "Not Expired";
+                    return  "Expiring [$d]";
                 }
             }),
             array( 'db' => 'approved')
