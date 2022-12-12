@@ -193,10 +193,10 @@ $got = $dbobject->db_query($sql);
                                         <label class="control-label control-label-bg" for="vehicle_search">Enter Reference ID :</label>
                                         <input class="form-control" id="pid" name="portal_id" placeholder="Reference ID" type="text" required>
                                     </div>
-                                    <div class="col-md-6">
+                                    <!-- <div class="col-md-6">
                                         <label class="control-label control-label-bg" for="vehicle_search">Enter Tax Identification Number :</label>
                                         <input class="form-control" id="tin" name="tin" placeholder="Tax Identification Number" type="text" required>
-                                    </div>
+                                    </div> -->
                                     &nbsp; &nbsp;<small class="text-mute" id="err1"></small>
                                 </div>
                                 <hr>

@@ -198,15 +198,15 @@ class Offences extends dbobject
     public function validatePID($data){
         
         $ref = $data['portal_id'];
-        $tin = $data['tin'];
+        // $tin = $data['tin'];
         $pending = '0';
         $processed = '1';
         $validation = $this->validate($data,
         array(
-            'tin'=>'required',
+            // 'tin'=>'required',
             'portal_id'=>'required'
         ),
-        array('tin'=>'Tax Identification Number', 'portal_id'=>'Portal ID'));
+        array( 'portal_id'=>'Portal ID'));
         if(!$validation['error']){
             $sql = "SELECT * FROM `tb_offences_payment` WHERE offence_id = '$ref' AND status = '$pending'";
                 $exec = $this->db_query($sql);
@@ -217,11 +217,11 @@ class Offences extends dbobject
                     // var_dump($res);
                     // exit;
                     $pay = new Payment();
-                    $res = $pay->ValTIN($tin);
-                    $resArr = json_decode($res, TRUE);
-                    if ($resArr['status'] == 'success') {
+                    // $res = $pay->ValTIN($tin);
+                    // $resArr = json_decode($res, TRUE);
+                    // if ($resArr['status'] == 'success') {
     
-                        $tin = $resArr['tin'];
+                       $tin = $resP['tin'];
                        $address = $resP["address"];
                        $vehmake = $resP["veh_make"];
                        $vehtype = $resP["veh_type"];
@@ -233,10 +233,10 @@ class Offences extends dbobject
 
                         return json_encode(array('response_code'=>'200', 'response_message'=>'Valid Tax Identification Number','plate'=>$plate,'vehmake'=>$vehmake,'vehtype'=>$vehtype,'tin'=>$tin,'chasis'=>$chasis,'address'=>$address, 'count'=>$offence_count, 'categ'=>$category, 'price'=>$total_amount, 'ref'=>$ref));
                     
-                    }
-                    else{
-                        return json_encode(array('response_code'=>'109', 'response_message'=>"TIN Not Found!"));
-                    }
+                    // }
+                    // else{
+                    //     return json_encode(array('response_code'=>'109', 'response_message'=>"TIN Not Found!"));
+                    // }
                 }
                 
         }else

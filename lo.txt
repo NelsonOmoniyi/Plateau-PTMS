@@ -1,1 +1,1 @@
-select State from lga where stateid=''
+SELECT * FROM `tb_offences_payment` WHERE offence_id = 'RTO1670833915' AND status = '0'
