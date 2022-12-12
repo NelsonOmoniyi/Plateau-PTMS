@@ -40,6 +40,7 @@ $role = $_SESSION['role_id_sess'];
                                 <th>Offences</th>
                                 <th>Total Amount</th>
                                 <th>Created</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>

@@ -16,7 +16,15 @@ class Offences extends dbobject
 			array( 'db' => 'chasis_no', 'dt' => 7 ),
 			array( 'db' => 'offences',  'dt' => 8 ),
 			array( 'db' => 'total_amount', 'dt' => 9 ),
-			array( 'db' => 'created', 'dt' => 10 )
+			array( 'db' => 'created', 'dt' => 10 ),
+            array('db' => 'status', 'dt'=> 11, function($d, $row){
+                if ($d == 0) {
+                    return "Unpaid";
+                } else {
+                   return "Paid";
+                }
+                
+            })
 			);
 		$filter = "";
         
