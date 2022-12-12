@@ -1,1 +1,4 @@
+
 SELECT COUNT(id) AS counter FROM dealership WHERE  1 = 1  order by id asc
+SELECT * FROM `tb_offences_payment` WHERE offence_id = 'RTO1670854334' AND status = '0'
+

@@ -126,6 +126,9 @@ $("#Pay").click(function(){
                 $("#err3").css('color','green')
                 $("#err3").html(re.response_message)
                 window.open('./slip/spare_slip.php?id='+portal, '_blank');
+                setTimeout(() => {
+                    window.location("./spare_parts_payments.php")
+                }, 1000);
             }
         else
             {
@@ -275,9 +278,9 @@ $("#Payr").click(function(){
                 $("#Payr").prop('disabled',true);
                 $("#err3").css('color','green')
                 $("#err3").html(re.response_message)
-                window.open('./slip/dsl_slip.php?id='+portal, '_blank');
+                window.open('./slip/spare_slip.php?id='+portal+'&state=renewal', '_blank');
                 setTimeout(() => {
-                    window.location("../driving_school.php")
+                    window.location("./spare_parts_payments.php")
                 }, 1000);
             }
         else

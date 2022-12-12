@@ -304,7 +304,9 @@ class Payment extends dbobject{
 
             $sql = "SELECT * FROM tb_payment_confirmation WHERE payment_code = '$PID'";
             $result = $this->db_query($sql);
-            if ($result == NULL) {
+            if ($result[0]['trans_status'] == '1') {
+                return json_encode(array('response_code'=>'99', 'response_message'=>'Portal ID Have Been Used'));
+            } else if ($result == NULL) {
                 return json_encode(array('response_code'=>'99', 'response_message'=>'Invalid Portal ID'));
             } else {
                      // call Validate TIN

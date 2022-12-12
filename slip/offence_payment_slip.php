@@ -96,12 +96,12 @@ $pdf->Cell(100,-260,$offence_id,0,1,'C');
 $pdf->SetFont('Arial', 'B', $font_size);
 $pdf->Ln(87);
 $pdf->SetTextColor(10,70,100);
-$pdf->Cell(335,115,"Spare Parts Dealership Registration",0,1,'C');
+$pdf->Cell(335,115,"Offences Payment",0,1,'C');
 
 $pdf->SetFont('Arial', 'B', $font_size);
 $pdf->Ln(87);
 $pdf->SetTextColor(10,70,100);
-$pdf->Cell(110,-298.5,"Spare Parts Dealership",0,1,'C');
+$pdf->Cell(110,-298.5,"Offences Payment",0,1,'C');
 
 // Amount Paid
 $pdf->SetFont('Arial', 'B', $font_size);
@@ -245,7 +245,6 @@ $pdf->Output();
                        
                     </div>
 
-                       
                 <div class="table-responsive">
                     <table class="table table-striped table-borderless border-0 border-b-2 brc-default-l1">
                         <thead class="bg-none bg-success">
