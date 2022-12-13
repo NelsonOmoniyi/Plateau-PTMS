@@ -1,1 +1,1 @@
-SELECT COUNT(portal_id) AS counter FROM mech_garrage WHERE  1 = 1  order by portal_id asc
+select State from lga where stateid=''

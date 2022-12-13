@@ -1,1 +1,1 @@
-select amount from payment_category where id='4291'
+select amount from payment_category where id='4295'
