@@ -101,7 +101,7 @@ class API extends dbobject{
                         $trans_desc_code = $res['offence_code'];
                         $amount = $res['prices'];
                         $itemcode = $res['id'];
-                    $insert3 = "INSERT INTO tb_payment_confirmation (payment_code, trans_desc, trans_desc_code, trans_amount, trans_status, officer, station, offence_id, tin, item_code, plate) VALUES ('$offence_id','$nameO', '$trans_desc_code', '$amount', '$pending', '$officer','$station', '$offence_id', '$tin', '$itemcode', '$plate_number')";
+                    $insert3 = "INSERT INTO tb_payment_confirmation (payment_code, trans_desc, trans_desc_code, trans_amount, trans_status, officer, station, offence_id, tin, item_code, plate, bank_code, trans_processed_date) VALUES ('$offence_id','$nameO', '$trans_desc_code', '$amount', '$pending', '$officer','$station', '$offence_id', '$tin', '$itemcode', '$plate_number', 'Offences', '$date')";
                     $count = $this->db_query($insert3,false);
                     
                 }

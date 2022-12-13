@@ -255,11 +255,11 @@ $sqlDSL    = "SELECT school_name FROM driving_sch_form WHERE status = '1' ";
 					</div>
 
 					<div class="row">
-						<div class="col-12 col-lg-12 d-flex ">
+						<div class="col-12 col-lg-6 d-flex ">
 							<div class="card flex-fill w-100">
 								<div class="card-header">
-									<span class="badge badge-primary float-right">Monthly</span>
-									<h5 class="card-title mb-0">Total Revenue</h5>
+									<span class="badge badge-primary float-right">Per Month</span>
+									<h5 class="card-title mb-0">Offence Count</h5>
 								</div>
 								<div class="card-body">
 									<div class="chart chart-lg">
@@ -268,7 +268,24 @@ $sqlDSL    = "SELECT school_name FROM driving_sch_form WHERE status = '1' ";
 								</div>
 							</div>
 						</div>
-						
+					<!-- </div>
+					<div class="row"> -->
+						<div class="col-12 col-lg-6 col-xl-6 d-flex">
+							<div class="card flex-fill w-100">
+								<div class="card-header">
+								<span class="badge badge-primary float-right">Per Month</span>
+									<h5 class="card-title mb-0">Offences Generated Revenue</h5>
+									<!-- <?php $sql10 = "SELECT COUNT(offence_id) as counter FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '10'";
+$oct = $dbobject->db_query($sql10);
+var_dump($oct[0]['counter']); ?> -->
+								</div>
+								<div class="card-body d-flex w-100">
+									<div class="align-self-center chart chart-lg">
+										<canvas id="chartjs-dashboard-bar"></canvas>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</main>
@@ -304,7 +321,7 @@ $sqlDSL    = "SELECT school_name FROM driving_sch_form WHERE status = '1' ";
 	</div>
 
 <!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded" href="#page-top">
+	<a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
 
@@ -353,7 +370,57 @@ $sqlDSL    = "SELECT school_name FROM driving_sch_form WHERE status = '1' ";
 	<script src="js/main.js"></script>
     <script src="js/jquery.blockUI.js"></script>
 	
-	
+<?php
+
+$sql1 = "SELECT COUNT(offence_id) as counter FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '1'";
+$jan = $dbobject->db_query($sql1);
+// var_dump($res);
+
+$sql2 = "SELECT COUNT(offence_id) as counter FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '2'";
+$feb = $dbobject->db_query($sql2);
+// var_dump($res);
+
+$sql3 = "SELECT COUNT(offence_id) as counter FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '3'";
+$mar = $dbobject->db_query($sql3);
+// var_dump($res);
+
+$sql4 = "SELECT COUNT(offence_id) as counter FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '4'";
+$april = $dbobject->db_query($sql4);
+// var_dump($res);
+
+$sql5 = "SELECT COUNT(offence_id) as counter FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '5'";
+$may = $dbobject->db_query($sql5);
+// var_dump($res);
+
+$sql6 = "SELECT COUNT(offence_id) as counter FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '6'";
+$jun = $dbobject->db_query($sql6);
+// var_dump($res);
+
+$sql7 = "SELECT COUNT(offence_id) as counter FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '7'";
+$july = $dbobject->db_query($sql7);
+// var_dump($res);
+
+$sql8 = "SELECT COUNT(offence_id) as counter FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '8'";
+$aug = $dbobject->db_query($sql8);
+// var_dump($res);
+
+$sql9 = "SELECT COUNT(offence_id) as counter FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '9'";
+$sep = $dbobject->db_query($sql9);
+// var_dump($res);
+
+$sql10 = "SELECT COUNT(offence_id) as counter FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '10'";
+$oct = $dbobject->db_query($sql10);
+// var_dump($oct['offence_id']);
+
+$sql11 = "SELECT COUNT(offence_id) as counter FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '11'";
+$nov = $dbobject->db_query($sql11);
+// var_dump($nov);
+
+$sql12 = "SELECT COUNT(offence_id) as counter FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '12'";
+$dec = $dbobject->db_query($sql12);
+// var_dump($res);
+
+?>
 	<script>
 		$(function() {
 			// Bar chart
@@ -362,34 +429,27 @@ $sqlDSL    = "SELECT school_name FROM driving_sch_form WHERE status = '1' ";
 				data: {
 					labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
 					datasets: [{
-						label: "Last year",
-						backgroundColor: window.theme.primary,
-						borderColor: window.theme.primary,
-						hoverBackgroundColor: window.theme.primary,
-						hoverBorderColor: window.theme.primary,
-						data: [54, 67, 41, 55, 62, 45, 55, 73, 60, 76, 48, 79]
-					}, {
-						label: "This year",
-						backgroundColor: "#E8EAED",
-						borderColor: "#E8EAED",
-						hoverBackgroundColor: "#E8EAED",
-						hoverBorderColor: "#E8EAED",
-						data: [69, 66, 24, 48, 52, 51, 44, 53, 62, 79, 51, 68]
+						label: "Revenue",
+						backgroundColor: window.theme.warning,
+						borderColor: window.theme.warning,
+						hoverBackgroundColor: window.theme.warning,
+						hoverBorderColor: window.theme.warning,
+						data: [<?php echo $jan[0]['counter'] ?>, <?php echo $feb[0]['counter'] ?>, <?php echo $mar[0]['counter'] ?>, <?php echo $april[0]['counter'] ?>, <?php echo $may[0]['counter'] ?>, <?php echo $jun[0]['counter'] ?>, <?php echo $july[0]['counter'] ?>, <?php echo $aug[0]['counter'] ?>, <?php echo $sep[0]['counter'] ?>, <?php echo $oct[0]['counter'] ?>, <?php echo $nov[0]['counter'] ?>, <?php echo $dec[0]['counter'] ?>]
 					}]
 				},
 				options: {
-					maintainAspectRatio: false,
+					maintainAspectRatio: true,
 					legend: {
 						display: false
 					},
 					scales: {
 						yAxes: [{
 							gridLines: {
-								display: false
+								display: true
 							},
 							stacked: false,
 							ticks: {
-								stepSize: 20
+								stepSize: 50
 							}
 						}],
 						xAxes: [{
@@ -405,15 +465,7 @@ $sqlDSL    = "SELECT school_name FROM driving_sch_form WHERE status = '1' ";
 			});
 		});
 	</script>
-	<script>
-		$(function() {
-			$("#datetimepicker-dashboard").datetimepicker({
-				inline: true,
-				sideBySide: false,
-				format: "L"
-			});
-		});
-	</script>
+
 	<script>
 		$(function() {
 			// Line chart
@@ -422,18 +474,11 @@ $sqlDSL    = "SELECT school_name FROM driving_sch_form WHERE status = '1' ";
 				data: {
 					labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
 					datasets: [{
-						label: "Sales ($)",
+						label: "Number Of Offences",
 						fill: true,
 						backgroundColor: "transparent",
 						borderColor: window.theme.primary,
-						data: [2015, 1465, 1487, 1796, 1387, 2123, 2866, 2548, 3902, 4938, 3917, 4927]
-					}, {
-						label: "Orders",
-						fill: true,
-						backgroundColor: "transparent",
-						borderColor: window.theme.tertiary,
-						borderDash: [4, 4],
-						data: [928, 734, 626, 893, 921, 1202, 1396, 1232, 1524, 2102, 1506, 1887]
+						data: [201, 146, 148, 179, 138, 212, 286, 254, 390, 493, 391, 492]
 					}]
 				},
 				options: {
@@ -461,7 +506,7 @@ $sqlDSL    = "SELECT school_name FROM driving_sch_form WHERE status = '1' ";
 						}],
 						yAxes: [{
 							ticks: {
-								stepSize: 500
+								stepSize: 50
 							},
 							display: true,
 							borderDash: [5, 5],
@@ -475,66 +520,7 @@ $sqlDSL    = "SELECT school_name FROM driving_sch_form WHERE status = '1' ";
 			});
 		});
 	</script>
-	<script>
-		$(function() {
-			new Chart(document.getElementById("chartjs-dashboard-pie"), {
-				type: "pie",
-				data: {
-					labels: ["Direct", "Affiliate", "E-mail", "Other"],
-					datasets: [{
-						data: [2602, 1253, 541, 1465],
-						backgroundColor: [
-							window.theme.primary,
-							window.theme.warning,
-							window.theme.danger,
-							"#E8EAED"
-						],
-						borderColor: "transparent"
-					}]
-				},
-				options: {
-					responsive: !window.MSInputMethodContext,
-					maintainAspectRatio: false,
-					legend: {
-						display: false
-					}
-				}
-			});
-		});
-	</script>
-	<script>
-		$(function() {
-			$("#datatables-dashboard-projects").DataTable({
-				pageLength: 6,
-				lengthChange: false,
-				bFilter: false,
-				autoWidth: false
-			});
-		});
-	</script>
-<script>
-	function year() {
-		NOW();
-	}
 
-	// Increment the idle time counter every minute.
-		var idleInterval = setInterval("timerIncrement()", <?php echo $inact_val; ?>); // 1 minute
-
-		//Zero the idle timer on mouse movement.
-		$(this).mousemove(function(e) {
-			idleTime = 0;
-		});
-		$(this).keypress(function(e) {
-			idleTime = 0;
-		});
-
-	$("#footer").on("click", function() {
-		alert("ALERT MESSAGE!!");
-		window.scrollTo(0, document.body.scrollHeight || document.documentElement.scrollHeight);
-	});
-		
-	
-</script>
 </body>
 
 </html>
