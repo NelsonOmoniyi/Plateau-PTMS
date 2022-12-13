@@ -1946,27 +1946,27 @@ function getitemcount($tablename,$table_col,$table_val,$ret_val) {
     file_put_contents("jude.txt",$query);
 	$result = mysqli_query($this->myconn,$query);//or die(mysql_error());
 	$numrows = mysqli_num_rows($result);
-	if($numrows > 0){
-		$row = mysqli_fetch_array($result);
-		$label = $row['counter'];
-	}
+		if($numrows > 0){
+			$row = mysqli_fetch_array($result);
+			$label = $row['counter'];
+		}
 	return $label;
-	}
+}
 
-	function getmonth($tablename, $table_col, $table_col2,$table_val,$table_val2){
+	function getmonth($tablename, $table_col, $table_col2,$table_val,$table_val2, $ret_val){
 	$label = "";
 	$table_filter = " where ".$table_col."='".$table_val."' AND MONTH(".$table_col2.") ='".$table_val2."'";
-	$query = "SELECT COUNT(".$ret_val.") ".$tablename." $table_filter";
+	$query = "SELECT COUNT(".$ret_val.") counter from ".$tablename." $table_filter";
 	file_put_contents("jude.txt",$query);
 	$result = mysqli_query($this->myconn,$query);//or die(mysql_error());
 	$numrows = mysqli_num_rows($result);
-	if($numrows > 0){
-		$row = mysqli_fetch_array($result);
-		$label = $row['counter'];
-	}
+		if($numrows > 0){
+			$row = mysqli_fetch_array($result);
+			$label = $row['counter'];
+		}
 	return $label;
 	}
-	}
+
 
 	
 
