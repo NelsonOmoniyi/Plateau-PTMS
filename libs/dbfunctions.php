@@ -1944,13 +1944,28 @@ function getitemcount($tablename,$table_col,$table_val,$ret_val) {
 	 $query = "select Count(".$ret_val.") counter from ".$tablename.$table_filter;
 	//echo $query;
     file_put_contents("jude.txt",$query);
-	$result = mysql_query($query);//or die(mysql_error());
-	$numrows = mysql_num_rows($result);
+	$result = mysqli_query($this->myconn,$query);//or die(mysql_error());
+	$numrows = mysqli_num_rows($result);
 	if($numrows > 0){
-		$row = mysql_fetch_array($result);
+		$row = mysqli_fetch_array($result);
 		$label = $row['counter'];
 	}
 	return $label;
+	}
+
+	function getmonth($tablename, $table_col, $table_col2,$table_val,$table_val2){
+	$label = "";
+	$table_filter = " where ".$table_col."='".$table_val."' AND MONTH(".$table_col2.") ='".$table_val2."'";
+	$query = "SELECT COUNT(".$ret_val.") ".$tablename." $table_filter";
+	file_put_contents("jude.txt",$query);
+	$result = mysqli_query($this->myconn,$query);//or die(mysql_error());
+	$numrows = mysqli_num_rows($result);
+	if($numrows > 0){
+		$row = mysqli_fetch_array($result);
+		$label = $row['counter'];
+	}
+	return $label;
+	}
 	}
 
 	

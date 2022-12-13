@@ -1,1 +1,1 @@
-SELECT portal_id,tin,business_name,address,owner_name,cac_reg_no,email_add,phone,cap,created,status,expiry_date,approved FROM mech_garrage WHERE  1 = 1  order by portal_id asc  LIMIT 0, 10
+SELECT portal_id,tin,business_name,address,owner_name,cac_reg_no,email_add,phone,cap,created,status,expiry_date,approved FROM spare_parts WHERE  1 = 1  order by portal_id asc  LIMIT 0, 10
