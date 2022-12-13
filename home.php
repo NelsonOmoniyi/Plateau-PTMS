@@ -31,7 +31,7 @@ $sqldeclined    = "SELECT side_number FROM vehicle_sidenumbers WHERE status = '2
 $sqlDSL    = "SELECT school_name FROM driving_sch_form WHERE status = '1' ";
 	$result = $dbobject->db_query($sqlDSL);
 	$count3 = count($result);
-	
+
 	$tp_company = $dbobject->getItemCount("transport_companies","status","1","portal_id");
 	$tp_company_unprocessed = $dbobject->getItemCount("transport_companies","status","0","portal_id");
 
@@ -370,7 +370,7 @@ $sqlDSL    = "SELECT school_name FROM driving_sch_form WHERE status = '1' ";
 
 					<div class="row">
 
-						<div class="col-12 col-lg-12 d-flex">
+						<div class="col-12 col-lg-6 d-flex">
 							<div class="card flex-fill w-100">
 								<div class="card-header">
 									<span class="badge badge-primary float-right">Per Month</span>
