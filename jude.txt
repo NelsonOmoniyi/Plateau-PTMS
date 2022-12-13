@@ -1,0 +1,1 @@
+select Count(portal_id) counter from dealership where status='0'

@@ -31,6 +31,21 @@ $sqldeclined    = "SELECT side_number FROM vehicle_sidenumbers WHERE status = '2
 $sqlDSL    = "SELECT school_name FROM driving_sch_form WHERE status = '1' ";
 	$result = $dbobject->db_query($sqlDSL);
 	$count3 = count($result);
+	
+	$tp_company = $dbobject->getItemCount("transport_companies","status","1","portal_id");
+	$tp_company_unprocessed = $dbobject->getItemCount("transport_companies","status","0","portal_id");
+
+	$driving_school = $dbobject->getItemCount("driving_sch_form","status","1","portal_id");
+	$driving_school_unprocessed = $dbobject->getItemCount("driving_sch_form","status","0","portal_id");
+
+	$mechanic_garrage = $dbobject->getItemCount("mech_garrage","status","1","portal_id");
+	$mechanic_garrage_unprocessed = $dbobject->getItemCount("mech_garrage","status","0","portal_id");
+
+	$spare_part = $dbobject->getItemCount("spare_parts","status","1","portal_id");
+	$spare_part_unprocessed = $dbobject->getItemCount("spare_parts","status","0","portal_id");
+
+	$dealership = $dbobject->getItemCount("dealership","status","1","portal_id");
+	$dealership_unprocessed = $dbobject->getItemCount("dealership","status","0","portal_id");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,6 +64,9 @@ $sqlDSL    = "SELECT school_name FROM driving_sch_form WHERE status = '1' ";
 	<style>
 		body {
 			opacity: 0;
+		}
+		.font-size{
+			font-size:24px;
 		}
 	</style>
 	
@@ -69,9 +87,9 @@ $sqlDSL    = "SELECT school_name FROM driving_sch_form WHERE status = '1' ";
 			<div class="sidebar-content ">
 				<a class="sidebar-brand bg-white" href="home.php">
           <!-- <i class="align-middle text-danger" data-feather="box"></i> -->
-			<img src="img/logo/plateau_logo.jpg" alt="Plateau State Ministry Of Transport" class="img-fluid rounded-circle" style="height:70px;"/>
-			<span class="align-middle text-danger" style="font-size: 15px; font-weight:bold;"></span>
-			</a>
+		  <img src="img/logo/plateau_logo.jpg" alt="Plateau State Ministry Of Transport" class="img-fluid rounded-circle" style="height:70px;"/>
+          <span class="align-middle text-danger" style="font-size: 15px; font-weight:bold;"></span>
+        </a>
 			<hr style="margin-top:0px;">
 				<ul class="sidebar-nav">
 					<h3><a href="home.php" class="sidebar-header text-white font-weight-bold">Dashboard</a></h3>
@@ -135,8 +153,8 @@ $sqlDSL    = "SELECT school_name FROM driving_sch_form WHERE status = '1' ";
 		<div class="main">
 			<nav class="navbar navbar-expand navbar-light bg-white">
 				<a class="sidebar-toggle d-flex mr-2">
-				<i class="hamburger align-self-center"></i>
-				</a>
+          <i class="hamburger align-self-center"></i>
+        </a>
 
 				<a href="javascript:void(0)" class="d-flex mr-2">
                    <?php $state_loc = ":".$dbobject->getitemlabel('lga','stateid',$_SESSION['state_id_sess'],'State'); ?>
@@ -166,43 +184,84 @@ $sqlDSL    = "SELECT school_name FROM driving_sch_form WHERE status = '1' ";
 				<div class="container-fluid p-0">
 
 					<div class="row">
-						<div class="col-12 col-sm-6 col-xl d-flex">
-							<div class="card flex-fill">
+					
+						<div class="col-sm-3 d-flex">
+							<div class="card flex-fill bg-success">
 								<div class="card-body py-4">
 									<div class="media">
 										<div class="d-inline-block mt-2 mr-3">
-											<i class="feather-lg text-success" data-feather="check-square"></i>
+											<!-- <i class="feather-lg text-warning" data-feather="activity"></i> -->
+											<i class="fa fa-bus font-size text-light"></i>
 										</div>
 										<div class="media-body">
 											<?php
-												echo '<h3 class="mb-2">'.$count1.'</h3>';
+												echo '<h3 class="mb-2 text-light">'.$tp_company.'</h3>';
 											?>
 											<!-- <h3 class="mb-2">2.562</h3> -->
-											<div class="mb-0">Processed Side Numbers</div>
+											<div class="mb-0 text-light">Processed Transport Company</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="col-12 col-sm-6 col-xl d-flex">
-							<div class="card flex-fill">
+						<div class="col-sm-3 d-flex">
+							<div class="card flex-fill bg-primary">
 								<div class="card-body py-4">
 									<div class="media">
 										<div class="d-inline-block mt-2 mr-3">
-											<i class="feather-lg text-warning" data-feather="activity"></i>
+											<!-- <i class="feather-lg text-danger" data-feather="x-octagon"></i> -->
+											<i class="fa fa-car font-size text-white"></i>
 										</div>
 										<div class="media-body">
 											<?php
-												echo '<h3 class="mb-2">'.$count0.'</h3>';
+												echo '<h3 class="mb-2 text-white">'.$driving_school.'</h3>';
 											?>
 											<!-- <h3 class="mb-2">2.562</h3> -->
-											<div class="mb-0">Pending Side Numbers</div>
+											<div class="mb-0 text-white">Processed Driving School Licence </div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="col-12 col-sm-6 col-xl d-flex">
+						<div class="col-sm-3 d-flex">
+							<div class="card flex-fill bg-danger">
+								<div class="card-body py-4">
+									<div class="media">
+										<div class="d-inline-block mt-2 mr-3">
+											<!-- <i class="feather-lg text-primary" data-feather="shopping-bag"></i> -->
+											<i class="fa fa-wrench font-size text-light"></i>
+										</div>
+										<div class="media-body">
+											<?php
+												echo '<h3 class="mb-2 text-light">'.$mechanic_garrage.'</h3>';
+											?>
+											<div class="mb-0 text-light">Processed Mechanic Garrage</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-3 d-flex">
+							<div class="card flex-fill bg-warning text-light">
+								<div class="card-body py-4">
+									<div class="media">
+										<div class="d-inline-block mt-2 mr-3">
+											<!-- <i class="feather-lg text-info" data-feather="dollar-sign"></i> -->
+											<i class="fa fa-cogs font-size text-info text-light"></i>
+										</div>
+										<div class="media-body">
+										<?php
+												echo '<h3 class="mb-2 text-light">'.$spare_part.'</h3>';
+											?>
+											<div class="mb-0">Processed Spare Parts</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-3 d-flex">
 							<div class="card flex-fill">
 								<div class="card-body py-4">
 									<div class="media">
@@ -211,42 +270,97 @@ $sqlDSL    = "SELECT school_name FROM driving_sch_form WHERE status = '1' ";
 										</div>
 										<div class="media-body">
 											<?php
-												echo '<h3 class="mb-2">'.$count2.'</h3>';
+												echo '<h3 class="mb-2">'.$tp_company_unprocessed.'</h3>';
 											?>
 											<!-- <h3 class="mb-2">2.562</h3> -->
-											<div class="mb-0">Declined Side Numbers</div>
+											<div class="mb-0">Unprocessed Transport Company</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="col-12 col-sm-6 col-xl d-flex">
+						<div class="col-sm-3 d-flex">
 							<div class="card flex-fill">
 								<div class="card-body py-4">
 									<div class="media">
 										<div class="d-inline-block mt-2 mr-3">
-											<i class="feather-lg text-primary" data-feather="shopping-bag"></i>
+										<i class="feather-lg text-danger" data-feather="x-octagon"></i>
 										</div>
 										<div class="media-body">
 											<?php
-												echo '<h3 class="mb-2">'.$count3.'</h3>';
+												echo '<h3 class="mb-2">'.$driving_school_unprocessed.'</h3>';
 											?>
-											<div class="mb-0">Total Processed Driving School Licence</div>
+											<div class="mb-0">Unprocessed Driving School Licence</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="col-12 col-sm-6 col-xl d-none d-xxl-flex">
+						<div class="col-sm-3 d-flex">
 							<div class="card flex-fill">
 								<div class="card-body py-4">
 									<div class="media">
 										<div class="d-inline-block mt-2 mr-3">
-											<i class="feather-lg text-info" data-feather="dollar-sign"></i>
+										<i class="feather-lg text-danger" data-feather="x-octagon"></i>
 										</div>
 										<div class="media-body">
-											<h3 class="mb-2">$ 18.700</h3>
-											<div class="mb-0">Total Revenue</div>
+										<?php
+												echo '<h3 class="mb-2">'.$mechanic_garrage_unprocessed.'</h3>';
+											?>
+											<div class="mb-0">Unprocessed Mechanic Garrage</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-3 d-flex">
+							<div class="card flex-fill">
+								<div class="card-body py-4">
+									<div class="media">
+										<div class="d-inline-block mt-2 mr-3">
+										<i class="feather-lg text-danger" data-feather="x-octagon"></i>
+										</div>
+										<div class="media-body">
+										<?php
+												echo '<h3 class="mb-2">'.$spare_part_unprocessed.'</h3>';
+											?>
+											<div class="mb-0">Unprocessed Spare Parts</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+					<div class="col-sm-6 d-flex">
+							<div class="card flex-fill">
+								<div class="card-body py-4 bg-light">
+									<div class="media">
+										<div class="d-inline-block mt-2 mr-3">
+										<i class="feather-lg text-danger" data-feather="x-octagon"></i>
+										</div>
+										<div class="media-body">
+										<?php
+												echo '<h3 class="mb-2">'.$dealership.'</h3>';
+											?>
+											<div class="mb-0">processed Dealership</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6 d-flex">
+							<div class="card flex-fill">
+								<div class="card-body py-4 bg-light">
+									<div class="media">
+										<div class="d-inline-block mt-2 mr-3">
+										<i class="feather-lg text-danger" data-feather="x-octagon"></i>
+										</div>
+										<div class="media-body">
+										<?php
+												echo '<h3 class="mb-2">'.$dealership_unprocessed.'</h3>';
+											?>
+											<div class="mb-0">Unprocessed Dealership</div>
 										</div>
 									</div>
 								</div>
@@ -255,7 +369,8 @@ $sqlDSL    = "SELECT school_name FROM driving_sch_form WHERE status = '1' ";
 					</div>
 
 					<div class="row">
-						<div class="col-12 col-lg-6 d-flex ">
+
+						<div class="col-12 col-lg-12 d-flex">
 							<div class="card flex-fill w-100">
 								<div class="card-header">
 									<span class="badge badge-primary float-right">Per Month</span>
