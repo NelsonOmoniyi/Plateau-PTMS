@@ -1,1 +1,1 @@
-SELECT COUNT(offence_id) as counter FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '12'
+SELECT SUM(trans_amount) as price FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '12'

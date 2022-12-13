@@ -390,9 +390,7 @@ $sqlDSL    = "SELECT school_name FROM driving_sch_form WHERE status = '1' ";
 								<div class="card-header">
 								<span class="badge badge-primary float-right">Per Month</span>
 									<h5 class="card-title mb-0">Offences Generated Revenue</h5>
-									<!-- <?php $sql10 = "SELECT COUNT(offence_id) as counter FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '10'";
-$oct = $dbobject->db_query($sql10);
-var_dump($oct[0]['counter']); ?> -->
+									
 								</div>
 								<div class="card-body d-flex w-100">
 									<div class="align-self-center chart chart-lg">
@@ -535,6 +533,56 @@ $sql12 = "SELECT COUNT(offence_id) as counter FROM tb_payment_confirmation WHERE
 $dec = $dbobject->db_query($sql12);
 // var_dump($res);
 
+// SUM ===========================================================================================================
+
+$sql1p = "SELECT SUM(trans_amount) as price FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '1'";
+$janp = $dbobject->db_query($sql1p);
+// var_dump($res);
+
+$sql2p = "SELECT SUM(trans_amount) as price FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '2'";
+$febp = $dbobject->db_query($sql2p);
+// var_dump($res);
+
+$sql3p = "SELECT SUM(trans_amount) as price FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '3'";
+$marp = $dbobject->db_query($sql3p);
+// var_dump($res);
+
+$sql4p = "SELECT SUM(trans_amount) as price FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '4'";
+$aprilp = $dbobject->db_query($sql4p);
+// var_dump($res);
+
+$sql5p = "SELECT SUM(trans_amount) as price FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '5'";
+$mayp = $dbobject->db_query($sql5p);
+// var_dump($res);
+
+$sql6p = "SELECT SUM(trans_amount) as price FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '6'";
+$junp = $dbobject->db_query($sql6p);
+// var_dump($res);
+
+$sql7p = "SELECT SUM(trans_amount) as price FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '7'";
+$julyp = $dbobject->db_query($sql7p);
+// var_dump($res);
+
+$sql8p = "SELECT SUM(trans_amount) as price FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '8'";
+$augp = $dbobject->db_query($sql8p);
+// var_dump($res);
+
+$sql9p = "SELECT SUM(trans_amount) as price FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '9'";
+$sepp = $dbobject->db_query($sql9p);
+// var_dump($res);
+
+$sql10p = "SELECT SUM(trans_amount) as price FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '10'";
+$octp = $dbobject->db_query($sql10p);
+// var_dump($oct['offence_id']);
+
+$sql11p = "SELECT SUM(trans_amount) as price FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '11'";
+$novp = $dbobject->db_query($sql11p);
+// var_dump($nov);
+
+$sql12p = "SELECT SUM(trans_amount) as price FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '12'";
+$decp = $dbobject->db_query($sql12p);
+// var_dump($res);
+
 ?>
 	<script>
 		$(function() {
@@ -549,7 +597,7 @@ $dec = $dbobject->db_query($sql12);
 						borderColor: window.theme.warning,
 						hoverBackgroundColor: window.theme.warning,
 						hoverBorderColor: window.theme.warning,
-						data: [<?php echo $jan[0]['counter'] ?>, <?php echo $feb[0]['counter'] ?>, <?php echo $mar[0]['counter'] ?>, <?php echo $april[0]['counter'] ?>, <?php echo $may[0]['counter'] ?>, <?php echo $jun[0]['counter'] ?>, <?php echo $july[0]['counter'] ?>, <?php echo $aug[0]['counter'] ?>, <?php echo $sep[0]['counter'] ?>, <?php echo $oct[0]['counter'] ?>, <?php echo $nov[0]['counter'] ?>, <?php echo $dec[0]['counter'] ?>]
+						data: [<?php echo $janp[0]['price'] ?>, <?php echo $febp[0]['price'] ?>, <?php echo $marp[0]['price'] ?>, <?php echo $aprilp[0]['price'] ?>, <?php echo $mayp[0]['price'] ?>, <?php echo $junp[0]['price'] ?>, <?php echo $julyp[0]['price'] ?>, <?php echo $augp[0]['price'] ?>, <?php echo $sepp[0]['price'] ?>, <?php echo $octp[0]['price'] ?>, <?php echo $novp[0]['price'] ?>, <?php echo $decp[0]['price'] ?>]
 					}]
 				},
 				options: {
@@ -564,7 +612,7 @@ $dec = $dbobject->db_query($sql12);
 							},
 							stacked: false,
 							ticks: {
-								stepSize: 50
+								stepSize: 500
 							}
 						}],
 						xAxes: [{
@@ -593,7 +641,7 @@ $dec = $dbobject->db_query($sql12);
 						fill: true,
 						backgroundColor: "transparent",
 						borderColor: window.theme.primary,
-						data: [201, 146, 148, 179, 138, 212, 286, 254, 390, 493, 391, 492]
+						data: [<?php echo $jan[0]['counter'] ?>, <?php echo $feb[0]['counter'] ?>, <?php echo $mar[0]['counter'] ?>, <?php echo $april[0]['counter'] ?>, <?php echo $may[0]['counter'] ?>, <?php echo $jun[0]['counter'] ?>, <?php echo $july[0]['counter'] ?>, <?php echo $aug[0]['counter'] ?>, <?php echo $sep[0]['counter'] ?>, <?php echo $oct[0]['counter'] ?>, <?php echo $nov[0]['counter'] ?>, <?php echo $dec[0]['counter'] ?>]
 					}]
 				},
 				options: {
