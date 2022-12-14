@@ -69,20 +69,6 @@ if ($token != $expected_token) {
          logInputs('Data Sent @ '.date("Y-m-d H:i:s"),$status,"Plate Number Validation Response Sent");
       }
    }else{
-   //  if($endpoint == "check"){
-   //    if($_SERVER['REQUEST_METHOD']!=='GET')
-   //    {
-   //       echo json_encode(array('response_code'=>'401', 'response_message'=>'INVALID HTTP METHOD. VALID METHOD IS GET'));
-   //    }
-   //    else
-   //    {
-   //       $status = $API->check($data);
-   //       // logInputs('Data Received @ '.date("Y-m-d H:i:s"),$data,"Plate Number Validation Info Received");
-   //       echo $status;
-   //       // logInputs('Data Sent @ '.date("Y-m-d H:i:s"),$status,"Plate Number Validation Response Sent");
-   //    }
-   // }else{
-   
          echo json_encode(array('response_code'=>'409', 'response_message'=>''.$endpoint.' Doesnt Exists!'));
    
    }
