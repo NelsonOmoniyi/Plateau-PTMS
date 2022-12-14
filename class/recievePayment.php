@@ -433,6 +433,7 @@ class Payment extends dbobject{
         $sql = "INSERT INTO plate (Name, chasis, veh_make, veh_color, veh_model,phone, expiry_date, status, plate) VALUES ('$taxPayer', '$chasis', '$make', '$color', '$model', '$phone', '$expDate', '$status', '$plate')";
         $check = $this->db_query($sql,false);
     }
+    
     public function checkTDetails($data){
 
         $validation = $this->validate($data,

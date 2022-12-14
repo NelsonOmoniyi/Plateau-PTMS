@@ -77,6 +77,7 @@ class API extends dbobject{
         $ref_id_pre = "RTO";
         $current_timestamp = time();
         $offence_id = $ref_id_pre.$current_timestamp;
+        
          if(count($data)<=0)
         {
             return json_encode(array("response_code"=>207,"response_message"=>'no record sent'));

@@ -8,9 +8,9 @@ $id  = isset($_REQUEST['id'])? $_REQUEST['id'] :'';
 $table  = isset($_REQUEST['table'])? $_REQUEST['table'] :'';
 
 if($table=='dealership'){
-    $immm = '../img/certificates/Dealership Certificate.jpeg';
+    $immm = '../img/certificates/Dealership Certificate.jpg';
 }else{
-    $immm = '../img/certificates/Auto Mech and Tech Certificate.jpeg';
+    $immm = '../img/certificates/Auto Mech and Tech Certificate.jpg';
 }
 
 $check = $dbobject->db_query("SELECT * FROM $table WHERE portal_id='$id'");

@@ -5,7 +5,7 @@ include_once('../fpdf/fpdf.php');
 
 $pdf = new FPDF();
 $object = new dbobject();
-$immm = '../img/certificates/Auto Mech and Tech Certificate.jpeg';
+$immm = '../img/certificates/Driving School.jpg';
 $pdf->AddPage();
 $pdf->Image($immm,1,1,208);
 
