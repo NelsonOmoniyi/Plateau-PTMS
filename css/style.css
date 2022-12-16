@@ -1270,7 +1270,7 @@ section {
  * Banner style
  */
 .banner {
-  background-image: url("../img/banner/1.jpg");
+  background-image: url("../img/bg/1.jpeg");
   background-size: cover;
   background-position: center top;
   background-repeat: no-repeat;
@@ -1585,7 +1585,7 @@ section {
 }
 
 .features {
-  background-image: url("../img/banner/plateau.jpg");
+  background-image: url("../img/slide.jpeg");
   background-size: cover;
   background-position: center top;
   background-repeat: no-repeat;
@@ -1643,7 +1643,7 @@ section {
 }
 
 .features-v2 {
-  background-image: url("../img/banner/plateau.jpg");
+  background-image: url("../img/slide.jpeg");
   background-size: cover;
   background-position: center top;
   background-repeat: no-repeat;

@@ -1,1 +1,1 @@
-SELECT * FROM tin_table WHERE tax_number = '23012766192'
+SELECT * FROM offences
