@@ -24,23 +24,20 @@ class API extends dbobject{
            
         } else {
            
-            $curl = curl_init();
-        
-            curl_setopt_array($curl, array(
-            CURLOPT_URL => 'http://mla.plsg.io/api_vehicle_info/'.$data['plateNumber'],
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => '',
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 0,
-            CURLOPT_FOLLOWLOCATION => true,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => 'GET',
-            ));
-        
-            $response = curl_exec($curl);
-        
-            curl_close($curl);
-            return $response;
+        $verifyPlateNumber = new Payment();
+        $res = $verifyPlateNumber->verPN($data);
+        $resArr = json_decode($res, TRUE);
+
+        if ($resArr['status'] == 'success') {
+                $make = $respArr['data']['vehicleMake'];
+                $chasis = $respArr['data']['chassisNumber'];
+                $taxPayer = $respArr['data']['taxPayer'];
+                $color = $respArr['data']['vehicleColor'];
+                $model = $respArr['data']['vehicleModel'];
+                return json_encode(array('response_code'=>'200', 'response_message'=>'Valid Plate Number', 'make'=>$make, 'chasis'=>$chasis, 'taxPayer'=>$taxPayer, 'color'=>$color, 'model'=>$model, 'plate'=>$data, ));
+            }else{
+                return json_encode(array('response_code'=>'109', 'response_message'=>"Plate Number Not Found!"));
+            }
         }
     }
     // ====== get offence category =====
@@ -77,6 +74,7 @@ class API extends dbobject{
         $ref_id_pre = "RTO";
         $current_timestamp = time();
         $offence_id = $ref_id_pre.$current_timestamp;
+        
          if(count($data)<=0)
         {
             return json_encode(array("response_code"=>207,"response_message"=>'no record sent'));

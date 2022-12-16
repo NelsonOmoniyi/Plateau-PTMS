@@ -4,50 +4,6 @@
  
 class Payment extends dbobject{
 
-    public function pay($data){
-        $cart = $data['payment_category'];
-        $phone = $data['customer_phone'];
-        $email = $data['customer_email'];
-        $name = $data['customer_name'];
-        $item = $data['item'];
-
-        if ($cart == "") {
-            return json_encode(array('response_code'=>'105', 'response_message'=>'Payment Category Field Cannot Be Empty!'));
-        } else {
-           if ($name == "") {
-                return json_encode(array('response_code'=>'104', 'response_message'=>'Name Field Cannot Be Empty!'));
-            } else {
-            // validate phone number
-                $res = $this->check_number($phone);
-                if ($res == '100') {
-                    return json_encode(array('response_code'=>'100', 'response_message'=>'Phone Number Field Cannot Be Empty'));
-                } else if($res == '101') {
-                    return json_encode(array('response_code'=>'101', 'response_message'=>'Data Sent Is Not Numeric'));
-                }else if($res == '102') {
-                    return json_encode(array('response_code'=>'102', 'response_message'=>'Wrong Phone Number Format'));
-                }else if($res == '103') {
-                    return json_encode(array('response_code'=>'103', 'response_message'=>'Phone Number Must Be 11 Digits'));
-                }else {
-                    if ($email == '') {
-                        return json_encode(array('response_code'=>'107', 'response_message'=>'Email Field Cannot Be Empty!'));
-                    } else {
-                       if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                            return json_encode(array('response_code'=>'106', 'response_message'=>'Invalid Email Format!'));
-                        }else{
-                            $MDA_ID = "128";
-                            $MDA_re_id = substr(str_shuffle(base64_encode(openssl_random_pseudo_bytes(32))), 0, 10);
-
-                            $res = $this->intializeTransOP($MDA_ID, $MDA_re_id, $item);
-                            file_put_contents('p.txt', $res);
-                            $array = json_decode($res, true);
-                            return json_encode(array('response_code'=>'200', 'response_message'=>$array['message']));
-                        }
-                    }
-                } 
-            }
-        }
-    }
-
     public function InitPay($data){
         
         $ren = $data['renew'];
@@ -131,48 +87,6 @@ class Payment extends dbobject{
         }
         // else
     }
-
-    // public function RenewPay($data){
-    //     $MDA_ID = "128";
-    //     $MDA_re_id = substr(str_shuffle(base64_encode(openssl_random_pseudo_bytes(32))), 0, 10);
-    //     $sql = "SELECT * FROM tb_payment_confirmation WHERE payment_code = '$data'";
-    //     $result = $this->db_query($sql);
-        
-    //     $item = $result[0]['trans_desc'];
-    //     $amount = $result[0]['trans_amount'];
-    //     $item_code = $result[0]['item_code'];
-    //     $portal_id = $result[0]['payment_code'];
-    //     $call_back = '../setup/licence.php';
-    //     $expDate = date('Y-m-d', strtotime(' + 1 years'));
-    //     $processedDate = date('Y-m-d H:i:s');
-    //     $date = date("Y-m-d H:i:s");
-    //     $officer = $_SESSION['username_sess'];
-	// 	$ip = $_SERVER['REMOTE_ADDR'];
-    //     $pending = 0;
-    //     $processed = 1;
-    //     // $headers = $this->formatHeader($_SERVER);
-
-    //     // initialize Open Payment API.
-    //     // $res = $this->intializeTransOP($MDA_ID, $MDA_re_id, $item, $tin, $amount, $call_back, $item_code);
-    //     // $Array = json_decode($res, true);
-    //     // $status = $Array['status'];
-    //     // $billing_ref = $Array['billing_reference'];
-    //     // $mda_ref = $Array['mda_reference'];
-    //     // $amount = $Array['amount'];
-    //     // $message = $Array['message'];
-    //     // $call_back = 'driving_school_payment.php';
-    //     // comment to initialize real payment
-    //     // initialize Monify Payment
-    //     // $monify_res = $this->initMonifyPayment($call_back, $billing_ref);
-
-    //     $sql = "UPDATE table_payment_renewal SET trans_status = '$processed', expiry_date = '$expDate' WHERE portal_id = '$data' AND trans_status = '$pending'";
-    //     $exec = $this->db_query($sql, false);
-    //     if ($exec > 0) {
-    //         return json_encode(array('response_code'=>'200', 'response_message'=>'Success', "pid"=>$pid, "tin"=>$result[0]['tin']));
-    //     } else {
-    //         return json_encode(array("response_code"=>288,"response_message"=>'An Unknown Error Occured'));
-    //     }
-    // }
 
 
     public function check_number($number) {
@@ -387,36 +301,36 @@ class Payment extends dbobject{
     }
     // plate number
     public function verPN($data){
-        $response = json_encode(array(
-			"status" => "success",
-			"response_message" => "Successful",
-			"data" => array(
-                "vehicleMake" => "HIJET",
-                "chassisNumber" => "S100P042846",
-                "taxPayer" => "AL-AMIN FOUNDATION FOR THE LESS PRIVILEGED",
-                "vehicleColor" => "WHITE",
-                "vehicleModel" => null,
-                "PhoneNumber" => "08060585050",
-                "Expirydate" => "2022-07-15",
-                "PlateNumber" => "Approved"
-			)
-		));
-        // $curl = curl_init();
+        // $response = json_encode(array(
+		// 	"status" => "success",
+		// 	"response_message" => "Successful",
+		// 	"data" => array(
+        //         "vehicleMake" => "HIJET",
+        //         "chassisNumber" => "S100P042846",
+        //         "taxPayer" => "AL-AMIN FOUNDATION FOR THE LESS PRIVILEGED",
+        //         "vehicleColor" => "WHITE",
+        //         "vehicleModel" => null,
+        //         "PhoneNumber" => "08060585050",
+        //         "Expirydate" => "2022-07-15",
+        //         "PlateNumber" => "Approved"
+		// 	)
+		// ));
+        $curl = curl_init();
     
-        // curl_setopt_array($curl, array(
-        // CURLOPT_URL => 'http://mla.plsg.io/api_vehicle_info/'.$data,
-        // CURLOPT_RETURNTRANSFER => true,
-        // CURLOPT_ENCODING => '',
-        // CURLOPT_MAXREDIRS => 10,
-        // CURLOPT_TIMEOUT => 0,
-        // CURLOPT_FOLLOWLOCATION => true,
-        // CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-        // CURLOPT_CUSTOMREQUEST => 'GET',
-        // ));
+        curl_setopt_array($curl, array(
+        CURLOPT_URL => 'http://mla.plsg.io/plate_number_validity'.$data,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'GET',
+        ));
     
-        // $response = curl_exec($curl);
+        $response = curl_exec($curl);
     
-        // curl_close($curl);
+        curl_close($curl);
         return $response;
 
         $resArr = json_decode($response, TRUE);
@@ -433,6 +347,7 @@ class Payment extends dbobject{
         $sql = "INSERT INTO plate (Name, chasis, veh_make, veh_color, veh_model,phone, expiry_date, status, plate) VALUES ('$taxPayer', '$chasis', '$make', '$color', '$model', '$phone', '$expDate', '$status', '$plate')";
         $check = $this->db_query($sql,false);
     }
+
     public function checkTDetails($data){
 
         $validation = $this->validate($data,

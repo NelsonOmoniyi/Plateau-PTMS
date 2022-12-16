@@ -1,1 +1,1 @@
-SELECT * FROM payment_category WHERE code = 'MCG'
+SELECT * FROM role ORDER BY role_name

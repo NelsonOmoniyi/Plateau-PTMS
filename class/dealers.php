@@ -257,6 +257,9 @@ class Dealers extends dbobject
             }
         }
     }
+
+
+    // self service
     public function validatePID($data){
         $PID = $data['portal_id'];
         $trans_code = "TCP";

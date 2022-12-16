@@ -27,7 +27,7 @@ $month_year = "$month $year";
 // $pdf = new FPDF();
 $pdf = new FPDF('P','mm',array(210,297));
 $object = new dbobject();
-$immm = '../img/certificates/Auto Mech and Tech Certificate.jpeg';
+$immm = '../img/certificates/Auto Mech and Tech Certificate.jpg';
 $pdf->AddPage('L');
 $pdf->Image($immm,1,1,295);
 
