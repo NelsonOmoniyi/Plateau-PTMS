@@ -301,36 +301,36 @@ class Payment extends dbobject{
     }
     // plate number
     public function verPN($data){
-        $response = json_encode(array(
-			"status" => "success",
-			"response_message" => "Successful",
-			"data" => array(
-                "vehicleMake" => "HIJET",
-                "chassisNumber" => "S100P042846",
-                "taxPayer" => "AL-AMIN FOUNDATION FOR THE LESS PRIVILEGED",
-                "vehicleColor" => "WHITE",
-                "vehicleModel" => null,
-                "PhoneNumber" => "08060585050",
-                "Expirydate" => "2022-07-15",
-                "PlateNumber" => "Approved"
-			)
-		));
-        // $curl = curl_init();
+        // $response = json_encode(array(
+		// 	"status" => "success",
+		// 	"response_message" => "Successful",
+		// 	"data" => array(
+        //         "vehicleMake" => "HIJET",
+        //         "chassisNumber" => "S100P042846",
+        //         "taxPayer" => "AL-AMIN FOUNDATION FOR THE LESS PRIVILEGED",
+        //         "vehicleColor" => "WHITE",
+        //         "vehicleModel" => null,
+        //         "PhoneNumber" => "08060585050",
+        //         "Expirydate" => "2022-07-15",
+        //         "PlateNumber" => "Approved"
+		// 	)
+		// ));
+        $curl = curl_init();
     
-        // curl_setopt_array($curl, array(
-        // CURLOPT_URL => 'http://mla.plsg.io/api_vehicle_info/'.$data,
-        // CURLOPT_RETURNTRANSFER => true,
-        // CURLOPT_ENCODING => '',
-        // CURLOPT_MAXREDIRS => 10,
-        // CURLOPT_TIMEOUT => 0,
-        // CURLOPT_FOLLOWLOCATION => true,
-        // CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-        // CURLOPT_CUSTOMREQUEST => 'GET',
-        // ));
+        curl_setopt_array($curl, array(
+        CURLOPT_URL => 'http://mla.plsg.io/plate_number_validity'.$data,
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'GET',
+        ));
     
-        // $response = curl_exec($curl);
+        $response = curl_exec($curl);
     
-        // curl_close($curl);
+        curl_close($curl);
         return $response;
 
         $resArr = json_decode($response, TRUE);

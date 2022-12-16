@@ -1,1 +1,1 @@
-SELECT COUNT(offence_id) AS counter FROM tb_offences_payment WHERE  1 = 1  order by offence_id asc
+SELECT * FROM tin_table WHERE tax_number = '23012766192'

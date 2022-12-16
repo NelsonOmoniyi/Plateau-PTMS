@@ -18,12 +18,9 @@ public function verTIN($data){
             // call Validate TIN
             $pay = new Payment();
             $res = $pay->ValTIN($tin);
-            // call validate Plate Number
-            // uncomment this when api starts working
-
-            // ====================================
+           
             $resp = $pay->verPN($plate);
-            // 
+            
             $respArr = json_decode($resp, TRUE);
             $resArr = json_decode($res, TRUE);
             // var_dump($respArr['data']);
@@ -94,7 +91,7 @@ public function AuthData($data){
         $renewal_amount = $res[0]['renew'];
 
         $ThreeCharacter = strtoupper($res[0]['short_code']);
-        $SDNI = 'PLT/'.$ThreeCharacter.'/'.substr($LO, 0, 3).'';
+        $SDNI = 'PTA/'.$ThreeCharacter.'/'.substr($LO, 0, 3).'';
         $Side_Number = $this->getnextid($SDNI);
         $PaddedSideNumber = $this->paddZeros($Side_Number, 5);
         $SDN = $SDNI.$PaddedSideNumber;
