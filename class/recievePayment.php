@@ -301,20 +301,8 @@ class Payment extends dbobject{
     }
     // plate number
     public function verPN($data){
-        // $response = json_encode(array(
-		// 	"status" => "success",
-		// 	"response_message" => "Successful",
-		// 	"data" => array(
-        //         "vehicleMake" => "HIJET",
-        //         "chassisNumber" => "S100P042846",
-        //         "taxPayer" => "AL-AMIN FOUNDATION FOR THE LESS PRIVILEGED",
-        //         "vehicleColor" => "WHITE",
-        //         "vehicleModel" => null,
-        //         "PhoneNumber" => "08060585050",
-        //         "Expirydate" => "2022-07-15",
-        //         "PlateNumber" => "Approved"
-		// 	)
-		// ));
+
+
         $curl = curl_init();
     
         curl_setopt_array($curl, array(
@@ -333,19 +321,20 @@ class Payment extends dbobject{
         curl_close($curl);
         return $response;
 
-        $resArr = json_decode($response, TRUE);
-        $make = $resArr['data']['vehicleMake'];
-        $chasis = $resArr['data']['chassisNumber'];
-        $taxPayer = $resArr['data']['taxPayer'];
-        $color = $resArr['data']['vehicleColor'];
-        $model = $resArr['data']['vehicleModel'];
-        $phone = $resArr['data']['PhoneNumber'];
-        $expDate = $resArr['data']['Expirydate'];
-        $status = $resArr['data']['PlateNumber'];
-        $plate = $data;
+        // $resArr = json_decode($response, TRUE);
+        // $make = $resArr['data']['vehicleMake'];
+        // $chasis = $resArr['data']['chassisNumber'];
+        // $taxPayer = $resArr['data']['taxPayer'];
+        // $color = $resArr['data']['vehicleColor'];
+        // $model = $resArr['data']['vehicleModel'];
+        // $phone = $resArr['data']['PhoneNumber'];
+        // $expDate = $resArr['data']['Expirydate'];
+        // $status = $resArr['data']['PlateNumber'];
+        // $plate = $data;
 
-        $sql = "INSERT INTO plate (Name, chasis, veh_make, veh_color, veh_model,phone, expiry_date, status, plate) VALUES ('$taxPayer', '$chasis', '$make', '$color', '$model', '$phone', '$expDate', '$status', '$plate')";
-        $check = $this->db_query($sql,false);
+        // $sql = "INSERT INTO plate (Name, chasis, veh_make, veh_color, veh_model,phone, expiry_date, status, plate) VALUES ('$taxPayer', '$chasis', '$make', '$color', '$model', '$phone', '$expDate', '$status', '$plate')";
+        // $check = $this->db_query($sql,false);
+        
     }
 
     public function checkTDetails($data){

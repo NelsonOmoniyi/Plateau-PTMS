@@ -1,0 +1,1 @@
+INSERT INTO anpr(plate, image, created, id, status)VALUES('647Ju', 'Abandoning of vehicle on the road ', '2022-12-19 16:54:25', 'i9kphGc1WQ', '0')
