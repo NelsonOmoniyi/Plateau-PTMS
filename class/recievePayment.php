@@ -296,6 +296,7 @@ class Payment extends dbobject{
 
             curl_close($curl);
             return $response;
+            logInputs('TIN @ '.date("Y-m-d H:i:s"),$failed," TIN Response ");
         }   
 
     }
@@ -306,7 +307,7 @@ class Payment extends dbobject{
         $curl = curl_init();
     
         curl_setopt_array($curl, array(
-        CURLOPT_URL => 'http://mla.plsg.io/plate_number_validity'.$data,
+        CURLOPT_URL => 'http://mla.plsg.io/plate_number_validity/'.$data,
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
@@ -320,7 +321,7 @@ class Payment extends dbobject{
     
         curl_close($curl);
         return $response;
-
+        logInputs('Plate @ '.date("Y-m-d H:i:s"),$response," Plate Number Response ");
         // $resArr = json_decode($response, TRUE);
         // $make = $resArr['data']['vehicleMake'];
         // $chasis = $resArr['data']['chassisNumber'];
@@ -475,5 +476,18 @@ class Payment extends dbobject{
         }
         return $headers;	
     }
+
+    function logInputs($tag,$details,$folder)
+    {
+        $target_dir = 'Logs/'.$folder.'/'.date("Y_m")."/";
+        if (!file_exists($target_dir)) 
+        {
+            mkdir($target_dir, 0777, true);
+        }
+        $det=is_array($details)?json_encode($details):$details;
+        $det .= "\r\nHeader sent : \r\n".json_encode(apache_request_headers());
+        file_put_contents($target_dir."response_".date('Ymd').".txt",$tag."	@ ".date('H:i:s')."\r\n".$det."\r\n"."=====================================\r\n".PHP_EOL,FILE_APPEND);
+    }
+
 }
 ?>

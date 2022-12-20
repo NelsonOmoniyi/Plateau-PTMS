@@ -10,9 +10,9 @@ class API extends dbobject{
         $failed = array();
         $pending = '0';
        $now = date("Y-m-d H:i:s");
-       $id = substr(str_shuffle(base64_encode(openssl_random_pseudo_bytes(32))), 0, 10);
+             //    $id = substr(str_shuffle(base64_encode(openssl_random_pseudo_bytes(32))), 0, 10);
         foreach ($data as $value) {
-
+            $id = substr(str_shuffle(base64_encode(openssl_random_pseudo_bytes(32))), 0, 10);
             $plate = $value['plate'];
             $image = $value['image'];
 
@@ -44,7 +44,7 @@ class API extends dbobject{
         $det=is_array($details)?json_encode($details):$details;
         $det .= "\r\nHeader sent : \r\n".json_encode(apache_request_headers());
         file_put_contents($target_dir."response_".date('Ymd').".txt",$tag."	@ ".date('H:i:s')."\r\n".$det."\r\n"."=====================================\r\n".PHP_EOL,FILE_APPEND);
-        }
+    }
   
 }
  

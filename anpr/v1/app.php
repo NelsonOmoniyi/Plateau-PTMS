@@ -14,7 +14,7 @@ $endpoint=  $request[$index];
 $ip = ['::1'];
 $REMOTE_IP = $headers['REMOTE_ADDR'];
 
-if (in_array($REMOTE_IP, $ip)) {
+// if (in_array($REMOTE_IP, $ip)) {
    if($endpoint == "anpr") 
    {
       if($_SERVER['REQUEST_METHOD']!=='POST')
@@ -30,9 +30,9 @@ if (in_array($REMOTE_IP, $ip)) {
    }else {
       echo json_encode(array('response_code'=>'410', 'response_message'=>''.$endpoint.' Doesnt Exists!'));
    }
-} else {
-   echo json_encode(array('response_code'=>'411', 'response_message'=>'Access Denied!'));
-}
+// } else {
+//    echo json_encode(array('response_code'=>'411', 'response_message'=>'Access Denied!'));
+// }
 
 
 
