@@ -1,1 +1,1 @@
-INSERT INTO anpr(plate, image, created, id, status)VALUES('A', 'A', '2022-12-20 13:14:58', 'gLlCoEiszi', '0')
+INSERT INTO anpr(plate, image, created, id, status)VALUES('647Ju', 'ndhdbhdndhdjdjsshcdehdhsbchd', '2022-12-22 15:04:51', 'YFfIkUp5GU', '0')

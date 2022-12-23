@@ -9,15 +9,16 @@ include_once('../class/recievePayment.php');
 function pick(){
     $dbobject = new dbobject();
     $pending = "0";
-    $sql = "SELECT * FROM anpr WHERE status = '0' LIMIT 5";
+    $sql = "SELECT * FROM anpr WHERE status = '0' LIMIT 10";
     $res = $dbobject->db_query($sql, TRUE);
     // var_dump($res);
     // exit;
     foreach ($res as $value) {
         $id = $value['id'];
         // var_dump($value);
-        $data = $dbobject->db_query("UPDATE anpr SET status = '0' WHERE id = '$id'");
+        $data = $dbobject->db_query("UPDATE anpr SET status = '1' WHERE id = '$id'");
     }
+
 // exit;
     $status = validate_insert($res);
     $resArr = json_decode($plate, TRUE);
@@ -31,20 +32,35 @@ function validate_insert($data){
     $dbobject = new dbobject();
     $validate = new Payment();
     foreach ($data as $value) {
-        // var_dump($value);
-        // // exit;
-        $plate = $data['plate'];
-        $image = $data['image'];
-        $id = $data['id'];
-        $date = $data['created'];
-        $validate->verPN($plate);
-        $resArr = json_decode($validate, TRUE);
+       $processed = '1';
+        $plate = $value['plate'];
+        $image = $value['image'];
+        $id = $value['id'];
+        $date = $value['created'];
+        $curl = curl_init();
 
+        curl_setopt_array($curl, array(
+          CURLOPT_URL => 'http://mla.plsg.io/plate_number_validity/'.$data,
+          CURLOPT_RETURNTRANSFER => true,
+          CURLOPT_ENCODING => '',
+          CURLOPT_MAXREDIRS => 10,
+          CURLOPT_TIMEOUT => 0,
+          CURLOPT_FOLLOWLOCATION => true,
+          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+          CURLOPT_CUSTOMREQUEST => 'GET',
+        ));
+        
+        $response = curl_exec($curl);
+        
+        curl_close($curl);
+        $resArr = json_decode($response, TRUE);
+                // var_dump($resArr);
+                // exit;
             logInputs('Response @ '.date("Y-m-d H:i:s"),$resArr," Response ");
         if ($resArr['status'] === "Failed") {
             $sql = "INSERT INTO plate (plate, image, trackID, processed) VALUES ('$plate', '$image', '$id', '$processed')";
+            
             $check = $dbobject->db_query($sql, false);
-
             $data = $dbobject->db_query("UPDATE anpr SET status = '2' WHERE id = '$id'");
         } else {
             $make = $resArr['data']['vehicleMake'];
@@ -61,8 +77,6 @@ function validate_insert($data){
 
             $data = $dbobject->db_query("UPDATE anpr SET status = '2' WHERE id = '$id'");
         }
-        
-        
     } 
   return "0";
 }

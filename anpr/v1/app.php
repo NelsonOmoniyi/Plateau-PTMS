@@ -11,7 +11,7 @@ $index       = count($request) - 1;
 
 $endpoint=  $request[$index];
 
-$ip = ['::1'];
+$ip = ['::1', '192.168.80.12', '192.168.80.33'];
 $REMOTE_IP = $headers['REMOTE_ADDR'];
 
 // if (in_array($REMOTE_IP, $ip)) {

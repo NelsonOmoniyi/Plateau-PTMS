@@ -1,1 +1,1 @@
-UPDATE anpr SET status = '2' WHERE id = ''
+UPDATE anpr SET status = '2' WHERE id = '/BKdkJvIDg'

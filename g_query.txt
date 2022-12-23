@@ -1,0 +1,1 @@
+SELECT offence_id,name,address,veh_make,tin,phone_number,id_mark,chasis_no,offences,total_amount,created,status FROM tb_offences_payment WHERE  1 = 1  order by offence_id asc  LIMIT 0, 10

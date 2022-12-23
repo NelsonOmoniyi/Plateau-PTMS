@@ -1,1 +1,1 @@
-SELECT * FROM offences
+SELECT COUNT(offence_id) AS counter FROM tb_offences_payment WHERE  1 = 1  order by offence_id asc
