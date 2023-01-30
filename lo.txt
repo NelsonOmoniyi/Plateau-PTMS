@@ -1,1 +1,1 @@
-SELECT COUNT(offence_id) AS counter FROM tb_offences_payment WHERE  1 = 1  order by offence_id asc
+SELECT vehicle_name FROM vehicle_type WHERE id = '4286' LIMIT 1;

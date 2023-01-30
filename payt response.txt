@@ -1,0 +1,36 @@
+23320767390
+
+https://proxy.psirs.gov.ng?verify_payment=N-BRN1001405414
+
+https://sdk.monnify.com/checkout/MNFY|50|20230123104458|082961
+
+
+
+
+
+
+ return json_encode(array("response_code"=>"200","redirect_url"=>$redirect_url,"callback_url"=>$call_back_url,"message"=>$message));
+
+SPD:50,000
+TCP,150,000
+
+
+FRESH::::::::::::::::::::::::::::::::
+1) callback_url
+: 
+"https://proxy.psirs.gov.ng?verify_payment=N-BRN1001405654"
+2) https://sdk.monnify.com/checkout/MNFY|46|20230123174453|090447
+
+
+fpdf
+spd.js
+tcp.js
+dsp.js
+mcg.js
+dsp.js
+spare_slip.php
+spare_parts.php
+transport_companies.php
+driving_school.php
+mechanic_garrage.php
+dealers.php

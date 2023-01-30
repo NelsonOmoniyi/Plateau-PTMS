@@ -5,12 +5,11 @@ $role = $_SESSION['role_id_sess'];
 ?>
    <div class="card">
     <div class="card-header">
-        <h5 class="card-title">Mechanic Garrage</h5>
-        <h6 class="card-subtitle text-muted">The report contains Lists that have been setup in the system.</h6>
+        <h5 class="card-title">Mechanic Garage</h5>
     </div>
     <div class="card-body">
       <?php if($_SESSION['role_id_sess'] != 001){
-          echo "<a class='btn btn-warning' onclick=\"getModal('setup/mechVer.php','modal_div')\" data-toggle=\"modal\" data-target=\"#defaultModalPrimary\" href=\"javascript:void(0)\">Register Mechanic Garrage</a>";
+          echo "<a class='btn btn-warning' onclick=\"getModal('setup/mechVer.php','modal_div')\" data-toggle=\"modal\" data-target=\"#defaultModalPrimary\" href=\"javascript:void(0)\">Register New Mechanic Garage</a>";
       }else{
         // echo "Super Admin!!";
       }

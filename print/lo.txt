@@ -1,1 +1,1 @@
-SELECT * FROM mech_garrage WHERE portal_id = 'MCG1670860389'
+SELECT * FROM vehicle_sidenumbers WHERE tax = 23320767390 LIMIT 1

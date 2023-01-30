@@ -114,7 +114,7 @@ $portal_id = $form_id_pre.$current_timestamp;
             </div>
             <div class="col-sm-4">
                 <div class="form-group">
-                    <label for="Form-label">Trade License Union</label>
+                    <label for="Form-label">Trade Union License No</label>
                     <input type="text" name="license_union" id="" class="form-control" required>
                     <!-- <select name="" id="" class="form-control">
                         <option value="">--Select Union--</option>
@@ -134,6 +134,7 @@ $portal_id = $form_id_pre.$current_timestamp;
             <div class="col-sm-12" id="add">
             <div class="form-group">
                     <div id="extraupload"></div>
+                    <small>Upload a passport photograph. Allowed file format e.g PNG, JPEG & JPEG</small>
                 </div>
             </div>
         </div>

@@ -19,6 +19,17 @@ $check = $dbobject->db_query("SELECT * FROM $table WHERE portal_id='$id'");
 $suffix = "reg";
 $payt_type = str_replace('_', ' ', $table);
 $payt_type ="$payt_type $suffix";
+$payt_type = ucwords($payt_type);
+
+function custom_echo($x, $length) {
+    if (strlen($x) <= $length) {
+       return $x;
+    }
+    return substr($x,0,$length) . '...';
+ }
+ $length = 20;
+ $lengths = 40;
+ $address = $check[0]['address'];
 
 $amount = $dbobject->getitemlabel('payment_category', 'id', $check[0]['item_code'], 'amount');
 $amount = number_format($amount,2);
@@ -49,6 +60,7 @@ $date =  $new[1];
 $year = $new[2];
 $created = "$date $month $year";
 $status_suffix = "Naira";
+$money = "$amount $status_suffix";
 
 // $month_year = "$month $year";
 
@@ -71,55 +83,61 @@ $pdf->SetTextColor(5,120,180);
 $pdf->SetFont('Arial', '', 10);
 $pdf->Ln(56);
 $pdf->SetTextColor(10,70,100);
-$pdf->Cell(112,0,$owner_name,0,1,'C');
+$pdf->Cell(103,0,$owner_name,0,1,'C');
+
 
 //address
 $pdf->SetFont('Arial', '', 10);
-$pdf->Ln(10);
+$pdf->Ln(8);
 $pdf->SetTextColor(10,70,100);
-$pdf->Cell(86,0,$check[0]['address'],0,1,'C');
+// $pdf->MultiCell(114,0,$check[0]['address'],0,1,'C');
+$pdf->SetX(49);
+$pdf->MultiCell(40,5,custom_echo($address,$length),0,'L');
 
 //CAC Reg No
 $pdf->SetFont('Arial', '', 10);
-$pdf->Ln(10);
+$pdf->Ln(7);
 $pdf->SetTextColor(10,70,100);
-$pdf->Cell(60,0,$check[0]['cac_reg_no'],0,1,'C');
+$pdf->Cell(102,0,$check[0]['cac_reg_no'],0,1,'C');
 
 //Portal ID
 $pdf->SetFont('Arial', '', 10);
 $pdf->Ln(10);
 $pdf->SetTextColor(10,70,100);
-$pdf->Cell(89,0,$check[0]['portal_id'],0,1,'C');
+$pdf->Cell(107,0,$check[0]['portal_id'],0,1,'C');
 
 //Payment type
 $pdf->SetFont('Arial', '', 10);
-$pdf->Ln(10);
+$pdf->Ln(6);
 $pdf->SetTextColor(10,70,100);
-$pdf->Cell(102,0,$payt_type,0,1,'C');
+$pdf->SetX(49);
+$pdf->MultiCell(40,5,$payt_type,0,'L');
 
 //Amount
 $pdf->SetFont('Arial', '', 10);
-$pdf->Ln(10);
-$pdf->SetTextColor(255,10,10);
-$pdf->Cell(96,0,$status,0,1,'C');
+$pdf->Ln(6);
+$pdf->SetTextColor(10,70,100);
+$pdf->SetX(49);
+$pdf->MultiCell(40,4,($check[0]['status']==0)?"$money (unpaid)":$money,0,'L');
+
 
 //TIN
 $pdf->SetFont('Arial', '', 10);
-$pdf->Ln(9);
+$pdf->Ln(7);
 $pdf->SetTextColor(10,70,100);
-$pdf->Cell(59,0,$check[0]['tin'],0,1,'C');
+$pdf->Cell(102,3,$check[0]['tin'],0,1,'C');
 
 // Mobile Number
 $pdf->SetFont('Arial', '', 10);
-$pdf->Ln(9);
+$pdf->Ln(7);
 $pdf->SetTextColor(10,70,100);
-$pdf->Cell(100,0,$check[0]['phone'],0,1,'C');
+$pdf->Cell(102,1,$check[0]['phone'],0,1,'C');
 
-//Amount
+//Date
 $pdf->SetFont('Arial', '', 10);
-$pdf->Ln(10);
+$pdf->Ln(8);
 $pdf->SetTextColor(10,70,100);
-$pdf->Cell(90,0,$created,0,1,'C');
+$pdf->Cell(104,1,$created,0,1,'C');
 
 // Name right
 $pdf->SetFont('Arial', '', 10);
@@ -129,51 +147,66 @@ $pdf->Cell(305,0,$owner_name,0,1,'C');
 
 // Address right
 $pdf->SetFont('Arial', '', 10);
-$pdf->Ln(9);
+$pdf->Ln(6);
 $pdf->SetTextColor(10,70,100);
-$pdf->Cell(287,0,$check[0]['address'],0,1,'C');
+// $pdf->Cell(307,0,$check[0]['address'],0,1,'C');
+$pdf->SetX(150);
+$pdf->MultiCell(70,6,custom_echo($address,$lengths),0,'L');
 
 // CAC Reg No right
 $pdf->SetFont('Arial', '', 10);
-$pdf->Ln(9);
+$pdf->Ln(6);
 $pdf->SetTextColor(10,70,100);
-$pdf->Cell(261,0,$check[0]['cac_reg_no'],0,1,'C');
+$pdf->Cell(304,0,$check[0]['cac_reg_no'],0,1,'C');
 
 // Portal ID right
 $pdf->SetFont('Arial', '', 10);
 $pdf->Ln(10);
 $pdf->SetTextColor(10,70,100);
-$pdf->Cell(288,0,$check[0]['portal_id'],0,1,'C');
+$pdf->Cell(308,0,$check[0]['portal_id'],0,1,'C');
 
 // Payment type right
 $pdf->SetFont('Arial', '', 10);
 $pdf->Ln(8);
 $pdf->SetTextColor(10,70,100);
-$pdf->Cell(303,0,$payt_type,0,1,'C');
+$pdf->Cell(308,1,$payt_type,0,1,'C');
 
 // Amount right
 $pdf->SetFont('Arial', '', 10);
-$pdf->Ln(10);
-$pdf->SetTextColor(255,10,10);
-$pdf->Cell(297,0,$status,0,1,'C');
+$pdf->Ln(9);
+$pdf->SetTextColor(10,70,100);
+$pdf->Cell(302,0,($check[0]['status']==0)?"$money (unpaid)":$money,0,1,'C');
 
 // TIN right
 $pdf->SetFont('Arial', '', 10);
 $pdf->Ln(10);
 $pdf->SetTextColor(10,70,100);
-$pdf->Cell(260,0,$check[0]['tin'],0,1,'C');
+$pdf->Cell(304,0,$check[0]['tin'],0,1,'C');
 
 // Phone right
 $pdf->SetFont('Arial', '', 10);
 $pdf->Ln(9);
 $pdf->SetTextColor(10,70,100);
-$pdf->Cell(301,0,$check[0]['phone'],0,1,'C');
+$pdf->Cell(303,0,$check[0]['phone'],0,1,'C');
 
 // Date right
 $pdf->SetFont('Arial', '', 10);
 $pdf->Ln(9);
 $pdf->SetTextColor(10,70,100);
-$pdf->Cell(290,0,$created,0,1,'C');
+$pdf->Cell(305,0,$created,0,1,'C');
+
+function RotatedText($x,$y,$txt,$angle,$pdf)
+{
+    //Text rotated around its origin
+   
+    $pdf->Rotate($angle,$x,$y);
+    $pdf->SetFont('Arial','',60);
+    $pdf->Text($x,$y,$txt);
+    
+    $pdf->Rotate(0);
+}
+$pdf->Ln(60);
+RotatedText(110,190,$created,90,$pdf);
 
 // return the generated output
 $pdf->Output();

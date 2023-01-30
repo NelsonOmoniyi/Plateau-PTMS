@@ -55,7 +55,7 @@ $payment = new Payment();
                         <section id="step_three" class="d-none">
                             <p class="text-center">
                                 <strong class="text-underline">Please Note:</strong>
-                                <span class="text-mute">You can only edit some fields here, to change any other information that cant be editted, kindly contact or visit <em>Mistry Of Transport</em></span>
+                                <span class="text-mute">You can only edit some fields here, to change any other information that cant be editted, kindly contact or visit <em>Ministry Of Transport</em></span>
                             </p>
                             <form id="form2" onsubmit="return false">
                                 <input type="hidden" value="Payment.checkTDetails" name="op">
@@ -85,7 +85,7 @@ $payment = new Payment();
                                     &nbsp; &nbsp;<small class="text-mute col-md-12" id="err2"></small>
                                 </div>
                                 <hr>
-                                <a class="btn btn-danger text-white">Cancel</a>
+                                <a href="index.php" class="btn btn-danger">Cancel</a>
                                 &nbsp; &nbsp;
                                 <button class="btn btn-success" id="proceed" type="button">Confirm & Proceed</button>
                             </form>
@@ -105,7 +105,7 @@ $payment = new Payment();
                                     &nbsp; &nbsp;<small class="text-mute col-md-12" id="err3"></small>
                                 </div>
                                 <hr>
-                                <a class="btn btn-danger text-white">Cancel</a>
+                                <a href="index.php" class="btn btn-danger">Cancel</a>
                                 &nbsp; &nbsp;
                                 <button class="btn btn-success" id="Pay" type="button">Make Payment</button>
                             </form>

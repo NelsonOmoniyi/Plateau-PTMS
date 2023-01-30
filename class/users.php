@@ -183,7 +183,7 @@ Class Users extends dbobject{
                 $email                  = $val['email'];
                 $sql                    = "UPDATE userdata SET reset_pwd_link = '$link' WHERE username = '$username' LIMIT 1";
                 $this->db_query($sql);
-                mail($email,"Password Reset - The Lord's Chosen","Dear ".$lastname.", \n To reset your password kindly follow this link below \n http://accessng.com/tlc/pwd_reset.php?ga=".$link);
+                mail($email,"Password Reset","Dear ".$lastname.", \n To reset your password kindly follow this link below \n http://accessng.com/tlc/pwd_reset.php?ga=".$link);
                 return json_encode(array('response_code'=>0,'response_message'=>'Follow the reset link sent to your email'));
             }else
             {

@@ -5,7 +5,7 @@ function yesIDO(){
 }
 
 function noIDont(){
-    alert("Please Contact An Admin To Generate A Portal ID Before You Continue With This Process!");
+    alert("Kindly go to the Nearest Office or Registration center to Initiate the registration Process");
 }
 
 function Next(){
@@ -118,27 +118,28 @@ $("#Pay").click(function(){
     var dd = $("#form3").serialize();
     $.post("utilities.php",dd,function(re)
     {
-        console.log(re.pid);
-        var portal = JSON.stringify(re.pid).replace(/"/g, "");
+        console.log(re.pid);console.log(re);
+        var redirect = re.redirect_url;
+
         if(re.response_code == 200)
             {
-                $("#Pay").prop('disabled',true);
-                $("#err3").css('color','green')
-                $("#err3").html(re.response_message)
-                window.open('./slip/transport_slip.php?id='+portal, '_blank');
-                setTimeout(() => {
-                    window.location("./transport_comp_payment.php")
-                }, 1000);
+                PrintPage(redirect);
             }
         else
             {
                 $("#Pay").text("Make Payment");
                 $("#err3").css('color','red')
-                $("#err3").html(re.response_message)
+                $("#err3").html(re.message)
             }
             
     },'json')
 });
+
+function PrintPage(redirect) {
+   
+    window.open(redirect, '_blank');
+    
+}
 
 
 function Nextr(){
@@ -266,25 +267,16 @@ $("#proceedr").click(function(){
 });
 
 $("#Payr").click(function(){
-    $("#Payr").text("Pls Wait ......");
+    $("#Payr").text("Please Wait ......");
     var dd = $("#form3").serialize();
     $.post("utilities.php",dd,function(re)
     {
         console.log(re);
-        var portal = JSON.stringify(re.pid).replace(/"/g, "");
-        // console.log(portal);
+        var redirect = re.redirect_url;
         if(re.response_code == 200)
             {
-                $("#Payr").prop('disabled',true);
-                $("#err3").css('color','green')
-                $("#err3").html(re.response_message)
-                window.open('./slip/transport_slip.php?id='+portal+'&state=renewal', '_blank');
-                setTimeout(() => {
-                    window.location("./transport_comp_payment.php")
-                }, 1000);
-            }
-        else
-            {
+                PrintPage(redirect);
+            }else{
                 $("#Payr").text("Make Payment");
                 $("#err3").css('color','red')
                 $("#err3").html(re.response_message)
@@ -292,4 +284,10 @@ $("#Payr").click(function(){
             
     },'json')
 });
+
+function PrintPage(redirect) {
+   
+    window.open(redirect, '_blank');
+    
+}
     

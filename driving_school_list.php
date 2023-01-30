@@ -6,11 +6,10 @@ $role = $_SESSION['role_id_sess'];
    <div class="card">
     <div class="card-header">
         <h5 class="card-title">Driving School License List</h5>
-        <h6 class="card-subtitle text-muted">The report contains lists that have been setup in the system.</h6>
     </div>
     <div class="card-body">
       <?php if($_SESSION['role_id_sess'] != 001){
-          echo "<a class='btn btn-warning' onclick=\"getModal('setup/dsl_tin.php','modal_div2')\" data-toggle=\"modal\" data-target=\"#defaultModallarge\" href=\"javascript:void(0)\">Add Driving School</a>";
+          echo "<a class='btn btn-warning' onclick=\"getModal('setup/dsl_tin.php','modal_div2')\" data-toggle=\"modal\" data-target=\"#defaultModallarge\" href=\"javascript:void(0)\">Register New Driving School</a>";
                 // <a class="btn btn-warning" onclick="getModal('setup/sidenumber_setup.php','modal_div')" href="javascript:void(0)" data-toggle="modal" data-target="#defaultModalPrimary">Add Vehicle Details</a>
       }else{
         // echo "Super Admin!!";

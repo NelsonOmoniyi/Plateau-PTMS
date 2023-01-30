@@ -27,7 +27,20 @@ $month_year = "$month $year";
 // $pdf = new FPDF();
 $pdf = new FPDF('P','mm',array(210,297));
 $object = new dbobject();
-$immm = '../img/certificates/Spare Parts dealers.jpeg';
+$owner_name = $check[0]['owner_name'];
+if($table == 'spare_parts'){
+    $immm = '../img/certificates/Spare Parts dealers.jpeg';
+}else if($table == 'driving_sch_form'){
+    $immm = '../img/certificates/Driving School.jpg';
+    $owner_name = $check[0]['school_name'];
+}else if($table == 'mech_garrage'){
+    $immm = '../img/certificates/Auto Mech and Tech Certificate.jpg';
+}else if($table == 'transport_companies'){
+    $immm = '../img/certificates/Transport Companies.jpg';
+}else if($table == 'dealership'){
+    $immm = '../img/certificates/Dealership.jpeg';
+}
+
 $pdf->AddPage('L');
 $pdf->Image($immm,1,1,295);
 
@@ -40,7 +53,7 @@ $pdf->SetTextColor(5,120,180);
 $pdf->SetFont('Arial', 'B', 20);
 $pdf->Ln(87);
 $pdf->SetTextColor(10,70,100);
-$pdf->Cell(265,0,$check[0]['owner_name'],0,1,'C');
+$pdf->Cell(265,0,$owner_name,0,1,'C');
 
 // day
 $pdf->Ln(31);
@@ -64,15 +77,15 @@ $pdf->SetTextColor(10,70,100);
 $pdf->Cell(462,0,$id,0,1,'C');
 
 //category
-$pdf->Ln(123);
+$pdf->Ln(124);
 $pdf->SetFont('Arial', 'B', 10);
 $pdf->SetTextColor(10,70,100);
 // $pdf->Cell(152,179,$item,0,1,'C');
 $pdf->SetX(65);
-$pdf->MultiCell(65,3,$item,0);
+$pdf->MultiCell(65,4,$item,0);
 
 //category code
-$pdf->Ln(-12);
+$pdf->Ln(-15);
 $pdf->SetFont('Arial', 'B', 10);
 $pdf->SetTextColor(10,70,100);
 $pdf->Cell(452,2,$itemcode,0,1,'C');

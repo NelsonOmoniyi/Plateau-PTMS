@@ -6,11 +6,11 @@ $role = $_SESSION['role_id_sess'];
    <div class="card">
     <div class="card-header">
         <h5 class="card-title">Transport Companies</h5>
-        <h6 class="card-subtitle text-muted">The report contains Lists that have been setup in the system.</h6>
+       
     </div>
     <div class="card-body">
       <?php if($_SESSION['role_id_sess'] != 001){
-          echo "<a class='btn btn-warning' onclick=\"getModal('setup/TCPver.php','modal_div')\" data-toggle=\"modal\" data-target=\"#defaultModalPrimary\" href=\"javascript:void(0)\">Transport Companies Registration</a>";
+          echo "<a class='btn btn-warning' onclick=\"getModal('setup/TCPver.php','modal_div')\" data-toggle=\"modal\" data-target=\"#defaultModalPrimary\" href=\"javascript:void(0)\">Register New Transport Company</a>";
       }else{
       }
       ?>

@@ -2,7 +2,7 @@
 ini_set( 'date.timezone', 'Africa/Lagos' );
 class dbcnx
 {
-	public $host  = "localhost";
+	 public $host  = "localhost";
      public $user  = "root";
      public $pass  = "";
      public $db    = "plateau";

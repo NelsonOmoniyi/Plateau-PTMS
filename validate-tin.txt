@@ -1,0 +1,7 @@
+Array2023-01-25 11:25:102023-01-25 11:26:132023-01-25 11:26:352023-01-25 11:29:51
+2023-01-25 11:30:13
+2023-01-25 11:31:15
+2023-01-25 11:32:06
+2023-01-25 11:34:14
+TIN @61094614562023-01-25 11:36:42
+@INSERT INTO transaction_table (portal_id,tin, trans_type, transaction_desc, transaction_amount, payment_mode, posted_ip, created, posted_user, payment_gateway, is_processed,trans_query_id) values ('SPD1674650256','23320767390','Spare Parts Dealership Registration','Registration', '', 'CARD', '::1','2023-01-25 13:38:47', 'sam@gmail.com', 'MONIFY', '1','')2023-01-25 13:39:30

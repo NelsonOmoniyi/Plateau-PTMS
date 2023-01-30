@@ -10,13 +10,7 @@ include_once("libs/dbfunctions.php");
     <div class="card-body">
       <a class="btn btn-info" onclick="getModal('setup/role_setup.php','modal_div')"  href="javascript:void(0)" data-toggle="modal" data-target="#defaultModalPrimary">Create New Role</a>
         <div id="datatables-basic_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-<!--
-            <div class="row">
-                <div class="col-sm-3">
-                    <label for="">Create Role</label>
-                </div>
-            </div>
--->
+
             <div class="row">
                 <div class="col-sm-12 table-responsive">
                     <table id="page_list" class="table table-striped nowrap" >
@@ -25,7 +19,6 @@ include_once("libs/dbfunctions.php");
                                 <th>S/N</th>
                                 <th>Role ID</th>
                                 <th>Role Name</th>
-<!--                                <th>Action</th>-->
                                 <th>Created</th>
                                 <th>Action</th>
                             </tr>

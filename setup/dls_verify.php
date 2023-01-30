@@ -32,13 +32,13 @@ $res = $dbobject->db_query($sql);
            <div class="col-sm-6">
                <div class="form-group">
                     <label class="form-label">Tax Identification Number <span class="text-danger">*</span></label>
-                    <input type="text" name="tax" class="form-control" placeholder="" maxlength="12">
+                    <input type="number" name="tax" class="form-control" placeholder="" maxlength="12">
                 </div>
            </div>
            <div class="col-sm-6">
                <div class="form-group">
                     <label class="form-label">C. A. C Number<span class="text-danger">*</span></label>
-                    <input type="text" name="cac" class="form-control" required>
+                    <input type="text" name="cac" autocomplete="off" class="form-control" required>
                 </div>
            </div>
         </div>
@@ -61,7 +61,7 @@ $res = $dbobject->db_query($sql);
         <button id="save_facility" onclick="saveRecord();" class="btn btn-primary mb-1">Submit</button>
         
     </form>
-    <p>I dont have a Tax Identification Number! <small><a class="btn btn-sm btn-warning" onclick="getpage('generate_tinc.php','page');">Generate TIN</a></small></p>
+    <p>I dont have a Tax Identification Number! <small><a class="btn btn-warning" onclick="regTin()">Generate Tin</a></small></p>
 </div>
 <script>
 
@@ -114,7 +114,9 @@ $res = $dbobject->db_query($sql);
         getModal('setup/dealers_setup.php?title='+title+'&firstname='+firstname+'&middlename='+middlename+'&surname='+surname+'&mobile='+mobile+'&address='+address+'&tin='+tin+'&name='+name+'&item='+item+'&price='+price,'modal_div');
     }, 2000);
    }
-
+   function regTin(){
+    getModal('generate_tinc.php', 'modal_div');
+   }
     function getModal(url,div)
     {
     //        alert('dfd');

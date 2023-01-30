@@ -13,7 +13,8 @@ class Spare extends dbobject
                 array( 'db' => 'business_name', 'dt' => 2, 'formatter'=>function($d, $row){
                     if ($row['status'] > 0) {
                         if ($row['approved'] > 0) {
-                            return  "$d | <button onclick=\"PrintC('".$row['portal_id']."')\" class='btn btn-success btn-sm'>Print Certificate</button>";
+
+                            return "$d | <a href='certificate/spd_certificate.php?id=".$row['portal_id']."&table=spare_parts' class='btn btn-primary btn btn-sm' target='_blank'><i class='fa fa-print'></i> Print Certificate</a>";
                         } else {
                             return  ''.$d.' |
                             <a class="btn btn-primary btn-sm" onclick="getModal(\'setup/preview_spare_part.php?id='.$row['portal_id'].'&table=spare_parts\',\'modal_div\')"  href="javascript:void(0)" data-toggle="modal" data-target="#defaultModalPrimary">Approve</a>
@@ -213,7 +214,7 @@ class Spare extends dbobject
                         $portal_id = $result[0]['portal_id'];
                         return json_encode(array('response_code'=>0,'response_message'=>'Registration Successfully', 'port_id'=>$portal_id));
                     }else{
-                        return json_encode(array('response_code'=>407,'response_message'=>'Payment For This Licence Have Not Been Made! <a href="../driving_school.php">Kindly Click On This Link To Make Payment</a>'));
+                        return json_encode(array('response_code'=>407,'response_message'=>'Payment For This Licence Have Not Been Made! <a href="https://techhost7x.accessng.com/plateau_transport/spare_parts1.php">Kindly Click On This Link To Make Payment</a>'));
                     }
                 }
             }else
@@ -344,8 +345,6 @@ class Spare extends dbobject
     }
 
 }
-
-
 
 ?>
 

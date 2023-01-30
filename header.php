@@ -1,4 +1,6 @@
-
+<?php 
+header("Cache-Control: no-cache;no-store, must-revalidate"); 
+?>
 <!doctype html>
 <html lang="en">
 
@@ -114,38 +116,33 @@
 		<div id="status"></div>
 	</div>
 
-	<!-- Header start -->
-	<header class="header">
-		<div class="container d-flex align-items-center">
-			<!--  -->
-			<nav class="navbar navbar-expand-sm fixed-top navbar-light">
-				<div class="container">
-				<a class="logo" href="index.php">
-					<img src="img/logo/plateau_logo.jpg" alt="" class="img-fluid rounded-circle" style="height:80px; min-width:80px;" />
-					
-				</a> &nbsp; &nbsp; &nbsp; <span style="color: white;">Plateau State Ministry Of Transport</span>
-					<button class="navbar-toggler bg-black" type="button" data-toggle="collapse" data-target="#navbar1">
-						<span class="navbar-toggler-icon"></span>
-					</button>
-					<div class="collapse navbar-collapse" id="navbar1">
+
+				<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="background:rgba(58,129,81,0.5)!important;">
+				<a class="navbar-brand" href="#"><img src="img/logo/plateau_logo.jpg" alt="" class="img-fluid rounded-circle" style="height:80px; min-width:80px;" /></a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon text-light"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNavDropdown">
+					<ul class="navbar-nav">
+					<li class="nav-item active">
+						<a class="nav-link text-light" href="index.php">Home <span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-light" href="index.php#services">Services</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-light" href="#">Contact Us</a>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link text-success" href="login.html" id="navbarDropdownMenuLink" style="background-color:white; border-radius:5px;" aria-haspopup="true" aria-expanded="false">
+						Login
+						</a>
 						
-						<ul class="navbar-nav ml-auto primary-menu text-md-right" id="ul-navbar">
-							<li class="nav-item active" id="tab1">
-								<a class="nav-link" href="index.php" style="color: white;">Home</a>
-							</li>
-							<li class="nav-item" id="tab2">
-								<a class="nav-link" href="index.php" id="footer" style="color: white;">Contact Us</a>
-							</li>
-							<li class="nav-item">
-								<a style="color: white; background-color: rgba(21, 21, 220, 0.389);" class="nav-link" href="login.html" class="login btn btn-outline btn-round" id="login"><span class="bh"></span> <span>LOGIN</span></a>
-							</li>
-						</ul>
-					</div>
+					</li>
+					</ul>
 				</div>
-			</nav>
-
-
-		</div>
-	</header>
+				</nav>
+	<!-- Header start -->
+	
 	<div class="sticky-top bg-white hidden-spacer"> </div>
 	<!-- Header end -->

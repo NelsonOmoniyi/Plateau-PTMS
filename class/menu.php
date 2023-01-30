@@ -159,6 +159,7 @@ class Menu extends dbobject
     
     public function menuList($data)
     {
+        
         $table_name    = "menu";
 		$primary_key   = "menu_id";
 		$columner = array(
@@ -167,11 +168,11 @@ class Menu extends dbobject
 			array( 'db' => 'menu_url',  'dt' => 2 ),
 			array( 'db' => 'parent_id',  'dt' => 3,'formatter' => function( $d,$row ) 
                 {
-                    return ($d == "#")?"This is a Parent Menu":$this->getitemlabel('menu','menu_id',$d,'menu_name');
+                    return ($d == "#")?"This is a Parent Menu":$this->getitemlabel('menu','menu_id',$d,'menu_name');  
                 } ),
 			array( 'db' => 'icon',  'dt' => 4 ),
 			array( 'db' => 'menu_id',  'dt' => 5,'formatter' => function( $d,$row ) {
-                
+
 						return '<a class="btn btn-warning" onclick="getModal(\'setup/menu_setup.php?op=edit&menu_id='.$d.'\',\'modal_div\')"  href="javascript:void(0)" data-toggle="modal" data-target="#defaultModalPrimary">Edit Menu</a>| <a class="btn btn-danger" onclick="deleteMenu(\''.$d.'\')"  href="javascript:void(0)" >Delete Menu</a>';
                         
 					} ),
@@ -180,11 +181,11 @@ class Menu extends dbobject
 					}
 				)
 			);
+           
 		$filter = "";
-
 		$datatableEngine = new engine();
-	
 		echo $datatableEngine->generic_table($data,$table_name,$columner,$filter,$primary_key);
+       
     }
     
     public function loadmenus($data)

@@ -30,31 +30,48 @@ class Payment extends dbobject{
         
         
         
-        $call_back = '../setup/licence.php';
+        $call_back = "https://techhost7x.accessng.com/plateau_transport/slip/spare_slip.php?pid=$pid&&item_code=$item_code&&tbl=$table";
         $expDate = date('Y-m-d', strtotime(' + 1 years'));
         $processedDate = date('Y-m-d H:i:s');
         $date = date("Y-m-d H:i:s");
         $officer = $_SESSION['username_sess'];
 		$ip = $_SERVER['REMOTE_ADDR'];
-        // $headers = $this->formatHeader($_SERVER);
+        // $headers  = $this->formatHeader($_SERVER);
         $pending = 0;
         $processed = 1;
         // initialize Open Payment API.
-        // $res = $this->intializeTransOP($MDA_ID, $MDA_re_id, $item, $tin, $amount, $call_back, $item_code);
-        // $Array = json_decode($res, true);
-        // $status = $Array['status'];
-        // $billing_ref = $Array['billing_reference'];
-        // $mda_ref = $Array['mda_reference'];
-        // $amount = $Array['amount'];
-        // $message = $Array['message'];
-        // $call_back = 'driving_school_payment.php';
+        $res = $this->intializeTransOP($MDA_ID, $MDA_re_id, $item, $tin, $amount, $call_back, $item_code);
+        $Array = json_decode($res, true);
+        // print_r($Array);
+        if($Array['status']=="failed"){
+            return json_encode(array("status"=>$Array['status'],"message"=>$Array['message']));
+        }else{
+        $status = $Array['status'];
+        $billing_ref = $Array['billing_reference'];
+        $mda_ref = $Array['mda_reference'];
+        $amount = $Array['amount'];
+        $message = $Array['message'];
+        // print_r($Array);
+        $call_back = "https://techhost7x.accessng.com/plateau_transport/slip/spare_slip.php?pid=$pid&&item_code=$item_code&&tbl=$table";
+        }
+        
+        
+
+        // call bcak live url
+        // $call_back = "https://techhost7x.accessng.com/plateau_transport/slip/spare_slip.php?pid=$pid&&item_code=$item_code&&tbl=$table";
         // comment to initialize real payment
         // initialize Monify Payment
-        // $monify_res = $this->initMonifyPayment($call_back, $billing_ref);
+        $monify_res = $this->initMonifyPayment($call_back, $billing_ref);
+        $obj = json_decode($monify_res, true);
+        $redirect_url = $obj['redirect_to_url'];
+        $call_back_url = $obj['callback_url'];
+        $message = $obj['message'];
+        // var_dump($obj);
+        
+
+        
         if ($ren == 'renew') {
             $sql = "UPDATE table_payment_renewal SET trans_status = '$processed', expiry_date = '$expDate' WHERE portal_id = '$pid' AND trans_status = '$pending'";
-            // var_dump($sql);
-            // exit;
             $res = $this->db_query($sql, false);
             if ($res > 0) {
                 $sql2 = "UPDATE $table SET expiry_date = '$expDate' WHERE portal_id = '$pid'";
@@ -64,28 +81,32 @@ class Payment extends dbobject{
                 return json_encode(array("response_code"=>289,"response_message"=>'An Unknown Error Occured'));
             }
         } else {
-            $sql = "INSERT INTO transaction_table (portal_id,tin, trans_type, transaction_desc, transaction_amount, payment_mode, posted_ip, created, posted_user, payment_gateway, is_processed)values('$portal_id','$tin','$item','Registration', '$amount', 'CARD', '$ip','$date', '$officer', 'MONIFY', '1')";
+            $sql = "INSERT INTO transaction_table (portal_id,tin, trans_type, transaction_desc, transaction_amount, payment_mode, posted_ip, created, posted_user, payment_gateway, is_processed,trans_query_id) values ('$portal_id','$tin','$item','Registration', '$amount', 'CARD', '$ip','$date', '$officer', 'MONIFY', '1','$billing_ref')";
             $info = $this->db_query($sql,false);
+            
+            file_put_contents('validate-tin.txt', '@'.$sql.date("Y-m-d H:i:s").PHP_EOL, FILE_APPEND | LOCK_EX);
+            
+            return json_encode(array("response_code"=>"200","redirect_url"=>$redirect_url,"callback_url"=>$call_back_url,"message"=>$message));
         
             // if payment is successful
           
 
-            $sql = "UPDATE tb_payment_confirmation SET trans_status = '$processed' WHERE payment_code = '$pid' AND trans_status = '$pending'";
-            $exec = $this->db_query($sql, false);
-            if ($exec > 0) {
-                $sql2 = "UPDATE $table SET status = '$processed', expiry_date = '$expDate', processed_date = '$processedDate' WHERE portal_id = '$pid' AND status = '$pending'";
-                $exec = $this->db_query($sql2, false);
-                if ($exec > 0) {
+            // $sql = "UPDATE tb_payment_confirmation SET trans_status = '$processed' WHERE payment_code = '$pid' AND trans_status = '$pending'";
+            // $exec = $this->db_query($sql, false);
+            // if ($exec > 0) {
+            //     $sql2 = "UPDATE $table SET status = '$processed', expiry_date = '$expDate', processed_date = '$processedDate' WHERE portal_id = '$pid' AND status = '$pending'";
+            //     $exec = $this->db_query($sql2, false);
+            //     if ($exec > 0) { 
                 
-                    return json_encode(array('response_code'=>'200', 'response_message'=>'Success', "pid"=>$pid, "tin"=>$result[0]['tin']));
-                } else {
-                    return json_encode(array("response_code"=>288,"response_message"=>'An Unknown Error Occured'));
-                }
-            } else {
-                return json_encode(array("response_code"=>289,"response_message"=>'An Unknown Error Occured'));
-            }
+            //         return json_encode(array('response_code'=>'200', 'response_message'=>'Success', "pid"=>$pid, "tin"=>$result[0]['tin']));
+            //     } else {
+            //         return json_encode(array("response_code"=>288,"response_message"=>'An Unknown Error Occured'));
+            //     }
+            // } else {
+            //     return json_encode(array("response_code"=>289,"response_message"=>'An Unknown Error Occured'));
+            // }
         }
-        // else
+        
     }
 
 
@@ -126,11 +147,10 @@ class Payment extends dbobject{
     public function intializeTransOP($MDA_ID, $MDA_re_id, $item, $tin, $amount, $call_back, $item_code){
         // var_dump($MDA_ID." --- ".$MDA_re_id." ---- ".$item." --- ".$tin." --- ".$amount." --- ".$call_back." --- ".$item_code);
         // exit;
-
         $curl = curl_init();
         
         curl_setopt_array($curl, array(
-        CURLOPT_URL => 'http://3.9.45.117/OpenPaymentsApi/initialize_transaction',
+        CURLOPT_URL => 'https://payments.psirs.gov.ng/OpenPaymentsApi/initialize_transaction',
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
@@ -271,6 +291,7 @@ class Payment extends dbobject{
         $middlename = $info['middlename'];
         $surname = $info['surname'];
         $message = $info['message'];
+        // file_put_contents('validate-tin.txt', ''.$res.date("Y-m-d H:i:s").PHP_EOL, FILE_APPEND | LOCK_EX);
 
         if ($res > 0) {
             return json_encode(array("status"=>$status, "message"=>$message, "title"=>$title, "name"=>$name, "first_name"=>$firstname, "middle_name"=>$middlename, "surname"=>$surname, "tin"=>$tin, "phoneNumber"=>$phone, "address"=>$address, "account_type"=>$type,));
@@ -282,7 +303,7 @@ class Payment extends dbobject{
             $curl = curl_init();
 
             curl_setopt_array($curl, array(
-            CURLOPT_URL => 'http://3.9.45.117/OpenPaymentsApi/validate_tin/'.$data,
+            CURLOPT_URL => 'https://payments.psirs.gov.ng/OpenPaymentsApi/validate_tin/'.$data,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => '',
             CURLOPT_MAXREDIRS => 10,
@@ -295,8 +316,9 @@ class Payment extends dbobject{
             $response = curl_exec($curl);
 
             curl_close($curl);
+            file_put_contents('validate-tin.txt', 'TIN @'.$data. $response.date("Y-m-d H:i:s").PHP_EOL, FILE_APPEND | LOCK_EX);
             return $response;
-            logInputs('TIN @ '.date("Y-m-d H:i:s"),$failed," TIN Response ");
+            // logInputs('TIN @ '.date("Y-m-d H:i:s"),$failed," TIN Response ");
         }   
 
     }
@@ -372,7 +394,7 @@ class Payment extends dbobject{
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-        CURLOPT_URL => 'http://3.9.45.117/monnify/initialize_transaction',
+        CURLOPT_URL => 'https://payments.psirs.gov.ng/monnify/initialize_transaction',
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
@@ -400,7 +422,7 @@ class Payment extends dbobject{
             $this->response = array("status" => "failure", "message" => $errorMsg['msg'], "error" => $errorMsg);
         }
         $serverJSON = json_decode($response, true);
-
+ 
         //LOG THE RESPONSE
         $retval_string = @implode(",", $serverJSON);
         $response = trim($response);
@@ -409,7 +431,7 @@ class Payment extends dbobject{
         $payload_data = date('Y-m-d H:i:s') . " >>>>  PSIRS Call => ::|". " URL: $url " . " |:: Status Code: $code | Error No.: $curl_errno | $dataSet | DATA: $response | Retval: $retval_string\n\n";
         file_put_contents($this->logger_filename, $payload_data.PHP_EOL , FILE_APPEND | LOCK_EX);
 
-        return $serverJSON;
+        return $response;
 
         curl_close($curl);
     }
@@ -419,7 +441,7 @@ class Payment extends dbobject{
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-          CURLOPT_URL => 'http://3.9.45.117/tin/register_user',
+          CURLOPT_URL => 'https://payments.psirs.gov.ng/tin/register_user',
           CURLOPT_RETURNTRANSFER => true,
           CURLOPT_ENCODING => '',
           CURLOPT_MAXREDIRS => 10,

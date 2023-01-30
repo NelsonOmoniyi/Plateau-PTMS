@@ -1,1 +1,1 @@
-UPDATE menu SET menu_name='Dealership',menu_url='dealership_list.php',parent_id='165',icon='' WHERE  menu_id='176' 
+UPDATE userdata SET username='sam@mail.com',photo='sam@mail.com.jpg',firstname='Sam',lastname='James',mobile_phone='08035153080',sex='male' WHERE  username='sam@mail.com' 

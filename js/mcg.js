@@ -5,7 +5,7 @@ function yesIDO(){
 }
 
 function noIDont(){
-    alert("Please Contact An Admin To Generate A Portal ID Before You Continue With This Process!");
+    alert("Kindly go to the Nearest Office or Registration center to Initiate the registration Process");
 }
 
 function Next(){
@@ -118,14 +118,11 @@ $("#Pay").click(function(){
     var dd = $("#form3").serialize();
     $.post("utilities.php",dd,function(re)
     {
-        console.log(re.tin);
-        var portal = JSON.stringify(re.pid).replace(/"/g, "");
+        console.log(re);
+        var redirect = re.redirect_url;
         if(re.response_code == 200)
             {
-                $("#Pay").prop('disabled',true);
-                $("#err3").css('color','green')
-                $("#err3").html(re.response_message)
-                window.open('./slip/mech_slip.php?id='+portal, '_blank');
+                PrintPage(redirect);
             }
         else
             {
@@ -136,6 +133,12 @@ $("#Pay").click(function(){
             
     },'json')
 });
+
+function PrintPage(redirect) {
+   
+    window.open(redirect, '_blank');
+    
+}
 
 
 function Nextr(){
@@ -263,7 +266,7 @@ $("#proceedr").click(function(){
 });
 
 $("#Payr").click(function(){
-    $("#Payr").text("Pls Wait ......");
+    $("#Payr").text("Please Wait ......");
     var dd = $("#form3").serialize();
     $.post("utilities.php",dd,function(re)
     {

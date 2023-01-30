@@ -1,6 +1,7 @@
 <?php
 require_once('libs/dbfunctions.php');
 require_once('class/menu.php');
+header("Cache-Control: no-cache;no-store, must-revalidate");
 $dbobject = new dbobject();
 $menu = new Menu();
 
@@ -11,7 +12,7 @@ $menu_list = $menu_list['data'];
 $inact_min = $dbobject->getitemlabel("parameter","parameter_name",'inactivity_time','parameter_value');
 //convert by multiplying by 3600
 // var_dump($inact_min);	
-$inact_val = ($inact_min > 0) ? $inact_min*60*60 : 10*60*60;
+$inact_val = ($inact_min > 0) ? $inact_min*60*60 : 10*60*60; 
 
 $sql = "SELECT firstname,lastname FROM userdata WHERE username = '$_SESSION[username_sess]' LIMIT 1 ";
 $user_det = $dbobject->db_query($sql);
@@ -168,10 +169,11 @@ $sqlDSL    = "SELECT school_name FROM driving_sch_form WHERE status = '1' ";
               </a>
 
 			  <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-toggle="dropdown">
-                <img src="https://us.123rf.com/450wm/anatolir/anatolir2011/anatolir201105528/159470802-jurist-avatar-icon-flat-style.jpg?ver=6" class="avatar img-fluid rounded-circle mr-1" alt="<?php echo $_SESSION['firstname_sess'].' '.$_SESSION['lastname_sess']; ?>"/> <span class="text-dark"><?php echo $_SESSION['firstname_sess'].' '.$_SESSION['lastname_sess']; ?></span>
+                <img src="<?php echo $_SESSION['photo_path_sess']; ?>" class="avatar img-fluid rounded-circle mr-1" alt="<?php echo $_SESSION['firstname_sess'].' '.$_SESSION['lastname_sess']; ?>"/> <span class="text-dark"><?php echo $_SESSION['firstname_sess'].' '.$_SESSION['lastname_sess']; ?></span>
               </a>
 							<div class="dropdown-menu dropdown-menu-right">
-								<a class="dropdown-item" href="#"><i class="align-middle mr-1" data-feather="user"></i> Profile</a>
+								<!-- <a class="dropdown-item" href="profile.php"><i class="align-middle mr-1" data-feather="user"></i> Profile</a> -->
+								<a class="dropdown-item" href="javascript:getpage('profile.php','page')">Profile</a>
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="index.php">Sign out</a>
 							</div>
@@ -407,7 +409,7 @@ $sqlDSL    = "SELECT school_name FROM driving_sch_form WHERE status = '1' ";
 				<div class="container-fluid">
 					<div class="row text-muted">
 						<div class="col-6 text-left">
-							<ul class="list-inline">
+							<!-- <ul class="list-inline">
 								<li class="list-inline-item">
 									<a class="text-muted" href="#">Support</a>
 								</li>
@@ -420,11 +422,11 @@ $sqlDSL    = "SELECT school_name FROM driving_sch_form WHERE status = '1' ";
 								<li class="list-inline-item">
 									<a class="text-muted" href="#">Terms of Service</a>
 								</li>
-							</ul>
+							</ul> -->
 						</div>
 						<div class="col-6 text-right">
 							<p class="mb-0">
-								&copy; 2022 - <a href="index.html" class="text-muted">AppStack</a>
+							Copyright © Powered By Access Solutions LTD <?php echo " ".date("Y");?>
 							</p>
 						</div>
 					</div>
@@ -484,102 +486,102 @@ $sqlDSL    = "SELECT school_name FROM driving_sch_form WHERE status = '1' ";
     <script src="js/jquery.blockUI.js"></script>
 	
 <?php
-
-$sql1 = "SELECT COUNT(offence_id) as counter FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '1'";
+$date = DATE("Y-m-d");
+$sql1 = "SELECT COUNT(offence_id) as counter FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(created) = '1' AND YEAR(created) = '$date'";
 $jan = $dbobject->db_query($sql1);
 // var_dump($res);
 
-$sql2 = "SELECT COUNT(offence_id) as counter FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '2'";
+$sql2 = "SELECT COUNT(offence_id) as counter FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(created) = '2' AND YEAR(created) = '$date'";
 $feb = $dbobject->db_query($sql2);
 // var_dump($res);
 
-$sql3 = "SELECT COUNT(offence_id) as counter FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '3'";
+$sql3 = "SELECT COUNT(offence_id) as counter FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(created) = '3' AND YEAR(created) = '$date'";
 $mar = $dbobject->db_query($sql3);
 // var_dump($res);
 
-$sql4 = "SELECT COUNT(offence_id) as counter FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '4'";
+$sql4 = "SELECT COUNT(offence_id) as counter FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(created) = '4' AND YEAR(created) = '$date'";
 $april = $dbobject->db_query($sql4);
 // var_dump($res);
 
-$sql5 = "SELECT COUNT(offence_id) as counter FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '5'";
+$sql5 = "SELECT COUNT(offence_id) as counter FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(created) = '5' AND YEAR(created) = '$date'";
 $may = $dbobject->db_query($sql5);
 // var_dump($res);
 
-$sql6 = "SELECT COUNT(offence_id) as counter FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '6'";
+$sql6 = "SELECT COUNT(offence_id) as counter FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(created) = '6' AND YEAR(created) = '$date'";
 $jun = $dbobject->db_query($sql6);
 // var_dump($res);
 
-$sql7 = "SELECT COUNT(offence_id) as counter FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '7'";
+$sql7 = "SELECT COUNT(offence_id) as counter FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(created) = '7' AND YEAR(created) = '$date'";
 $july = $dbobject->db_query($sql7);
 // var_dump($res);
 
-$sql8 = "SELECT COUNT(offence_id) as counter FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '8'";
+$sql8 = "SELECT COUNT(offence_id) as counter FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(created) = '8' AND YEAR(created) = '$date'";
 $aug = $dbobject->db_query($sql8);
 // var_dump($res);
 
-$sql9 = "SELECT COUNT(offence_id) as counter FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '9'";
+$sql9 = "SELECT COUNT(offence_id) as counter FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(created) = '9' AND YEAR(created) = '$date'";
 $sep = $dbobject->db_query($sql9);
 // var_dump($res);
 
-$sql10 = "SELECT COUNT(offence_id) as counter FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '10'";
+$sql10 = "SELECT COUNT(offence_id) as counter FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(created) = '10' AND YEAR(created) = '$date'";
 $oct = $dbobject->db_query($sql10);
 // var_dump($oct['offence_id']);
 
-$sql11 = "SELECT COUNT(offence_id) as counter FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '11'";
+$sql11 = "SELECT COUNT(offence_id) as counter FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(created) = '11' AND YEAR(created) = '$date'";
 $nov = $dbobject->db_query($sql11);
 // var_dump($nov);
 
-$sql12 = "SELECT COUNT(offence_id) as counter FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '12'";
+$sql12 = "SELECT COUNT(offence_id) as counter FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(created) = '12' AND YEAR(created) = '$date'";
 $dec = $dbobject->db_query($sql12);
 // var_dump($res);
 
 // SUM ===========================================================================================================
 
-$sql1p = "SELECT SUM(trans_amount) as price FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '1'";
+$sql1p = "SELECT SUM(trans_amount) as price FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(created) = '1' AND YEAR(created) = '$date'";
 $janp = $dbobject->db_query($sql1p);
 // var_dump($res);
 
-$sql2p = "SELECT SUM(trans_amount) as price FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '2'";
+$sql2p = "SELECT SUM(trans_amount) as price FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(created) = '2' AND YEAR(created) = '$date'";
 $febp = $dbobject->db_query($sql2p);
 // var_dump($res);
 
-$sql3p = "SELECT SUM(trans_amount) as price FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '3'";
+$sql3p = "SELECT SUM(trans_amount) as price FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(created) = '3' AND YEAR(created) = '$date'";
 $marp = $dbobject->db_query($sql3p);
 // var_dump($res);
 
-$sql4p = "SELECT SUM(trans_amount) as price FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '4'";
+$sql4p = "SELECT SUM(trans_amount) as price FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(created) = '4' AND YEAR(created) = '$date'";
 $aprilp = $dbobject->db_query($sql4p);
 // var_dump($res);
 
-$sql5p = "SELECT SUM(trans_amount) as price FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '5'";
+$sql5p = "SELECT SUM(trans_amount) as price FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(created) = '5' AND YEAR(created) = '$date'";
 $mayp = $dbobject->db_query($sql5p);
 // var_dump($res);
 
-$sql6p = "SELECT SUM(trans_amount) as price FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '6'";
+$sql6p = "SELECT SUM(trans_amount) as price FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(created) = '6' AND YEAR(created) = '$date'";
 $junp = $dbobject->db_query($sql6p);
 // var_dump($res);
 
-$sql7p = "SELECT SUM(trans_amount) as price FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '7'";
+$sql7p = "SELECT SUM(trans_amount) as price FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(created) = '7' AND YEAR(created) = '$date'";
 $julyp = $dbobject->db_query($sql7p);
 // var_dump($res);
 
-$sql8p = "SELECT SUM(trans_amount) as price FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '8'";
+$sql8p = "SELECT SUM(trans_amount) as price FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(created) = '8' AND YEAR(created) = '$date'";
 $augp = $dbobject->db_query($sql8p);
 // var_dump($res);
 
-$sql9p = "SELECT SUM(trans_amount) as price FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '9'";
+$sql9p = "SELECT SUM(trans_amount) as price FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(created) = '9' AND YEAR(created) = '$date'";
 $sepp = $dbobject->db_query($sql9p);
 // var_dump($res);
 
-$sql10p = "SELECT SUM(trans_amount) as price FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '10'";
+$sql10p = "SELECT SUM(trans_amount) as price FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(created) = '10' AND YEAR(created) = '$date'";
 $octp = $dbobject->db_query($sql10p);
 // var_dump($oct['offence_id']);
 
-$sql11p = "SELECT SUM(trans_amount) as price FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '11'";
+$sql11p = "SELECT SUM(trans_amount) as price FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(created) = '11' AND YEAR(created) = '$date'";
 $novp = $dbobject->db_query($sql11p);
 // var_dump($nov);
 
-$sql12p = "SELECT SUM(trans_amount) as price FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(trans_processed_date) = '12'";
+$sql12p = "SELECT SUM(trans_amount) as price FROM tb_payment_confirmation WHERE bank_code = 'Offences' AND Month(created) = '12' AND YEAR(created) = '$date'";
 $decp = $dbobject->db_query($sql12p);
 // var_dump($res);
 
