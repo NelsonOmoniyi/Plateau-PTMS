@@ -12,6 +12,15 @@ require('desencrypt.php');
 // echo "sdsfghjk";
 require('validation.php');
 
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+require_once __DIR__ . '/phpmailer/src/Exception.php';
+require_once __DIR__ . '/phpmailer/src/PHPMailer.php';
+require_once __DIR__ . '/phpmailer/src/SMTP.php';
+
 //use Aws\S3\S3Client;  
 //use Aws\Exception\AwsException;
 //////////////////////
@@ -2390,9 +2399,229 @@ return $plain_pass;
 	 {
 		 return mysqli_insert_id($this->myconn);
 	 }
+
+	//  function sendMail($to, $from, $subject, $email_type, $from_name, $filename, $tpl_tag_name_arr, $tpl_tag_val_arr){
+
+    //     //$filename = "registration_notification_email.html";
+    //     //$filename = "http://demo.anmfincloud.org/upgrade/template/newmembership.html";
+    //     $from = ($from == "") ? $this->getItemLabel("parameter", "parameter_name", "mfi_email", "parameter_value") : $from;
+    //     $from_name = ($from_name == "") ? $_SESSION['anmfin_membership_name_sess'] : $from_name;
+
+    //     $mfi_url = $this->base_url(TRUE);
+    //     $mfi_logo = $this->getitemlabel('env_customization', 'membership_code', $_SESSION['anmfin_membership_sess'], 'mfi_logo');
+    //     // $mfi_logo = $this->getItemLabel('parameter', 'parameter_name', 'mfi_logo_path', 'parameter_value');
+    //     $membership_row = $this->getItemLabelArr('membership', array('membership_code'), array($_SESSION['anmfin_membership_sess']), array('membership_address', 'membership_state'));
+    //     $state = $this->getItemLabel('lga', 'lgaid', $membership_row['membership_state'], 'state');
+    //     $mfi_address = $membership_row['membership_address'] . ', ' . $state;
+    //     $email_mfi_logo = $mfi_url . $mfi_logo;
+    //     $fp = fopen($filename, "r");
+    //     $fstring = fread($fp, filesize($filename));
+    //     fclose($fp);
+    //     //echo $fstring."<br/>";
+    //     $mail_data = str_replace("#mfis", $from_name, $fstring);
+
+    //     for ($i = 0; $i < count($tpl_tag_name_arr); $i++) {
+    //         $mail_data = str_replace("#" . $tpl_tag_name_arr[$i], $tpl_tag_val_arr[$i], $mail_data);
+    //     }
+    //     $mail_data = str_replace("#mlogo", $email_mfi_logo, $mail_data);
+    //     $mail_data = str_replace("#maddress", $mfi_address, $mail_data);
+
+    //     $headers  = "MIME-Version: 1.0" . "\r\n";
+    //     $headers .= "Content-type: text/html; charset=iso-8859-1" . "\r\n";
+    //     $headers .= "From: " . $from_name . "  <" . $from . ">" . "\r\n";
+    //     // @mail($to, $subject, $mail_data, $headers);
+    //     $this->sendMailEmailNotifications($to, $subject, $mail_data);
+    //     $t_stamp =  date('mdhis');
+    //     $filename_tpl = explode("/", $filename);
+    //     $tpl_submit = 'mail_log/' . $to . '_' . $t_stamp . '_' . $filename_tpl[1];
+    //     file_put_contents($tpl_submit, $mail_data, FILE_APPEND);
+    //     $content = $email_mfi_logo . ' / ' . $mfi_address . ' / ' . $from_name . ' / ' . $to . ' / ' . $subject;
+    //     $this->doLog($content, "email_log.log");
+    // }
     
+	public function sendMailEmailNotifications($to, $subject, $template_file)
+    {
+
+        // passing true in constructor enables exceptions in PHPMailer
+        $mail = new PHPMailer(true);
+
+        $dee_name = 'My Core Finance APP';
+
+        try {
+            //Server settings
+			// $mail = "MIME-Version: 1.0";
+        	// $mail = "Content-type:text/html;charset=iso-8859-1";
+
+            // $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+            $mail->isSMTP();                                            //Send using SMTP
+            $mail->Mailer = "smtp";
+            $mail->Host       = 'mail.ruachr.com';                     //Set the SMTP server to send through
+            $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+            $mail->Username   = 'info@ruachr.com';                     //SMTP username
+            $mail->Password   = 'Zenith2208Admi';                               //SMTP password
+            $mail->SMTPSecure = 'ssl'; //ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+            $mail->Port       = 465; //465;      
+			$mail->IsHTML(true);    
+			
+			
+			//TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+
+            //Recipients
+            $mail->setFrom('info@ruachr.com', 'AccessSolutionsLTD');
+            // $mail->addAddress('ezekielafolabi22@gmail.com');
+            $mail->addAddress($to, $dee_name);
+
+            // $mail->addReplyTo('services@vuvaa.com', 'Information');
+
+            // $mail->addBCC('bcc@example.com');
+
+            //Attachments
+            // $mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
+
+            //Content
+            $mail->isHTML(true);                                  //Set email format to HTML
+            $mail->Subject = $subject;
+			$mail->AddEmbeddedImage('img/logo/plateau_logo.jpg', 'logo');
+            $mail->Body    = $template_file;
+            $mail->AltBody = $subject;
+
+            if ($mail->send()) {
+                return json_encode(array('response_code'=>0,'response_message'=>'Follow the reset link sent to your email'));
+            } else {
+                return json_encode(array('status' => 20, 'message' => 'Message not sent'));
+            }
+        } catch (Exception $e) {
+            return array('status' => 20, 'message' => "Message could not be sent. Mailer Error: {$mail->ErrorInfo}");
+        }
+    }
+
+	function sendMail($to, $subject,$template_file,$data, $with_cc_list = false)
+    {
+        
+        $to      = "<$to>";
+        $subject = $subject;
+
+        $data['transaction_date'] =  date('l d M Y H:i:s') . " from " . $this->get_posted_ip();
+
+        $app_link = ($_SERVER['REMOTE_ADDR'] != "::1")?$this->getitemlabel("parameter", "parameter_name", "site_live_url", "parameter_value"):$this->getitemlabel("parameter", "parameter_name", "site_local_url", "parameter_value");
+        $app_link = (substr($app_link, -1) == "/")  ? $app_link : $app_link."/";
+
+        $data['site_url'] =$app_link;
+        $data['logo_url'] = $app_link . "img/plateau_logo.jpg";
+      
+      
+        // Set content-type header for sending HTML email
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n";
+        $headers .= ($_SERVER['REMOTE_ADDR'] != "::1")?"From: <noreply@".$_SERVER['SERVER_NAME'].">". "\r\n":"From: <noreply@".$_SERVER['SERVER_NAME'].">". "\r\n";
+
+        if(@$with_cc_list != false) {
+
+            //comma seperated values
+            $headers .= "Cc: ". $with_cc_list . "\r\n";
+        }
+
+        // Urgent message
+        $headers .= "X-Priority: 1\r\n";
+        $headers .= "BCC: <ezekialafolabi11@gmail.com>";
+
+        //$file = DIR . '/'.$template_file;
+        $file = $template_file;
+        $rows = array(
+          $data
+        //  array( 'id' => 2, 'name' => 'second row', 'etc' => 'nothing special' ),
+        );
+
+        $output = '';
+
+        foreach ( $rows as $row )
+        {
+          $output.= $this->template($file, $row);
+        }
+
+        $to = trim($to);
+        $is_sent = mail($to,$subject,$output,$headers);
+
+        if(!$is_sent) {
+
+            $is_sent  = mail($to,$subject,$output,$headers);
+        }
+
+        // print_r($output);
+
+        //loggers
+        // $email_log_data = date('Y-m-d H:i:s'). ">>>> $is_sent To: ".$to. " ::||:: Subject:". $subject . "::||:: Headers: ".$headers."::||:: Content: " .$output;
+        // file_put_contents("email_log.txt", $email_log_data);
+
+        return $is_sent;
+    }
+	function template($file, $args)
+    {
+
+      // Make values in the associative array easier to access by extracting them
+      if ( is_array( $args ) )
+      {
+        extract( $args );
+      }
+
+        // buffer the output (including the file is "output")
+        ob_start();
+        include $file;
+        return ob_get_clean();
+    }
+	public function sendEmailActivationLink($data)
+    {
+        $email = $data['email'];
+        if (filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+
+            $link = $this->base_url . "verification?ga=" . $data['email_token'] . "&type=" . base64_encode("email");
+            $url = "<a href='" . $link . "'>link</a>";
+            $url_1 = '<a href="' . $link . '" style="background-color: #a55198;color:#fff; padding:10px; text-decoration: none;" target="_blank">Activate Now </a>';
+            $subject = "Education Commission - Account Activation Link for " . $data['full_name'];
+            $tmpl_file = 'email_template/notification.php';
+            $school = (isset($data['school']) && $data['school'] !="")?" for ".$data['school']:'';
+            $role_name = $this->getitemlabel('role','role_id',$data['role_id'],'role_name');
+            $message = (isset($data['school_id']) && $data['school_id'] !="")?"<p>You have been profiled as the ".$role_name." ".$school.".</p>":"<p>You have been profiled as a ".$role_name.".</p>";
+            $message .= "<br />  <p>Please, click " . $url . " to activate your account.</p><br /><p>" . $url_1 . "</p><br /> <p>Or copy and paste the link below in any web browser to activate your account <b style='font-size:12px'>" . $link . "</b></p>"; //first contact person
+            $content = array(
+                'alert_message' => $message,
+                'full_name' => $data['full_name'],
+                'logo_url' => $this->base_url . 'img/plateau_logo.jpg',
+                'type' => isset($data['type'])?$data['type']:''
+            );
+
+            $stmt = $this->sendMail($email, $subject, $tmpl_file, $content);
+            if ($stmt == 1) :
+                return json_encode(array('response_code' => 0, 'response_message' =>'Email verification has been sent to you mail'));
+            else :
+                return json_encode(array('response_code' => 20, 'response_message' => 'Email verification link could not be sent. Please, try again.'));
+            endif;
+        } else {
+            return json_encode(array('response_code' => 20, 'response_message' => 'The supplied email address is not valid'));
+        }
+    }
+
+	function getnextidpaytcat($tablename){
+		
+		$query_sel = "select id from $tablename ORDER BY id DESC LIMIT 1";
+		//echo $query;
+		$result_sel = $this->db_query($query_sel);
+		// $numrows_sel = mysql_num_rows($result_sel);
+			if(count($result_sel)==1){
+				// $row = mysql_fetch_array($result_sel);
+				$id = $result_sel[0]['id']+1;
+				
+				
+			}
+	
+		return $id;
+		}
+
 	
 }
+
+
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

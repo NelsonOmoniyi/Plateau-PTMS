@@ -1,0 +1,1 @@
+UPDATE tb_payment_confirmation SET trans_status = '1' WHERE payment_code = 'SPD1675416605' AND trans_status = '0'

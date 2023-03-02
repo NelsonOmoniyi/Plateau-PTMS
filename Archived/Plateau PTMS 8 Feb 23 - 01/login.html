@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from appstack.bootlab.io/pages-sign-in.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 26 Jul 2019 15:57:14 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Plateau State Transport Management System">
+	<meta name="author" content="Nelson - Access Solutions LTD">
+
+	<title>Login</title>
+
+	<link rel="preconnect" href="http://fonts.gstatic.com/" crossorigin>
+
+	<!-- PICK ONE OF THE STYLES BELOW -->
+	<!-- <link href="css/classic.css" rel="stylesheet"> -->
+	<!-- <link href="css/corporate.css" rel="stylesheet"> -->
+	<!-- <link href="css/modern.css" rel="stylesheet"> -->
+
+	<!-- BEGIN SETTINGS -->
+	<!-- You can remove this after picking a style -->
+	<style>
+		body {
+			opacity: 0;
+		}
+	</style>
+	<script src="js/settings.js"></script>
+	<!-- END SETTINGS -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-120946860-6"></script>
+</head>
+
+<body>
+	<main class="main d-flex w-100">
+		<div class="container d-flex flex-column">
+			<div class="row h-100">
+				<div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
+					<div class="d-table-cell align-middle">
+
+						<div class="text-center mt-4">
+							<h1 class="h2">Welcome back!</h1>
+							<p class="lead">
+								Sign in to your account to continue
+							</p>
+						</div>
+
+						<div class="card">
+							<div class="card-body">
+								<div class="m-sm-4">
+									<div class="text-center">
+										<img src="img/logo/plateau_logo.jpg" alt="Plateau State Ministry of Transport" class="img-fluid rounded-circle" width="132" height="132" />
+										<h4><strong><b>Plateau State Ministry Of Transport</b></strong></h4>
+									</div>
+									<form class="user" id="form1" onsubmit="return false">
+                                        <input type="hidden" name="op" value="Users.login">
+										<div class="form-group">
+											<label>Email</label>
+											<input aria-label="Email Address" class="form-control form-control-lg" type="text" name="username" placeholder="Enter your email" />
+										</div>
+										<div class="form-group">
+											<div class="input-group">
+												<input aria-label="Password" type="password" autocomplete="off" name="password" id="password" placeholder="Password" class="form-control form-control-lg" />
+												<div class="input-group-append" style="cursor:pointer; ">
+													<span class="input-group-text" id="show">Show</span>
+												</div>
+											</div>
+											<small><a href="forgot_password.php">Forgot Password</a></small>
+										<div id="server_mssg"></div>
+										<div class="text-center mt-3">
+											<a onclick="sendLogin('form1')" class="btn btn-lg btn-primary">Sign in</a>
+											<!-- <button type="submit" class="btn btn-lg btn-primary">Sign in</button> -->
+										</div>
+									</form>
+									<a href="index.php" style="text-decoration: none;">Go To Home Page</a>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	
+	<script src="js/jquery.min.js"></script>
+	<script src="js/jquery.blockUI.js"></script>
+	<script src="js/parsely.js"></script>
+	
+	<script src="js/sweet_alerts.js"></script>
+	<script src="js/main.js"></script>
+	<script>
+        function sendLogin(id) {
+            var forms = $('#' + id);
+            forms.parsley().validate();
+            if (forms.parsley().isValid()) {
+                $.blockUI();
+                var data = $("#" + id).serialize();
+                $.post("utilities_default.php", data, function(res) {
+                    $.unblockUI();
+					// console.log(JSON.stringify(res));
+					// return;
+                    var response = JSON.parse(res);
+					// alert(res.response_code);
+					
+                    if (response.response_code == 0) {
+                        $("#button").attr("disabled", true);
+						$('#server_mssg').css('color','green');
+                        $("#server_mssg").text(response.response_message);
+                        ;
+                        setTimeout(() => {
+                            window.location = 'home.php';
+                        }, 1000);
+                    } else {
+						$('#server_mssg').css('color','red');
+                        $("#server_mssg").html(response.response_message);
+                    }
+                });
+            }
+        }
+		$("#show").click(function(){
+        var password = $("#password").attr('type');
+        if(password=="password")
+            {
+                $("#password").attr('type','text');
+                $("#show").text("Hide");
+            }else{
+                $("#password").attr('type','password');
+                $("#show").text("Show");
+            }
+    });
+    </script>
+
+</body>
+
+
+<!-- Mirrored from appstack.bootlab.io/pages-sign-in.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 26 Jul 2019 15:57:14 GMT -->
+</html>

@@ -15,8 +15,9 @@ class API extends dbobject{
             $id = substr(str_shuffle(base64_encode(openssl_random_pseudo_bytes(32))), 0, 10);
             $plate = $value['plate'];
             $image = $value['image'];
+            $log_data = $value['log_data'];
 
-            $sql="INSERT INTO anpr(plate, image, created, id, status)VALUES('$plate', '$image', '$now', '$id', '$pending')";
+            $sql="INSERT INTO anpr(plate, image, created, id, status,log_data)VALUES('$plate', '$image', '$now', '$id', '$pending','$log_data')";
             $res = $this->db_query($sql, false);
             if ($res > 0) {
                 $success[] = $plate;

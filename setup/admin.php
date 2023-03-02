@@ -237,23 +237,26 @@ function doOnLoad()
     })
     function saveRecord()
     {
-        $("#save_facility").text("Loading......");
+        $("#save_facility").text("Creating User please wait...");
+        $("#save_facility").prop('disabled', true);
         var dd = $("#form1").serialize();
         $.post("utilities.php",dd,function(re)
         {
             console.log(re);
-            $("#save_facility").text("Save");
+            $("#save_facility").text("Submit");
             if(re.response_code == 0)
                 {
+                    $("#save_facility").prop('disabled', false);
                     $("#server_mssg").text(re.response_message);
                     $("#server_mssg").css({'color':'green','font-weight':'bold'});
                     getpage('user_list.php','page');
                     setTimeout(()=>{
                         $('#defaultModalPrimary').modal('hide');
-                    },1000)
+                    },3000)
                 }
             else
                 {
+                    $("#save_facility").prop('disabled', false);
                     $("#server_mssg").text(re.response_message);
                      $("#server_mssg").css({'color':'red','font-weight':'bold'});
                 }

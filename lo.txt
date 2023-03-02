@@ -1,1 +1,1 @@
-SELECT vehicle_name FROM vehicle_type WHERE id = '4286' LIMIT 1;
+UPDATE userdata SET reset_pwd_link = '0xdecade5c84036eb9401e30580b4b48a93b43b38592765a96843c2ffe3e89caf4dc6e8a7dd7ff407a94c37d1da4534f4e' WHERE username = 'ezekialafolabi11@gmail.com' LIMIT 1

@@ -115,82 +115,46 @@ function doOnLoad()
     </form>
 </div>
 <script>
-    function saveRecord()
-    {
-        $("#save_facility").text("Loading......");
+    function saveRecord(){
+        $("#save_facility").text("Loading please wait...");
+        $("#save_facility").prop('disabled', true);
+
         var dd = $("#form1").serialize();
-        $.post("utilities.php",dd,function(re)
-        {
-            $("#save_facility").text("Save");
-            console.log(re);
-            if(re.response_code == 0)
-                {
-                    $("#save_facility").attr("readonly", true);
+
+        $.ajax({
+            type: "POST",
+            url: "utilities.php",
+            data:dd,
+            dataType:"json",
+            success: function(re){
+                $("#save_facility").text("Processed");
+                console.log(re);
+        
+            if(re.response_code == 0){
+                    $("#save_facility").text("Processed");
+                    $("#save_facility").prop('disabled',true);
                     $("#err").css('color','green')
                     $("#err").html(re.response_message)
                     getpage('menu_list.php','page');
                     
-                }
-            else
-                {
-                     $("#err").css('color','red')
+                }else{
+                    $("#save_facility").text("Submit");
+                    $("#save_facility").prop('disabled', false);
+                    $("#err").css('color','red')
                     $("#err").html(re.response_message)
                     $("#warning").val("0");
                     
                 }
                 
-        },'json')
-    }
-    
-//    function automatic()
-//    {
-//        if($("#auto").is(':checked'))
-//        {
-//            $("#auto_val").val(1)
-//        }else{
-//             $("#auto_val").val(0)
-//        }
-//    }
-//    
-    function fetchLga(el)
-    {
-        getRegions(el);
-        $("#lga-fds").html("<option>Loading Lga</option>");
-        $.post("utilities.php",{op:'Church.getLga',state:el},function(re){
-            $("#lga-fds").empty();
-            $("#lga-fds").html(re.state);
-            
-        },'json');
-//        $.blockUI();
-    }
-    function getRegions(state_id)
-    {
-        $("#church_region_select").html("<option>Loading....</option>");
-        $.post("utilities.php",{op:'Church.getRegions',state:state_id},function(re){
-            $("#church_region_select").empty();
-            $("#church_region_select").html(re);
-            
+        }, error: function(re){
+                $("#err").css('color', 'red');
+                $("#save_facility").prop('disabled', false);
+                $("#err").html("Could not connect to server");
+                $("#save_facility").text("Submit");
+            }
         });
     }
     
-    function fetchAccName(acc_no)
-    {
-        if(acc_no.length == 10)
-            {
-                var account  = acc_no;
-                var bnk_code = $("#bank_name").val();
-                $("#acc_name").text("Verifying account number....");
-                $("#account_name").val("");
-                $.post("utilities.php",{op:"Church.getAccountName",account_no:account,bank_code:bnk_code},function(res){
-                    
-                    $("#acc_name").text(res);
-                    $("#account_name").val(res);
-                });
-            }else{
-                $("#acc_name").text("Account Number must be 10 digits");
-            }
-        
-    }
     function display_icon(ee)
     {
         $("#icon-display").html(`<i class="${ee}"></i>`);

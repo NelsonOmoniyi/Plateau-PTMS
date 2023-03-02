@@ -1,1 +1,1 @@
-UPDATE userdata SET username='sam@mail.com',photo='sam@mail.com.jpg',firstname='Sam',lastname='James',mobile_phone='08035153080',sex='male' WHERE  username='sam@mail.com' 
+UPDATE payment_category SET id='4297',item='Orozozo',code='ORO',amount='500',link='oro.php' WHERE  id='4297' 

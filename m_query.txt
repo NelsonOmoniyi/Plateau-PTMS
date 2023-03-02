@@ -1,1 +1,1 @@
-insert into log_details (log_id,field_name,previous_data,current_data,field_alias) VALUES ('39','menu_url','dls_list.php','dealership_list.php','')
+insert into payment_category (id,item,code,amount,link) VALUES ('4297','Orozo','ORO','500','oro.php')

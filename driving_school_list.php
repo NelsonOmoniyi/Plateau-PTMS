@@ -9,7 +9,7 @@ $role = $_SESSION['role_id_sess'];
     </div>
     <div class="card-body">
       <?php if($_SESSION['role_id_sess'] != 001){
-          echo "<a class='btn btn-warning' onclick=\"getModal('setup/dsl_tin.php','modal_div2')\" data-toggle=\"modal\" data-target=\"#defaultModallarge\" href=\"javascript:void(0)\">Register New Driving School</a>";
+          echo "<a class='btn btn-warning' onclick=\"getModal('setup/dsl_tin.php','modal_div')\" data-toggle=\"modal\" data-target=\"#defaultModalPrimary\" href=\"javascript:void(0)\">Register New Driving School</a>";
                 // <a class="btn btn-warning" onclick="getModal('setup/sidenumber_setup.php','modal_div')" href="javascript:void(0)" data-toggle="modal" data-target="#defaultModalPrimary">Add Vehicle Details</a>
       }else{
         // echo "Super Admin!!";
@@ -70,8 +70,6 @@ $role = $_SESSION['role_id_sess'];
         data: function(d, l) {
           d.op = op;
           d.li = Math.random();
-//          d.start_date = $("#start_date").val();
-//          d.end_date = $("#end_date").val();
         }
       }
     });
@@ -83,7 +81,7 @@ $role = $_SESSION['role_id_sess'];
  
     function getModal(url,div)
     {
-//        alert('dfd');
+//    
         $('#'+div).html("<h2>Loading....</h2>");
 //        $('#'+div).block({ message: null });
         $.post(url,{},function(re){
@@ -100,7 +98,7 @@ $role = $_SESSION['role_id_sess'];
 	}
  
   function PrintC(d) {
-      // window.alert(d)
+      
       window.open('certificate/dsl_certificate.php?id='+d, '_blank');
 	}
   function renewal(d, r) {

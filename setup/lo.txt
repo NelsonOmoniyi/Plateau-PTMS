@@ -1,1 +1,1 @@
-SELECT * FROM licence_operators WHERE track = 'GN'
+SELECT * FROM payment_category WHERE id = '4297' LIMIT 1

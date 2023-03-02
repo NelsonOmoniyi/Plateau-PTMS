@@ -87,6 +87,9 @@ $user      = $dbobject->db_query("SELECT * FROM userdata WHERE username='$userna
                             </div>
                         </div>
                         <div class="row">
+                            <div id="err"></div>
+                        </div>
+                        <div class="row">
                             <div class="col-6 mt-3">
                                 <a href="javascript:saveRecord()" class="btn btn-md btn-primary" style="color:#fff">
                                     Save Changes
@@ -153,7 +156,7 @@ function saveRecord() {
         if (re.response_code == 0) {
             alert(re.response_message);
         } else
-            regenerateCORS();
+            // regenerateCORS();
         alert(re.response_message)
     }, 'json')
 }

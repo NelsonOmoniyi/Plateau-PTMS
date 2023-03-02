@@ -95,8 +95,4 @@ function logInputs($tag,$details,$folder)
 
 pick();
 
-
-
-
-
 ?>

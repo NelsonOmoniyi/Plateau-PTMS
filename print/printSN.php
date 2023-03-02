@@ -5,7 +5,7 @@ include_once("../class/sidenumber.php");
 $dbobject = new dbobject();
 
 // reprocessing SN
-$ip = ['13.41.180.63'];
+$ip = ['::1','13.41.180.63','41.242.60.178'];
 $REMOTE_IP = $_SERVER['REMOTE_ADDR'];
 if (in_array($REMOTE_IP, $ip)) {
 
@@ -28,12 +28,14 @@ $veh_name = $res[0]['vehicle_name'];
 $price = $res[0]['reg'];
 $renewal_amount = $res[0]['renew'];
 
-$sqlSdate0 = "SELECT created,side_number,amount,payment_pin FROM vehicle_sidenumbers WHERE side_number = '$SDN'";
+$sqlSdate0 = "SELECT created,side_number,amount,payment_pin,status FROM vehicle_sidenumbers WHERE side_number = '$SDN'";
 $resultDate0 = $dbobject->db_query($sqlSdate0);
 $startDate0 = $resultDate0[0]['created'];
 $side = $resultDate0[0]['side_number'];
 $amount = $resultDate0[0]['amount'];
 // $expiryDate0 = date('Y-m-d', strtotime('+1 year', strtotime($startDate0)));
+
+$pay_status = (($check[0]['status']==0)?"UNPAID":"PAID");
 
 $sqlTT = "insert into sidenumber_transaction (id,sidenumber,initial_payment,renewal_fee,initial_payment_date,expiry_date,renewal_date,payment_pin)
 values(NULL,'$side','$amount','$renewal_amount', NOW(),'$expDate','$expDate','$pin')";
@@ -44,9 +46,15 @@ if ($exec > 0) {
     
         // return json_encode(array("response_code"=>0,"response_message"=>'Success', "tin"=>$tin));
     } else {
-        return json_encode(array("response_code"=>288,"response_message"=>'An Unknown Error Occured'));
+        echo json_encode(array("response_code"=>288,"response_message"=>'An Unknown Error Occured'));
 }
 
+function custom_echo($x, $length) {
+    if (strlen($x) <= $length) {
+       return $x;
+    }
+    return substr($x,0,$length) . '...';
+ }
 
 $sql= "SELECT * FROM vehicle_sidenumbers WHERE tax = $tin LIMIT 1";
 $vehicle_sidenumbers = $dbobject->db_query($sql);
@@ -64,7 +72,9 @@ $month =  $new[0];
 $date =  $new[1];
 $year = $new[2];
 $created = "$date $month $year";
-
+$border = 0;
+$length = 24;
+$lengths = 35;
 
 $Enew = explode(" ",$data['expiry_date']);
 $Eddd = date("M jS, Y", strtotime($Enew[0]));
@@ -74,7 +84,7 @@ $Edate =  $Enew[1];
 $Eyear = $Enew[2];
 $expiring = "$Edate $Emonth $Eyear";
 
-$immm = 'printSN.jpg';
+$immm = 'print.png';
 
 $pdf = new FPDF('P','mm',array(210,297));
 $pdf->AddPage('L');
@@ -83,128 +93,74 @@ $pdf->Image($immm,1,1,295);
 // title
 $pdf->SetTitle('Plateau State Ministry Of Transport');
 $pdf->SetFont('Arial','',$font_size);
-$pdf->SetTextColor(5,120,180);
-
-$pdf->SetFont('Arial', '', $font_size);
-$pdf->Ln(24);
-$pdf->SetX(49);
 $pdf->SetTextColor(10,70,100);
-$pdf->Cell(110,45,$fullname,0,1,'L');
 
-// address
-$pdf->SetFont('Arial', '', $font_size);
-$pdf->Ln(-12);
-$pdf->SetX(49);
-$pdf->SetTextColor(10,70,100);
-$pdf->MultiCell(40,5,$data['address'],0,'L');
 
-// sidenumber
-$pdf->SetFont('Arial', '', $font_size);
+
+$pdf->Ln(50);
+$pdf->SetFont('Arial', 'B', 20);
+$pdf->Cell(30,10,$pay_status,$border);
+$pdf->Cell(80,10,'',$border);
+$pdf->Cell(30,10,$pay_status,$border);
 $pdf->Ln();
-$pdf->SetX(49);
-$pdf->SetTextColor(10,70,100);
-$pdf->Cell(40,3,$data['side_number'],0,'L');
+$pdf->SetFont('Arial','',10);
+$pdf->Cell(30,10,'Owners Name:',$border);
+$pdf->Cell(30,10,$fullname,$border);
+$pdf->Cell(50,10,'',$border);
+$pdf->Cell(30,10,'Owners Name:',$border);
+$pdf->Cell(30,10,$fullname,$border);
 
-// chasis number
-$pdf->SetFont('Arial', '', $font_size);
 $pdf->Ln();
-$pdf->SetX(49);
-$pdf->SetTextColor(10,70,100);
-$pdf->Cell(40,22,$data['chasis_number'],0,'L');
+$pdf->Cell(30,10,'Address:',$border);
+$pdf->Cell(30,10,custom_echo($data['address'],$length),$border);
+$pdf->Cell(50,10,'',$border);
+$pdf->Cell(30,10,'Address:',$border);
+$pdf->Cell(30,10,custom_echo($data['address'],$lengths),$border);
 
-// vehicle make
-$pdf->SetFont('Arial', '', $font_size);
-$pdf->Ln(18);
-$pdf->SetX(49);
-$pdf->SetTextColor(10,70,100);
-$pdf->Cell(40,0,$data['vehicle_make'],0,'L');
+$pdf->Ln();
+$pdf->Cell(30,10,'Registration No:',$border);
+$pdf->Cell(30,10,$data['side_number'],$border);
+$pdf->Cell(50,10,'',$border);
+$pdf->Cell(30,10,'Registration No:',$border);
+$pdf->Cell(30,10,$data['side_number'],$border);
+$pdf->Ln();
+$pdf->Cell(30,10,'Chasis No:',$border);
+$pdf->Cell(30,10,$data['chasis_number'],$border);
+$pdf->Cell(50,10,'',$border);
+$pdf->Cell(30,10,'Chasis No:',$border);
+$pdf->Cell(30,10,$data['chasis_number'],$border);
 
-// vehicle model
-$pdf->SetFont('Arial', '', $font_size);
-$pdf->Ln(7);
-$pdf->SetX(49);
-$pdf->SetTextColor(10,70,100);
-$pdf->Cell(40,0,$data['vehicle_model'],0,'L');
-
-// vehicle color
-$pdf->SetFont('Arial', '', $font_size);
-$pdf->Ln(10);
-$pdf->SetX(49);
-$pdf->SetTextColor(10,70,100);
-$pdf->Cell(40,2,$data['vehicle_color'],0,'L');
-
-// amount
-$pdf->SetFont('Arial', '', $font_size);
-$pdf->Ln(28);
-$pdf->SetX(49);
-$pdf->SetTextColor(10,70,100);
-$pdf->Cell(40,4,number_format($data['amount'],2),0,'L');
-
-// amount
-$pdf->SetFont('Arial', '', $font_size);
-$pdf->Ln(14);
-$pdf->SetX(49);
-$pdf->SetTextColor(10,70,100);
-$pdf->Cell(40,5,$created,0,'L');
-
-
-// OWNERS CORNER
-
-// sidenumber
-$pdf->SetFont('Arial', '', $font_size);
-$pdf->Ln(-109);
-$pdf->SetX(149);
-$pdf->SetTextColor(10,70,100);
-$pdf->Cell(40,-1,$data['side_number'],0,'L');
-
-// contact
-$pdf->SetFont('Arial', '', $font_size);
-$pdf->Ln(8);
-$pdf->SetX(149);
-$pdf->SetTextColor(10,70,100);
-$pdf->Cell(40,1,$data['mobile'],0,'L');
-
-// chasis
-$pdf->SetFont('Arial', '', $font_size);
-$pdf->Ln(17);
-$pdf->SetX(149);
-$pdf->SetTextColor(10,70,100);
-$pdf->Cell(40,1,$data['chasis_number'],0,'L');
-
-// vehicle make
-$pdf->SetFont('Arial', '', $font_size);
-$pdf->Ln(9);
-$pdf->SetX(149);
-$pdf->SetTextColor(10,70,100);
-$pdf->Cell(40,2,$data['vehicle_make'],0,'L');
-
-// vehicle model
-$pdf->SetFont('Arial', '', $font_size);
-$pdf->Ln(9);
-$pdf->SetX(149);
-$pdf->SetTextColor(10,70,100);
-$pdf->Cell(40,3,$data['vehicle_model'],0,'L');
-
-//color
-$pdf->SetFont('Arial', '', $font_size);
-$pdf->Ln(13);
-$pdf->SetX(149);
-$pdf->SetTextColor(10,70,100);
-$pdf->Cell(40,3,$data['vehicle_color'],0,'L');
-
-//date
-$pdf->SetFont('Arial', '', $font_size);
-$pdf->Ln(16);
-$pdf->SetX(149);
-$pdf->SetTextColor(10,70,100);
-$pdf->Cell(40,3,$created,0,'L');
-
-//expiring
-$pdf->SetFont('Arial', '', $font_size);
-$pdf->Ln(8);
-$pdf->SetX(149);
-$pdf->SetTextColor(10,70,100);
-$pdf->Cell(40,3,$expiring,0,'L');
+$pdf->Ln();
+$pdf->Cell(30,10,'Vehicle Make:',$border);
+$pdf->Cell(30,10,$data['vehicle_make'],$border);
+$pdf->Cell(50,10,'',$border);
+$pdf->Cell(30,10,'Vehicle Make:',$border);
+$pdf->Cell(30,10,$data['vehicle_make'],$border);
+$pdf->Ln();
+$pdf->Cell(30,10,'Vehicle Type:',$border);
+$pdf->Cell(30,10,$data['vehicle_model'],$border);
+$pdf->Cell(50,10,'',$border);
+$pdf->Cell(30,10,'Vehicle Type:',$border);
+$pdf->Cell(30,10,$data['vehicle_model'],$border);
+$pdf->Ln();
+$pdf->Cell(30,10,'Vehicle Color:',$border);
+$pdf->Cell(30,10,$data['vehicle_color'],$border);
+$pdf->Cell(50,10,'',$border);
+$pdf->Cell(30,10,'Vehicle Color',$border);
+$pdf->Cell(30,10,$data['vehicle_color'],$border);
+$pdf->Ln();
+$pdf->Cell(30,10,'License Fee:',$border);
+$pdf->Cell(30,10,number_format($data['amount']),$border);
+$pdf->Cell(50,10,'',$border);
+$pdf->Cell(30,10,'License Fee:',$border);
+$pdf->Cell(30,10,number_format($data['amount']),$border);
+$pdf->Ln();
+$pdf->Cell(30,10,'Date Issued:',$border);
+$pdf->Cell(30,10,$created,$border);
+$pdf->Cell(50,10,'',$border);
+$pdf->Cell(30,10,'Date Issued:',$border);
+$pdf->Cell(30,10,$created,$border);
+$pdf->Ln();
 
 function RotatedText($x,$y,$txt,$angle,$pdf)
 {
