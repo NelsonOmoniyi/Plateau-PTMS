@@ -2445,7 +2445,7 @@ return $plain_pass;
         // passing true in constructor enables exceptions in PHPMailer
         $mail = new PHPMailer(true);
 
-        $dee_name = 'My Core Finance APP';
+        $dee_name = 'Plateau Ministry of Transport';
 
         try {
             //Server settings
@@ -2453,24 +2453,23 @@ return $plain_pass;
         	// $mail = "Content-type:text/html;charset=iso-8859-1";
 
             // $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
-            $mail->isSMTP();                                            //Send using SMTP
+			$mail->isSMTP();                                            //Send using SMTP
             $mail->Mailer = "smtp";
-            $mail->Host       = 'mail.ruachr.com';                     //Set the SMTP server to send through
+            $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
             $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-            $mail->Username   = 'info@ruachr.com';                     //SMTP username
-            $mail->Password   = 'Zenith2208Admi';                               //SMTP password
-            $mail->SMTPSecure = 'ssl'; //ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-            $mail->Port       = 465; //465;      
-			$mail->IsHTML(true);    
+            $mail->Username   = 'plateaumot@gmail.com';                     //SMTP username
+            $mail->Password   = 'fqobculycatiiago';                               //SMTP password
+            $mail->SMTPSecure = 'tls'; //ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+            $mail->Port       = 587; //465; 
+			// plateau password for email : @PlateauMOT        
 			
 			
 			//TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
-
-
-            //Recipients
-            $mail->setFrom('info@ruachr.com', 'AccessSolutionsLTD');
-            // $mail->addAddress('ezekielafolabi22@gmail.com');
+			$mail->setFrom('plateaumot@gmail.com', 'PLATEAU STATE MOT');
             $mail->addAddress($to, $dee_name);
+			$image= "img/plateau_logo.jpg";
+			$imagename = "Plateau Ministry of transport";
+			$mail->addEmbeddedImage($image, 'image1', $imagename);
 
             // $mail->addReplyTo('services@vuvaa.com', 'Information');
 
@@ -2482,9 +2481,8 @@ return $plain_pass;
             //Content
             $mail->isHTML(true);                                  //Set email format to HTML
             $mail->Subject = $subject;
-			$mail->AddEmbeddedImage('img/logo/plateau_logo.jpg', 'logo');
             $mail->Body    = $template_file;
-            $mail->AltBody = $subject;
+            $mail->AltBody = 'This is a mail from Plateau State Ministry of Transport';
 
             if ($mail->send()) {
                 return json_encode(array('response_code'=>0,'response_message'=>'Follow the reset link sent to your email'));
@@ -2509,6 +2507,7 @@ return $plain_pass;
 
         $data['site_url'] =$app_link;
         $data['logo_url'] = $app_link . "img/plateau_logo.jpg";
+		
       
       
         // Set content-type header for sending HTML email

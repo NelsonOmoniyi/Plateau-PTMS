@@ -19,22 +19,12 @@ $dbobject = new dbobject();
     $chasis = isset($_REQUEST['chasis'])?$_REQUEST['chasis']:'';
     $plate = isset($_REQUEST['plate'])?$_REQUEST['plate']:'';
 
-    
-        // var_dump($res);
-    // echo "$title ";
-    // echo "$firstname ";
-    // echo "$middlename ";
-    // echo "$surname ";
-    // echo "$mobile ";
-    // echo "$address ";
-    // echo "$tin ";
-
-
 if(isset($_REQUEST['op']) && $_REQUEST['op'] == 'edit')
 {
     $operation = 'edit';
     
-}else
+}
+else
 {
     $operation = 'new';
 }
@@ -211,12 +201,14 @@ if(isset($_REQUEST['op']) && $_REQUEST['op'] == 'edit')
                 $("#save_facility").text("Processed");
                 $("#save_facility").prop('disabled',true);
                 $("#defaultModalPrimary").modal('hide');
+                $("#err").html(re.response_message);
+                getpage('sidenumber_list.php',"page");
                 PrintPage(redirect);
             }else{
                     $("#save_facility").text("Submit");
                     $("#save_facility").prop('disabled', false);
-                    $("#err").css('color','red')
-                    $("#err").html(re.response_message)
+                    $("#err").css('color','red');
+                    $("#err").html(re.response_message);
                     $("#warning").val("0");
                 }
         }, error: function(re){
@@ -348,7 +340,7 @@ if(isset($_REQUEST['op']) && $_REQUEST['op'] == 'edit')
                                     foreach($result as $row)
                                     {
                                         // echo "<option id=\'$idi\' value=\'$offen\' >$offen</option>";
-                                        echo "<option value=\'$row[short_code]\'>$row[name](".$row[short_code].")</option>";
+                                        echo "<option value=\'$row[short_code]\'>$row[name](".$row['short_code'].")</option>";
                                     }
                             ?>
                             ';
@@ -370,7 +362,7 @@ if(isset($_REQUEST['op']) && $_REQUEST['op'] == 'edit')
                                     foreach($result as $row)
                                     {
                                         // echo "<option id=\'$idi\' value=\'$offen\' >$offen</option>";
-                                        echo "<option value=\'$row[short_code]\'>$row[name](".$row[short_code].")</option>";
+                                        echo "<option value=\'$row[short_code]\'>$row[name](".$row['short_code'].")</option>";
                                     }
                             ?>
                             ';

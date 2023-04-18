@@ -1,1 +1,1 @@
-SELECT id,item,code,amount,link,id FROM payment_category WHERE  1 = 1  order by code asc  LIMIT 0, 10
+SELECT id,firstname,chasis_number,tax,side_number,plate_number,created,issue_date,vehicle_typeid,licence_operators,status,created FROM vehicle_sidenumbers WHERE  1 = 1  order by id asc  LIMIT 0, 10

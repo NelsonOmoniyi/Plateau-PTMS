@@ -16,7 +16,7 @@ $price = isset($_REQUEST['price'])?$_REQUEST['price']:'';
 $cac = isset($_REQUEST['cac'])?$_REQUEST['cac']:'';
 $cac = str_replace('"', '', $cac);
 // echo $item;
-// var_dump($_REQUEST);
+// var_dump($_REQUEST); 
 
 if(isset($_REQUEST['op']) && $_REQUEST['op'] == 'edit')
 {

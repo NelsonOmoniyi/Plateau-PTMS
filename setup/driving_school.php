@@ -36,7 +36,7 @@ $portal_id = $form_id_pre.$current_timestamp;
        <input type="hidden" name="op" value="DrivingSchool.saveDSD">
        <input type="hidden" name="operation" value="<?php echo $operation; ?>">
        <input type="hidden" name="cat" value="Driving Schools Registration">
-       <input type="hidden" name="amount" value="50,000.00">
+       <input type="hidden" name="amount" value="500000"><!--edited-->
        <input type="hidden" name="item_code" value="4295">
        <input type="hidden" name="port" value="<?php echo $portal_id; ?>">
        <div class="row">

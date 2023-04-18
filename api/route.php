@@ -110,6 +110,10 @@ class API extends dbobject{
         }
     }
 
+    public function initiatePayment(){
+        
+    }
+
 
   
 }

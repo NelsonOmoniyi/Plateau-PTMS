@@ -188,10 +188,10 @@ Class Users extends dbobject{
                 // $mail_data = "Password Reset<br> Dear ".$rr[0]['lastname'].", \n To reset your password kindly follow this link below \n https://techhost7x.accessng.com/plateau_transport/pwd_reset.php?ga=".$link."";
                 $mail_data='<html><div style="background-color:#e1e1e1; width:100%; height:100%; margin:0px; padding:45px;">
                 <div style="width:500px; background:white; margin:0px auto; padding:25px;">
-                    <h2><center><img src="cid:logo" style="max-height:75px;"></center></h2>
+                    <h2><center><img src="cid:image1" style="max-height:75px;"></center></h2>
                     <p style="background-color:#36b466; color:white; font-size:18px; text-align:center; padding:8px;">Plateau State Ministry of Transport</p>
                     <h3 style="text-align:center;">Password Reset</h3>
-                    <p style="text-align:center;">Dear '.$rr[0]['lastname'].', To reset your password kindly follow the link below <br><center>https://techhost7x.accessng.com/plateau_transport/pwd_reset.php?ga=0xdecade5c84036eb9401e30580b4b48a93b43b38592765a96843c2ffe3e89caf4701386700acf4579f782f9605ad3b84b </center><br><center>Or copy and paste the link below in any web browser to activate your account</center></p>
+                    <p style="text-align:center;">Dear '.$rr[0]['lastname'].', To reset your password kindly follow the link below <br><center>https://plateaustatemot.org.ng/pwd_reset.php?ga='.$link.' </center><br><center>Or copy and paste the link below in any web browser to activate your account</center></p>
                 </div>
             
             </div></html>';
@@ -202,7 +202,7 @@ Class Users extends dbobject{
 
                 return $resp;
 
-                return json_encode(array('response_code'=>0,'response_message'=>'Follow the reset link sent to your email'));
+                // return json_encode(array('response_code'=>0,'response_message'=>'Follow the reset link sent to your email'));
             }else
             {
                 return json_encode(array('response_code'=>340,'response_message'=>'Your email address was not setup properly'));
@@ -214,6 +214,8 @@ Class Users extends dbobject{
         }
         
     }
+
+    
     
     public function verifyLink($link)
     {

@@ -55,12 +55,22 @@
 </section>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-8 col-md-9 m-auto">
+        <div class="col-lg-10 col-md-10 m-auto">
             <div class="sec-heading text-center" style="color: white; padding-top: 100px;">
-                <h2 class="sec-title" style="font-family: Verdana, Geneva, Tahoma, sans-serif !important; font-weight:bold">Plateau State
+                <h2 class="sec-title"
+                    style="font-family: Verdana, Geneva, Tahoma, sans-serif !important; font-weight:bold">Plateau State
                     Transport Management System</h2>
-                <p class="sec-subtitle">Enhance road traffic safety, standard, sanity and security of lives and
-                    properties on Plateau roads.</p>
+                <p class="sec-subtitle text-justify">Enhance road traffic safety, standard, sanity and security of lives and
+                    properties on Plateau roads. We are a parastatal under the plateau state government birthed by the
+                    Ministry of Works and Transportation through the Rescue Administration in May 2018 to focus mainly
+                    on the transport sector.
+                    We are responsible for maintaining transport affairs within the state to facilitate and complement
+                    safe road use by road users. Our successful management of transport organizations has earned the
+                    Department of VIO of the ministry an award after being ranked 12th in the country and 1st in the
+                    North Central zone as well as the most ethically responsible state VIOs in the country in 2018/2019.
+                    We dream of developing an effective and efficient transport infrastructure and vibrant motor-vehicle
+                    administration aimed at safety, reliability and revenue generation for the socio-economic
+                    development of Plateau State.</p>
             </div>
         </div>
     </div>
@@ -91,29 +101,39 @@
                             Driving School</h3>
                         <p style="font-size:16px; color:#8d8ea3;">Begin Registration or Renew Your Driving School
                             Licence</p>
-                            <br>
-                            <center><a href="driving_school.php" class="btn btn-success btn-lg" style="background: #e6ae0c; color:black; border: none; text-transform:uppercase;">start here</a></center>
+                        <br>
+                        <center><a href="driving_school.php" class="btn btn-success btn-lg"
+                                style="background: #e6ae0c; color:black; border: none; text-transform:uppercase;">start
+                                here</a></center>
                     </div>
                 </a>
             </div>
             <div class="col-md-4 mt-4">
                 <a href="mech_garrage1.php" style="color:black">
-                <div class="bg-light" style="padding:35px;">
-                    <h3 class="text-light" style="font-size:18px; font-weight:bolder; color:#395b25 !important;">Mechanic Garrage</h3>
-                    <p style="font-size:16px; color:#8d8ea3;">Begin Registration or Renew Your Mechanic Garrage Licence</p>
-                    <br>
-                    <center><a href="mech_garrage1.php" class="btn btn-success btn-lg" style="background: #e6ae0c; color:black; border: none; text-transform:uppercase;">start here</a></center>
-                </div>
+                    <div class="bg-light" style="padding:35px;">
+                        <h3 class="text-light" style="font-size:18px; font-weight:bolder; color:#395b25 !important;">
+                            Mechanic Garrage</h3>
+                        <p style="font-size:16px; color:#8d8ea3;">Begin Registration or Renew Your Mechanic Garrage
+                            Licence</p>
+                        <br>
+                        <center><a href="mech_garrage1.php" class="btn btn-success btn-lg"
+                                style="background: #e6ae0c; color:black; border: none; text-transform:uppercase;">start
+                                here</a></center>
+                    </div>
                 </a>
             </div>
             <div class="col-md-4 mt-4">
                 <a href="spare_parts1.php" style="color:black">
-                <div class="bg-light" style="padding:35px;">
-                    <h3 class="text-light" style="font-size:18px; font-weight:bolder; color:#395b25 !important;">Spare Part Dealership</h3>
-                    <p style="font-size:16px; color:#8d8ea3;">Begin Registration or Renew Your Spare Part Dealership Licence</p>
-                    <br>
-                    <center><a href="spare_parts1.php" class="btn btn-success btn-lg" style="background: #e6ae0c; color:black; border: none; text-transform:uppercase;">start here</a></center>
-                </div>
+                    <div class="bg-light" style="padding:35px;">
+                        <h3 class="text-light" style="font-size:18px; font-weight:bolder; color:#395b25 !important;">
+                            Spare Part Dealership</h3>
+                        <p style="font-size:16px; color:#8d8ea3;">Begin Registration or Renew Your Spare Part Dealership
+                            Licence</p>
+                        <br>
+                        <center><a href="spare_parts1.php" class="btn btn-success btn-lg"
+                                style="background: #e6ae0c; color:black; border: none; text-transform:uppercase;">start
+                                here</a></center>
+                    </div>
 
                 </a>
             </div>
@@ -121,35 +141,48 @@
         <div class="row mb-4">
             <div class="col-md-4 mt-4">
                 <a href="transport_comp1.php" style="color:black">
-                <div class="bg-light" style="padding:35px;">
-                    <h3 class="text-light" style="font-size:18px; font-weight:bolder; color:#395b25 !important;">Transport Companies</h3>
-                    <p style="font-size:16px; color:#8d8ea3;">Begin Registration or Renew Your Transport Company Licence.</p>
-                    <br>
-                    <center><a href="transport_comp1.php" class="btn btn-success btn-lg" style="background: #e6ae0c; color:black; border: none; text-transform:uppercase;">start here</a></center>
-                </div>
+                    <div class="bg-light" style="padding:35px;">
+                        <h3 class="text-light" style="font-size:18px; font-weight:bolder; color:#395b25 !important;">
+                            Transport Companies</h3>
+                        <p style="font-size:16px; color:#8d8ea3;">Begin Registration or Renew Your Transport Company
+                            Licence.</p>
+                        <br>
+                        <center><a href="transport_comp1.php" class="btn btn-success btn-lg"
+                                style="background: #e6ae0c; color:black; border: none; text-transform:uppercase;">start
+                                here</a></center>
+                    </div>
                 </a>
             </div>
             <div class="col-md-4 mt-4">
                 <a href="dealership1.php" style="color:black">
-                <div class="bg-light" style="padding:35px;">
-                    <h3 class="text-light" style="font-size:18px; font-weight:bolder; color:#395b25 !important;">Dealership</h3>
-                    <p style="font-size:16px; color:#8d8ea3;">Begin Registration or Renew Your Dealership Licence.</p>
-                    <br>
-                    <center><a href="dealership1.php" class="btn btn-success btn-lg" style="background: #e6ae0c; color:black; border: none; text-transform:uppercase;">start here</a></center>
-                </div>
-                
+                    <div class="bg-light" style="padding:35px;">
+                        <h3 class="text-light" style="font-size:18px; font-weight:bolder; color:#395b25 !important;">
+                            Dealership</h3>
+                        <p style="font-size:16px; color:#8d8ea3;">Begin Registration or Renew Your Dealership Licence.
+                        </p>
+                        <br>
+                        <center><a href="dealership1.php" class="btn btn-success btn-lg"
+                                style="background: #e6ae0c; color:black; border: none; text-transform:uppercase;">start
+                                here</a></center>
+                    </div>
+
                 </a>
             </div>
             <div class="col-md-4 mt-4">
                 <a href="offences_1.php" style="color:black">
 
-                <div class="bg-light" style="padding:35px;">
-                    <h3 class="text-light" style="font-size:18px; font-weight:bolder; color:#395b25 !important;">Road Traffic Offences</h3>
-                    <p style="font-size:16px; color:#8d8ea3;">Pay for road traffic offences with your portal or book and pay for an offence instantly.</p>
-                    <div>
-                    <center><a href="offences_1.php" class="btn btn-success btn-sm" style="background: #e6ae0c; color:black; border: none; text-transform:uppercase;">Start Here</a></center></div>
-                </div>
-                    
+                    <div class="bg-light" style="padding:35px;">
+                        <h3 class="text-light" style="font-size:18px; font-weight:bolder; color:#395b25 !important;">
+                            Road Traffic Offences</h3>
+                        <p style="font-size:16px; color:#8d8ea3;">Pay for road traffic offences with your portal or book
+                            and pay for an offence instantly.</p>
+                        <div>
+                            <center><a href="offences_1.php" class="btn btn-success btn-sm"
+                                    style="background: #e6ae0c; color:black; border: none; text-transform:uppercase;">Start
+                                    Here</a></center>
+                        </div>
+                    </div>
+
             </div>
             </a>
         </div>

@@ -35,6 +35,8 @@ function custom_echo($x, $length) {
 $amount = $dbobject->getitemlabel('payment_category', 'id', $check[0]['item_code'], 'amount');
 $amount = number_format($amount,2);
 
+$ProcDate = $dbobject->getitemlabel('tb_payment_confirmation', 'payment_code', $id, 'trans_processed_date');
+
 $status = (($check[0]['processed_date']==0)?"Payment Pending":"$amount $status_suffix");
 if($table=='driving_sch_form'){
     $owner_name = $check[0]['school_name'];
@@ -58,13 +60,13 @@ if($cur_date == ""){
 }
 
 $pay_status = (($check[0]['status']==0)?"UNPAID":"PAID");
-$new = explode(" ",$cur_date);
+$new = explode(" ", $ProcDate);
 $ddd = date("M jS, Y", strtotime($new[0]));
 $new = explode(" ",$ddd);
 $month =  $new[0];
 $date =  $new[1];
 $year = $new[2];
-$created = "$date $month $year";
+$created = $ProcDate;
 $status_suffix = "Naira";
 $money = "$amount $status_suffix";
 $border = "0";

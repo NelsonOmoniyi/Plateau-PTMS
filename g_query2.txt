@@ -1,1 +1,1 @@
-SELECT COUNT(id) AS counter FROM payment_category WHERE  1 = 1  order by code asc
+SELECT COUNT(id) AS counter FROM vehicle_sidenumbers WHERE  1 = 1  order by id asc

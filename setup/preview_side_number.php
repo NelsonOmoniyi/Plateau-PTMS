@@ -76,6 +76,12 @@ $amount = $dbobject->getitemlabel('vehicle_type', 'id', $vehicle_typeid, 'renew'
                 getpage('sidenumber_list.php','page');
                 $("#defaultModalPrimary").modal('hide');
                 PrintPage(redirect);
+            }else if(re.status == "failed"){
+                $("#save_facility").text("Submit");
+                $("#save_facility").prop('disabled', false);
+                $("#err").css('color','red');
+                $("#err").html(re.message);
+                getpage('sidenumber_list.php',"page");
             }else{
                     $("#save_facility").text("Submit");
                     $("#save_facility").prop('disabled', false);

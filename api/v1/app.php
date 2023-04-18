@@ -68,6 +68,16 @@ if ($token != $expected_token) {
          echo $status;
          logInputs('Data Sent @ '.date("Y-m-d H:i:s"),$status,"Plate Number Validation Response Sent");
       }
+   }else if($endpoint == "initiate_payment"){
+      if($_SERVER['REQUEST_METHOD']!=='POST')
+         {
+            echo json_encode(array('response_code'=>'401', 'response_message'=>'INVALID HTTP METHOD. VALID METHOD IS POST'));
+         }
+         else
+         {
+            $response = $API->initiatePayment($data);
+            echo $response;
+         }
    }else{
          echo json_encode(array('response_code'=>'409', 'response_message'=>''.$endpoint.' Doesnt Exists!'));
    

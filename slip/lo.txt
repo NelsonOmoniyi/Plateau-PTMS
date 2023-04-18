@@ -1,1 +1,1 @@
-SELECT * FROM tb_payment_confirmation WHERE payment_code = 'SPD1675415293' AND trans_status = 1
+select amount from payment_category where id='4288'
